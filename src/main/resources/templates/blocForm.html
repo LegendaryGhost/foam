@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <title>Insertion d'un Bloc</title>
+</head>
+<body>
+
+<h2>Formulaire d'insertion de bloc</h2>
+
+<form th:action="@{/bloc}" th:object="${blocForm}" method="post">
+    <div>
+        <label for="nom">Nom :</label>
+        <input type="text" th:field="*{nom}" id="nom" required/>
+    </div>
+
+    <div>
+        <label for="longueur">Longueur :</label>
+        <input type="number" min="0.01" step="0.01" th:field="*{longueur}" id="longueur" required/>
+    </div>
+
+    <div>
+        <label for="largeur">Largeur :</label>
+        <input type="number" min="0.01" step="0.01" th:field="*{largeur}" id="largeur" required/>
+    </div>
+
+    <div>
+        <label for="hauteur">Hauteur :</label>
+        <input type="number" min="0.01" step="0.01" th:field="*{hauteur}" id="hauteur" required/>
+    </div>
+
+    <div>
+        <label for="coutProduction">Coût de production :</label>
+        <input type="number" min="0.01" step="0.01" th:field="*{coutProduction}" id="coutProduction" required/>
+    </div>
+
+    <button type="submit">Enregistrer</button>
+</form>
+
+</body>
+</html>

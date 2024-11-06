@@ -5,35 +5,45 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="96190351-f0b5-4185-b93a-8ef2a1a39164" name="Changes" comment="Initial commit">
-      <change afterPath="$PROJECT_DIR$/.gitattributes" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HELP.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/mcd.lo1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/mcd.loo" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/schema.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/FoamApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/ServletInitializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/tiarintsoa/foam/FoamApplicationTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/FoamApplication.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/ServletInitializer.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/data.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/query.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/test.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/trigger.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/controller/BlocController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/entity/Bloc.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/entity/EtatStock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/entity/FormeUsuelle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/entity/MouvementStock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/entity/Produit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/entity/TypeProduit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/from/BlocForm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/repository/BlocRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/repository/EtatStockRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/repository/FormeUsuelleRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/repository/MouvementStockRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/repository/ProduitRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/repository/TypeProduitRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/service/BlocService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application.example.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/blocForm.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/schema.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -44,6 +54,9 @@
         <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
       </MavenGeneralSettings>
     </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
@@ -56,6 +69,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
@@ -65,7 +79,7 @@
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/ITU/S5/architecture-logiciel/foam",
+    "last_opened_file_path": "D:/ITU/S5/architecture-logiciel/foam/src/main/resources",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -73,8 +87,41 @@
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ]
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\ITU\S5\architecture-logiciel\foam\src\main\resources" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.tiarintsoa.foam.repository" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="FoamApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="foam" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.tiarintsoa.foam.FoamApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tiarintsoa.foam.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.FoamApplication" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -95,7 +142,9 @@
       <workItem from="1730735137752" duration="133000" />
       <workItem from="1730735281076" duration="779000" />
       <workItem from="1730793510514" duration="19000" />
-      <workItem from="1730871383071" duration="5664000" />
+      <workItem from="1730871383071" duration="15013000" />
+      <workItem from="1730895568989" duration="3806000" />
+      <workItem from="1730900039305" duration="3313000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -105,7 +154,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730879434397</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Initial commit">
+      <option name="closed" value="true" />
+      <created>1730879901875</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1730879901875</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

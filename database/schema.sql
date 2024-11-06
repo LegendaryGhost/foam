@@ -28,7 +28,7 @@ CREATE TABLE mouvement_stock(
 
 CREATE TABLE bloc(
                      id_bloc SERIAL,
-                     prix_production MONEY NOT NULL,
+                     prix_production NUMERIC(15,2)   NOT NULL,
                      id_origine INTEGER,
                      id_produit INTEGER NOT NULL,
                      PRIMARY KEY(id_bloc),
@@ -39,7 +39,7 @@ CREATE TABLE bloc(
 
 CREATE TABLE forme_usuelle(
                               id_forme_usuelle SERIAL,
-                              prix_vente MONEY NOT NULL,
+                              prix_vente NUMERIC(15,2)   NOT NULL,
                               id_produit INTEGER NOT NULL,
                               PRIMARY KEY(id_forme_usuelle),
                               UNIQUE(id_produit),
@@ -49,7 +49,7 @@ CREATE TABLE forme_usuelle(
 CREATE TABLE etat_stock(
                            id_etat_stock SERIAL,
                            quantite INTEGER NOT NULL,
-                           prix_production MONEY NOT NULL,
+                           prix_production NUMERIC(15,2)   NOT NULL,
                            date_heure_insertion TIMESTAMP NOT NULL DEFAULT NOW(),
                            id_origine INTEGER,
                            id_produit INTEGER NOT NULL,
