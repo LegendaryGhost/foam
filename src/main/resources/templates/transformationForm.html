@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <title>Transformation Form</title>
+</head>
+<body>
+<h2>Transformation Form</h2>
+<form th:action="@{/transformation}" th:object="${transformationForm}" method="post">
+    <label for="blocOrigine">Bloc d'origine:</label>
+    <select th:field="*{idBloc}" id="blocOrigine" required>
+        <option value="" disabled selected>Choisissez un bloc</option>
+        <option th:each="bloc : ${blocs}" th:value="${bloc.id}" th:text="${bloc.produit.nomProduit}"></option>
+    </select><br>
+
+    <!-- Rest dimensions fields -->
+    <label for="longueurReste">Longueur du Reste:</label>
+    <input type="number" step="0.01" th:field="*{longueurReste}" id="longueurReste" /><br/>
+
+    <label for="largeurReste">Largeur du Reste:</label>
+    <input type="number" step="0.01" th:field="*{largeurReste}" id="largeurReste" /><br/>
+
+    <label for="hauteurReste">Hauteur du Reste:</label>
+    <input type="number" step="0.01" th:field="*{hauteurReste}" id="hauteurReste" /><br/>
+
+    <!-- Quantities for each usual form -->
+    <div th:each="formQuantity, stat : *{usualFormsQuantities}">
+        <label th:for="${formQuantity.formName}">Quantité pour <span th:text="${formQuantity.formName}">Form</span>:</label>
+        <input type="number" th:field="*{usualFormsQuantities[__${stat.index}__].quantity}" th:id="${formQuantity.formName}"/><br/>
+        <input type="hidden" th:field="*{usualFormsQuantities[__${stat.index}__].idProduit}">
+        <input type="hidden" th:field="*{usualFormsQuantities[__${stat.index}__].formName}">
+    </div>
+
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>
