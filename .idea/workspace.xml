@@ -4,17 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96190351-f0b5-4185-b93a-8ef2a1a39164" name="Changes" comment="Unused import removed">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/controller/TransformationController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/from/QuantiteUsuelleForm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/from/TransformationForm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/service/TransformationService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/transformationForm.html" afterDir="false" />
+    <list default="true" id="96190351-f0b5-4185-b93a-8ef2a1a39164" name="Changes" comment="Transformation form">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/config/TransformationConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/mcd.loo" beforeDir="false" afterPath="$PROJECT_DIR$/database/mcd.loo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/query.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/query.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/test.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/database/test.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/repository/BlocRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/repository/BlocRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/controller/TransformationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/controller/TransformationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/service/TransformationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/service/TransformationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.example.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.example.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/blocForm.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/blocForm.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/transformationForm.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/transformationForm.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,7 +142,7 @@
       <workItem from="1730895568989" duration="3806000" />
       <workItem from="1730900039305" duration="4166000" />
       <workItem from="1730907138653" duration="1719000" />
-      <workItem from="1730909940470" duration="3142000" />
+      <workItem from="1730909940470" duration="6857000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -185,7 +184,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730903625742</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Transformation form">
+      <option name="closed" value="true" />
+      <created>1730913325618</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1730913325618</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -196,6 +203,7 @@
     <MESSAGE value="Application properties in gitignore" />
     <MESSAGE value="Bloc insertion" />
     <MESSAGE value="Unused import removed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Unused import removed" />
+    <MESSAGE value="Transformation form" />
+    <option name="LAST_COMMIT_MESSAGE" value="Transformation form" />
   </component>
 </project>
