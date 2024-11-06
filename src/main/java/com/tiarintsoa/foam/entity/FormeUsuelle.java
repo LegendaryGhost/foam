@@ -3,8 +3,6 @@ package com.tiarintsoa.foam.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.math.BigDecimal;
-
 @Entity
 @Table(name = "forme_usuelle")
 @Data
