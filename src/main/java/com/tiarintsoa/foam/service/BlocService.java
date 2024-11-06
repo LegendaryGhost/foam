@@ -27,6 +27,11 @@ public class BlocService {
 
     @Transactional
     public void saveBloc(BlocForm blocForm) {
+        saveBloc(blocForm, null);
+    }
+
+    @Transactional
+    public void saveBloc(BlocForm blocForm, Bloc origne) {
         TypeProduit typeProduit = typeProduitRepository.findById(1L)
                 .orElseThrow(() -> new RuntimeException("Type produit introuvable") );
 
@@ -41,12 +46,14 @@ public class BlocService {
         Bloc bloc = new Bloc();
         bloc.setPrixProduction(blocForm.getCoutProduction());
         bloc.setProduit(produit);
+        bloc.setOrigine(origne);
         blocRepository.save(bloc);
 
         EtatStock etatStock = new EtatStock();
         etatStock.setProduit(produit);
         etatStock.setPrixProduction(blocForm.getCoutProduction());
         etatStock.setQuantite(1);
+        etatStock.setOrigine(origne);
         etatStockRepository.save(etatStock);
     }
 }

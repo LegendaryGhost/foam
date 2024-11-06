@@ -5,6 +5,6 @@ import lombok.Data;
 @Data
 public class QuantiteUsuelleForm {
     private String formName;
-    private Long idProduit;
+    private Long idFormeUsuelle;
     private int quantity;
 }
