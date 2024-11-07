@@ -66,9 +66,14 @@ public class TransformationController {
 
             // Vérifie que le volume des produits en sortie plus le volume du reste est dans la marge autorisée (volume origine - 2% jusqu'à volume origine)
             if (!transformationService.validateVolume(volumeBloc, volumeReste, volumeUsualForms)) {
-                bindingResult.rejectValue("usualFormsQuantities", "error.transformationForm", "Le volume des produits en sortie plus le volume du reste n'est pas dans la marge autorisée.");
+                bindingResult.rejectValue(
+                        "usualFormsQuantities",
+                        "error.transformationForm",
+                        "Le volume des produits en sortie plus le volume du reste n'est pas dans la marge autorisée."
+                        + " (entre " + transformationService.getMinAcceptableVolume(volumeBloc) + " m^3 et " + volumeBloc + " m^3)"
+                        + " (volume du reste + produits actuel : " + (volumeReste + volumeUsualForms) + " m^3)"
+                );
             }
-            System.out.println("Valide: " + transformationService.validateVolume(volumeBloc, volumeReste, volumeUsualForms));
         }
 
         // En cas d'erreurs, retourne au formulaire avec les valeurs remplies

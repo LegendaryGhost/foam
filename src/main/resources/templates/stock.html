@@ -31,13 +31,13 @@
             </div>
             <div class="card-body">
                 <p><strong>Coût Total de Production:</strong>
-                    <span th:text="${#numbers.formatDecimal(stock.coutProductionTotal, 1, 2)}">0.00</span>
+                    <span th:text="${#numbers.formatDecimal(stock.coutProductionTotal, 0, 'DEFAULT', 2, 'COMMA')}">0.00</span>
                 </p>
                 <p><strong>Prix Total de Vente:</strong>
-                    <span th:text="${#numbers.formatDecimal(stock.prixVenteTotal, 1, 2)}">0.00</span>
+                    <span th:text="${#numbers.formatDecimal(stock.prixVenteTotal, 0, 'DEFAULT', 2, 'COMMA')}">0.00</span>
                 </p>
                 <p><strong>Bénéfice Théorique Total:</strong>
-                    <span th:text="${#numbers.formatDecimal(stock.prixVenteTotal - stock.coutProductionTotal, 1, 2)}">0.00</span>
+                    <span th:text="${#numbers.formatDecimal(stock.prixVenteTotal - stock.coutProductionTotal, 0, 'DEFAULT', 2, 'COMMA')}">0.00</span>
                 </p>
 
                 <h3>Produits en Stock</h3>
@@ -54,8 +54,8 @@
                     <tr th:each="produit : ${stock.stockProduits}">
                         <td th:text="${produit.nomProduit}">Produit</td>
                         <td th:text="${produit.quantite}">0</td>
-                        <td th:text="${#numbers.formatDecimal(produit.coutProductionUnitaire, 1, 2)}">0.00</td>
-                        <td th:text="${#numbers.formatDecimal(produit.prixVenteUnitaire, 1, 2)}">0.00</td>
+                        <td th:text="${#numbers.formatDecimal(produit.coutProductionUnitaire, 0, 'DEFAULT', 2, 'COMMA')}">0.00</td>
+                        <td th:text="${#numbers.formatDecimal(produit.prixVenteUnitaire, 0, 'DEFAULT', 2, 'COMMA')}">0.00</td>
                     </tr>
                     </tbody>
                 </table>

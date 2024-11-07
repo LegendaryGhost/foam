@@ -64,11 +64,14 @@ public class TransformationService {
     }
 
     public boolean validateVolume(double volumeBloc, double volumeReste, double volumeUsualForms) {
-        double margin = transformationConfig.getMarginPercentage() / 100.0;
-        double minAcceptableVolume = volumeBloc * (1 - margin);
+        double minAcceptableVolume = getMinAcceptableVolume(volumeBloc);
 
         return (volumeUsualForms + volumeReste >= minAcceptableVolume &&
                 volumeUsualForms + volumeReste <= volumeBloc);
+    }
+
+    public double getMinAcceptableVolume(double volumeBloc) {
+        return volumeBloc * (1 - transformationConfig.getMarginPercentage() / 100.0);
     }
 
     @Transactional
