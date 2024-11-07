@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96190351-f0b5-4185-b93a-8ef2a1a39164" name="Changes" comment="Original bloc">
+    <list default="true" id="96190351-f0b5-4185-b93a-8ef2a1a39164" name="Changes" comment="Stock change list">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/controller/StockController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/controller/StockController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/dto/StockDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/dto/StockDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/service/StockService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/service/StockService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/stock.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/stock.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -144,7 +145,7 @@
       <workItem from="1730944185620" duration="5981000" />
       <workItem from="1730955604037" duration="18685000" />
       <workItem from="1730984877739" duration="1843000" />
-      <workItem from="1730986752163" duration="3414000" />
+      <workItem from="1730986752163" duration="3687000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -306,7 +307,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730987172801</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Stock change list">
+      <option name="closed" value="true" />
+      <created>1730992440339</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1730992440339</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -331,6 +340,7 @@
     <MESSAGE value="Inheriting bloc production cost update" />
     <MESSAGE value="Usual form average production cost" />
     <MESSAGE value="Original bloc" />
-    <option name="LAST_COMMIT_MESSAGE" value="Original bloc" />
+    <MESSAGE value="Stock change list" />
+    <option name="LAST_COMMIT_MESSAGE" value="Stock change list" />
   </component>
 </project>

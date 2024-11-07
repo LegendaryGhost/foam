@@ -72,13 +72,20 @@
                 <h2 th:text="${stock.nomMethode}">Méthode</h2>
             </div>
             <div class="card-body">
-                <p><strong>Coût Total de Production:</strong>
+                <p>
+                    <strong>Produit utilisé:</strong>
+                    <span th:text="${stock.nomProduitUtilise?:'Aucun'}">Aucun</span>
+                </p>
+                <p>
+                    <strong>Coût Total de Production:</strong>
                     <span th:text="${#numbers.formatDecimal(stock.coutProductionTotal, 0, 'DEFAULT', 2, 'COMMA') + ' Ar'}">0.00 Ar</span>
                 </p>
-                <p><strong>Prix Total de Vente:</strong>
+                <p>
+                    <strong>Prix Total de Vente:</strong>
                     <span th:text="${#numbers.formatDecimal(stock.prixVenteTotal, 0, 'DEFAULT', 2, 'COMMA') + ' Ar'}">0.00 Ar</span>
                 </p>
-                <p><strong>Bénéfice Théorique Total:</strong>
+                <p>
+                    <strong>Bénéfice Théorique Total:</strong>
                     <span th:text="${#numbers.formatDecimal(stock.prixVenteTotal - stock.coutProductionTotal, 0, 'DEFAULT', 2, 'COMMA') + ' Ar'}">0.00 Ar</span>
                 </p>
 

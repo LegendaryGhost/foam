@@ -102,6 +102,7 @@ public class StockService {
 
         StockDetails stockDetails = new StockDetails();
         stockDetails.setNomMethode(nomMethode);
+        stockDetails.setNomProduitUtilise(transformationFormeUsuelle.getProduit().getNomProduit());
         stockDetails.setCoutProductionTotal(coutProductionTotal);
         stockDetails.setPrixVenteTotal(prixVenteTotal);
         stockDetails.setStockProduits(stockProduits);
