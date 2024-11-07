@@ -17,5 +17,14 @@ public interface FormeUsuelleRepository extends JpaRepository<FormeUsuelle, Long
     """, nativeQuery = true)
     FormeUsuelle findTopFormeUsuelleByHighestPrixVolumeRatio();
 
-
+    @Query(value = """
+        SELECT f.id_forme_usuelle AS id_forme_usuelle,
+               f.prix_vente AS prix_vente,
+               f.id_produit AS id_produit
+        FROM forme_usuelle f
+        JOIN produit p ON f.id_produit = p.id_produit
+        ORDER BY (p.longueur * p.largeur * p.hauteur)
+        LIMIT 1
+    """, nativeQuery = true)
+    FormeUsuelle findTopFormeUsuelleByLowestVolume();
 }

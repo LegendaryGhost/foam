@@ -28,6 +28,7 @@ public class StockService {
         List<StockDetails> stockDetails = new ArrayList<>();
         stockDetails.add(getBasicStockDetails());
         stockDetails.add(getMaxGainStockDetails());
+        stockDetails.add(getMinLossStockDetails());
         return stockDetails;
     }
 
@@ -52,9 +53,20 @@ public class StockService {
     }
 
     public StockDetails getMaxGainStockDetails() {
-        List<StockProduitDTO> stockProduits = etatStockRepository.findStockProduitsForFormeUsuelle();
         FormeUsuelle meilleurFormeUsuelle = formeUsuelleRepository.findTopFormeUsuelleByHighestPrixVolumeRatio();
-        double volumeMeilleurFormeUsuelle = meilleurFormeUsuelle.getProduit().getVolume();
+        String nomMethode = "Méthode 2 : Maximum de bénéfice";
+        return getStockDetailsWithBlocs(nomMethode, meilleurFormeUsuelle);
+    }
+
+    public StockDetails getMinLossStockDetails() {
+        FormeUsuelle minPerteFormeUsuelle = formeUsuelleRepository.findTopFormeUsuelleByLowestVolume();
+        String nomMethode = "Méthode 3 : Minimum de perte";
+        return getStockDetailsWithBlocs(nomMethode, minPerteFormeUsuelle);
+    }
+
+    public StockDetails getStockDetailsWithBlocs(String nomMethode, FormeUsuelle transformationFormeUsuelle) {
+        List<StockProduitDTO> stockProduits = etatStockRepository.findStockProduitsForFormeUsuelle();
+        double volumeMeilleurFormeUsuelle = transformationFormeUsuelle.getProduit().getVolume();
         List<Bloc> blocsEnStock = blocRepository.findAllByEtatStockQuantiteGreaterThanZero();
 
         for (Bloc bloc : blocsEnStock) {
@@ -70,7 +82,7 @@ public class StockService {
 
             double volumeBloc = bloc.getProduit().getVolume();
             int quantiteFaisable = (int) (volumeBloc / volumeMeilleurFormeUsuelle);
-            stockProduitDTO.setPrixVenteUnitaire(quantiteFaisable * meilleurFormeUsuelle.getPrixVente());
+            stockProduitDTO.setPrixVenteUnitaire(quantiteFaisable * transformationFormeUsuelle.getPrixVente());
 
             stockProduits.add(stockProduitDTO);
         }
@@ -84,7 +96,7 @@ public class StockService {
                 .sum();
 
         StockDetails stockDetails = new StockDetails();
-        stockDetails.setNomMethode("Méthode 2 : Maximum de bénéfice");
+        stockDetails.setNomMethode(nomMethode);
         stockDetails.setCoutProductionTotal(coutProductionTotal);
         stockDetails.setPrixVenteTotal(prixVenteTotal);
         stockDetails.setStockProduits(stockProduits);
