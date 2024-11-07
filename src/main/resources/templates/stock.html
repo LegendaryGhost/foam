@@ -12,7 +12,29 @@
 <main class="container my-4">
 
 
-    <h1 class="text-center">Stock Details</h1>
+    <h1 class="text-center">Mouvement de stock</h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nom du Produit</th>
+                <th class="text-end">Date - Heure</th>
+                <th class="text-end">Quantité en entrée</th>
+                <th class="text-end">Quantité en sortie</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="mouvement : ${mouvementsStock}">
+                <td th:text="${mouvement.produit.nomProduit}">Produit</td>
+                <td class="text-end" th:text="${#temporals.format(mouvement.dateHeureMouvement, 'dd-MM-yyyy HH:mm:ss')}">dd-MM-yyyy HH:mm:ss</td>
+                <td class="text-end" th:text="${mouvement.quantiteEntree}">0</td>
+                <td class="text-end" th:text="${mouvement.quantiteSortie}">0</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <h1 class="text-center">Etat de stock</h1>
 
     <table class="table table-striped">
         <thead>
