@@ -27,4 +27,8 @@ public class Produit {
     @ManyToOne
     @JoinColumn(name = "id_type_produit", nullable = false)
     private TypeProduit typeProduit;
+
+    public double getVolume() {
+        return longueur * largeur * hauteur;
+    }
 }
