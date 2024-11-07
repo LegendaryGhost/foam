@@ -4,56 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96190351-f0b5-4185-b93a-8ef2a1a39164" name="Changes" comment="Bootstrap + Navbar">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/css/bootstrap-grid.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/css/bootstrap-grid.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/css/bootstrap-grid.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/css/bootstrap-grid.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/css/bootstrap-grid.rtl.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/css/bootstrap-grid.rtl.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/css/bootstrap-grid.rtl.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/css/bootstrap-grid.rtl.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/css/bootstrap-reboot.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/css/bootstrap-reboot.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/css/bootstrap-reboot.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/css/bootstrap-reboot.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/css/bootstrap-reboot.rtl.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/css/bootstrap-reboot.rtl.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/css/bootstrap-reboot.rtl.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/css/bootstrap-reboot.rtl.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/css/bootstrap-utilities.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/css/bootstrap-utilities.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/css/bootstrap-utilities.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/css/bootstrap-utilities.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/css/bootstrap-utilities.rtl.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/css/bootstrap-utilities.rtl.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/css/bootstrap-utilities.rtl.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/css/bootstrap-utilities.rtl.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/css/bootstrap.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/css/bootstrap.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/css/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/css/bootstrap.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/css/bootstrap.rtl.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/css/bootstrap.rtl.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/css/bootstrap.rtl.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/css/bootstrap.rtl.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/js/bootstrap.bundle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/js/bootstrap.bundle.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/js/bootstrap.bundle.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/js/bootstrap.bundle.min.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/js/bootstrap.esm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/js/bootstrap.esm.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/js/bootstrap.esm.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/js/bootstrap.esm.min.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/js/bootstrap.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/js/bootstrap.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/js/bootstrap.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/js/bootstrap.min.js.map" afterDir="false" />
+    <list default="true" id="96190351-f0b5-4185-b93a-8ef2a1a39164" name="Changes" comment="Number format">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/controller/TransformationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/controller/TransformationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/service/TransformationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/service/TransformationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/navbar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/stock.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/stock.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/blocForm.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/blocForm.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,7 +139,7 @@
       <workItem from="1730942107467" duration="609000" />
       <workItem from="1730942746651" duration="1408000" />
       <workItem from="1730944185620" duration="5981000" />
-      <workItem from="1730955604037" duration="3806000" />
+      <workItem from="1730955604037" duration="4314000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -292,7 +245,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730958827439</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Number format">
+      <option name="closed" value="true" />
+      <created>1730961589020</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1730961589020</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -310,6 +271,7 @@
     <MESSAGE value="Basic stock details" />
     <MESSAGE value="Max gain stock details" />
     <MESSAGE value="Bootstrap + Navbar" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bootstrap + Navbar" />
+    <MESSAGE value="Number format" />
+    <option name="LAST_COMMIT_MESSAGE" value="Number format" />
   </component>
 </project>
