@@ -13,6 +13,8 @@
     <h1 class="text-center">Insertion de bloc</h1>
 
     <form th:action="@{/blocs}" th:object="${blocForm}" method="post">
+        <input type="hidden" th:field="*{id}">
+
         <div class="mb-3">
             <label class="form-label" for="nom">Nom :</label>
             <input class="form-control" type="text" th:field="*{nom}" id="nom" required/>
@@ -20,17 +22,17 @@
 
         <div class="mb-3">
             <label class="form-label" for="longueur">Longueur :</label>
-            <input class="form-control" type="number" min="0.01" step="0.01" th:field="*{longueur}" id="longueur" required/>
+            <input class="form-control" th:disabled="${isModifying}" type="number" min="0.01" step="0.01" th:field="*{longueur}" id="longueur" required/>
         </div>
 
         <div class="mb-3">
             <label class="form-label" for="largeur">Largeur :</label>
-            <input class="form-control" type="number" min="0.01" step="0.01" th:field="*{largeur}" id="largeur" required/>
+            <input class="form-control" th:disabled="${isModifying}" type="number" min="0.01" step="0.01" th:field="*{largeur}" id="largeur" required/>
         </div>
 
         <div class="mb-3">
             <label class="form-label" for="hauteur">Hauteur :</label>
-            <input class="form-control" type="number" min="0.01" step="0.01" th:field="*{hauteur}" id="hauteur" required/>
+            <input class="form-control" th:disabled="${isModifying}" type="number" min="0.01" step="0.01" th:field="*{hauteur}" id="hauteur" required/>
         </div>
 
         <div class="mb-3">

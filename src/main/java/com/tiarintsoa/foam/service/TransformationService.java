@@ -90,7 +90,6 @@ public class TransformationService {
         blocService.saveBloc(blocFormReste, origine);
 
         for(QuantiteUsuelleForm quantiteUsuelleForm: transformationForm.getUsualFormsQuantities()) {
-            System.out.println(quantiteUsuelleForm);
             if (quantiteUsuelleForm.getQuantity() > 0) {
                 FormeUsuelle formeUsuelle = formeUsuelleRepository.findById(quantiteUsuelleForm.getIdFormeUsuelle())
                         .orElseThrow(() -> new RuntimeException("Forme usuelle introuvable"));

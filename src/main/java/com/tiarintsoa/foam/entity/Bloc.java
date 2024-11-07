@@ -1,5 +1,6 @@
 package com.tiarintsoa.foam.entity;
 
+import com.tiarintsoa.foam.from.BlocForm;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -22,4 +23,15 @@ public class Bloc {
     @OneToOne
     @JoinColumn(name = "id_produit", nullable = false, unique = true)
     private Produit produit;
+
+    public BlocForm toBlocForm() {
+        BlocForm blocForm = new BlocForm();
+        blocForm.setId(id);
+        blocForm.setNom(produit == null ? null : produit.getNomProduit());
+        blocForm.setLongueur(produit == null ? null : produit.getLongueur());
+        blocForm.setLargeur(produit == null ? null : produit.getLargeur());
+        blocForm.setHauteur(produit == null ? null : produit.getHauteur());
+        blocForm.setCoutProduction(this.getPrixProduction());
+        return blocForm;
+    }
 }

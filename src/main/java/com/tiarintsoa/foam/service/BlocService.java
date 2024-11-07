@@ -32,6 +32,27 @@ public class BlocService {
 
     @Transactional
     public void saveBloc(BlocForm blocForm, Bloc origne) {
+        if (blocForm.getId() == null) {
+            createBloc(blocForm, origne);
+        } else {
+            updateBloc(blocForm);
+        }
+    }
+
+    @Transactional
+    protected void updateBloc(BlocForm blocForm) {
+        Bloc bloc = blocRepository.findById(blocForm.getId())
+                .orElseThrow(() -> new RuntimeException("Bloc introuvable"));
+        Produit produit = bloc.getProduit();
+        produit.setNomProduit(blocForm.getNom());
+        produitRepository.save(produit);
+
+        bloc.setPrixProduction(blocForm.getCoutProduction());
+        blocRepository.save(bloc);
+    }
+
+    @Transactional
+    protected void createBloc(BlocForm blocForm, Bloc origne) {
         TypeProduit typeProduit = typeProduitRepository.findById(1L)
                 .orElseThrow(() -> new RuntimeException("Type produit introuvable") );
 
