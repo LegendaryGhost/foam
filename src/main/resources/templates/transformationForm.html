@@ -7,42 +7,54 @@
 <body>
 
 <!-- Include the navbar component here -->
-<div th:include="fragments/navbar"></div>
+<header th:include="fragments/navbar"></header>
 
-<h1>Transformation de bloc</h1>
+<main class="container my-4">
 
-<form th:action="@{/transformations}" th:object="${transformationForm}" method="post">
-    <label for="blocOrigine">Bloc d'origine:</label>
-    <select th:field="*{idBloc}" id="blocOrigine" required>
-        <option value="" disabled selected>Choisissez un bloc</option>
-        <option th:each="bloc : ${blocs}" th:value="${bloc.id}" th:text="${bloc.produit.nomProduit}"></option>
-    </select><br>
-    <div th:if="${#fields.hasErrors('idBloc')}" th:errors="*{idBloc}"></div>
+    <h1 class="text-center">Transformation de bloc</h1>
 
-    <!-- Champs des dimensions du reste -->
-    <label for="longueurReste">Longueur du Reste:</label>
-    <input type="number" min="0" step="0.01" th:field="*{longueurReste}" id="longueurReste" /><br/>
-    <div th:if="${#fields.hasErrors('longueurReste')}" th:errors="*{longueurReste}"></div>
+    <form th:action="@{/transformations}" th:object="${transformationForm}" method="post">
+        <div class="mb-3">
+            <label class="form-label" for="blocOrigine">Bloc d'origine:</label>
+            <select class="form-select" th:field="*{idBloc}" id="blocOrigine" required>
+                <option value="" disabled selected>Choisissez un bloc</option>
+                <option th:each="bloc : ${blocs}" th:value="${bloc.id}" th:text="${bloc.produit.nomProduit}"></option>
+            </select>
+            <div class="form-text text-danger" th:if="${#fields.hasErrors('idBloc')}" th:errors="*{idBloc}"></div>
+        </div>
 
-    <label for="largeurReste">Largeur du Reste:</label>
-    <input type="number" min="0" step="0.01" th:field="*{largeurReste}" id="largeurReste" /><br/>
-    <div th:if="${#fields.hasErrors('largeurReste')}" th:errors="*{largeurReste}"></div>
+        <!-- Champs des dimensions du reste -->
+        <div class="mb-3">
+            <label class="form-label" for="longueurReste">Longueur du Reste:</label>
+            <input class="form-control" type="number" min="0" step="0.01" th:field="*{longueurReste}" id="longueurReste" />
+            <div class="form-text text-danger" th:if="${#fields.hasErrors('longueurReste')}" th:errors="*{longueurReste}"></div>
+        </div>
 
-    <label for="hauteurReste">Hauteur du Reste:</label>
-    <input type="number" min="0" step="0.01" th:field="*{hauteurReste}" id="hauteurReste" /><br/>
-    <div th:if="${#fields.hasErrors('hauteurReste')}" th:errors="*{hauteurReste}"></div>
+        <div class="mb-3">
+            <label class="form-label" for="largeurReste">Largeur du Reste:</label>
+            <input class="form-control" type="number" min="0" step="0.01" th:field="*{largeurReste}" id="largeurReste" />
+            <div class="form-text text-danger" th:if="${#fields.hasErrors('largeurReste')}" th:errors="*{largeurReste}"></div>
+        </div>
 
-    <!-- Quantities for each usual form -->
-    <div th:each="formQuantity, stat : *{usualFormsQuantities}">
-        <label th:for="${formQuantity.formName}">Quantité pour <span th:text="${formQuantity.formName}">Form</span>:</label>
-        <input type="number" min="0" th:field="*{usualFormsQuantities[__${stat.index}__].quantity}" th:id="${formQuantity.formName}"/><br/>
-        <input type="hidden" th:field="*{usualFormsQuantities[__${stat.index}__].idFormeUsuelle}">
-        <input type="hidden" th:field="*{usualFormsQuantities[__${stat.index}__].formName}">
-    </div>
-    <div th:if="${#fields.hasErrors('usualFormsQuantities')}" th:errors="*{usualFormsQuantities}"></div>
+        <div class="mb-3">
+            <label class="form-label" for="hauteurReste">Hauteur du Reste:</label>
+            <input class="form-control" type="number" min="0" step="0.01" th:field="*{hauteurReste}" id="hauteurReste" />
+            <div class="form-text text-danger" th:if="${#fields.hasErrors('hauteurReste')}" th:errors="*{hauteurReste}"></div>
+        </div>
 
-    <button type="submit">Soumettre</button>
-</form>
+        <!-- Quantities for each usual form -->
+        <div th:each="formQuantity, stat : *{usualFormsQuantities}" class="mb-3">
+            <label class="form-label" th:for="${formQuantity.formName}">Quantité pour <span th:text="${formQuantity.formName}">Form</span>:</label>
+            <input class="form-control" type="number" min="0" th:field="*{usualFormsQuantities[__${stat.index}__].quantity}" th:id="${formQuantity.formName}"/>
+            <input type="hidden" th:field="*{usualFormsQuantities[__${stat.index}__].idFormeUsuelle}">
+            <input type="hidden" th:field="*{usualFormsQuantities[__${stat.index}__].formName}">
+        </div>
+        <div class="form-text text-danger" th:if="${#fields.hasErrors('usualFormsQuantities')}" th:errors="*{usualFormsQuantities}"></div>
+
+        <button class="btn btn-primary mt-3" type="submit">Transformer</button>
+    </form>
+
+</main>
 
 </body>
 </html>
