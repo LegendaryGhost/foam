@@ -19,7 +19,7 @@ CREATE TABLE produit(
 CREATE TABLE mouvement_stock(
                                 id_mouvement_stock SERIAL,
                                 quantite_entree INTEGER NOT NULL,
-                                quantite_sortie NUMERIC(15,2)   NOT NULL,
+                                quantite_sortie INTEGER NOT NULL,
                                 date_heure_mouvement TIMESTAMP NOT NULL DEFAULT NOW(),
                                 id_produit INTEGER NOT NULL,
                                 PRIMARY KEY(id_mouvement_stock),

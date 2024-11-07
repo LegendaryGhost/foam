@@ -32,7 +32,7 @@
     <div th:each="formQuantity, stat : *{usualFormsQuantities}">
         <label th:for="${formQuantity.formName}">Quantité pour <span th:text="${formQuantity.formName}">Form</span>:</label>
         <input type="number" min="0" th:field="*{usualFormsQuantities[__${stat.index}__].quantity}" th:id="${formQuantity.formName}"/><br/>
-        <input type="hidden" th:field="*{usualFormsQuantities[__${stat.index}__].idProduit}">
+        <input type="hidden" th:field="*{usualFormsQuantities[__${stat.index}__].idFormeUsuelle}">
         <input type="hidden" th:field="*{usualFormsQuantities[__${stat.index}__].formName}">
     </div>
     <div th:if="${#fields.hasErrors('usualFormsQuantities')}" th:errors="*{usualFormsQuantities}"></div>

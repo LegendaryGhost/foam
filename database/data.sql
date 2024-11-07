@@ -17,10 +17,13 @@ INSERT INTO forme_usuelle(prix_vente, id_produit) VALUES
 -- Blocs
 INSERT INTO produit(nom_produit, longueur, largeur, hauteur, id_type_produit) VALUES
                                                                                   ('Bloc 1',  10.60, 8.2, 5, 1),
-                                                                                  ('Bloc 2',  10.60, 8.2, 5, 1);
+                                                                                  ('Bloc 2',  10.60, 8.2, 5, 1),
+                                                                                  ('Bloc 3',  10.60, 8.2, 5, 1);
 INSERT INTO bloc(prix_production, id_produit) VALUES
-                                                              (38250000.00, 1),
-                                                              (38250000.00, 2);
+                                                              (38250000.00, 5),
+                                                              (38250000.00, 6),
+                                                              (38250000.00, 7);
 INSERT INTO etat_stock(quantite, prix_production, id_produit) VALUES
                                                                               (1, 38250000.00, 5),
-                                                                              (1, 38250000.00, 6);
+                                                                              (1, 38250000.00, 6),
+                                                                              (1, 38250000.00, 7);

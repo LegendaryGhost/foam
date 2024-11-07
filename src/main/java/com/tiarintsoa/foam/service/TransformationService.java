@@ -74,10 +74,10 @@ public class TransformationService {
     @Transactional
     public void saveTransformation(TransformationForm transformationForm) {
         // Mise à jour de l'état du stock et mouvement de sortie
-        EtatStock etatStock = etatStockRepository.findFirstByBlocId(transformationForm.getIdBloc())
+        EtatStock etatStockOrigine = etatStockRepository.findFirstByBlocId(transformationForm.getIdBloc())
                 .orElseThrow(() -> new RuntimeException("Etat de stock introuvable pour l'id bloc : " + transformationForm.getIdBloc()));
-        etatStock.setQuantite(0);
-        etatStockRepository.save(etatStock);
+        etatStockOrigine.setQuantite(0);
+        etatStockRepository.save(etatStockOrigine);
 
         // Insertion du bloc reste
         Bloc origine = blocRepository.findById(transformationForm.getIdBloc())
@@ -87,6 +87,7 @@ public class TransformationService {
         blocService.saveBloc(blocFormReste, origine);
 
         for(QuantiteUsuelleForm quantiteUsuelleForm: transformationForm.getUsualFormsQuantities()) {
+            System.out.println(quantiteUsuelleForm);
             if (quantiteUsuelleForm.getQuantity() > 0) {
                 FormeUsuelle formeUsuelle = formeUsuelleRepository.findById(quantiteUsuelleForm.getIdFormeUsuelle())
                         .orElseThrow(() -> new RuntimeException("Forme usuelle introuvable"));
@@ -95,10 +96,10 @@ public class TransformationService {
                 etatStockFormeUsuelle.setQuantite(quantiteUsuelleForm.getQuantity());
                 double volumeProduit = produit.getLongueur() * produit.getLargeur() * produit.getHauteur();
                 double coutProduction = volumeProduit * origine.getPrixProduction() / volumeOrigine;
-                etatStock.setPrixProduction(coutProduction);
-                etatStock.setOrigine(origine);
-                etatStock.setProduit(produit);
-                etatStockRepository.save(etatStock);
+                etatStockFormeUsuelle.setPrixProduction(coutProduction);
+                etatStockFormeUsuelle.setOrigine(origine);
+                etatStockFormeUsuelle.setProduit(produit);
+                etatStockRepository.save(etatStockFormeUsuelle);
             }
         }
     }

@@ -4,14 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96190351-f0b5-4185-b93a-8ef2a1a39164" name="Changes" comment="Transformation form validation">
+    <list default="true" id="96190351-f0b5-4185-b93a-8ef2a1a39164" name="Changes" comment="Untested stock state save">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/data.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/mcd.lo1" beforeDir="false" afterPath="$PROJECT_DIR$/database/mcd.lo1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/mcd.loo" beforeDir="false" afterPath="$PROJECT_DIR$/database/mcd.loo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/query.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/query.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/from/QuantiteUsuelleForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/from/QuantiteUsuelleForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/repository/EtatStockRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/repository/EtatStockRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/service/BlocService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/service/BlocService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/schema.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/test.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/database/test.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/entity/MouvementStock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/entity/MouvementStock.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/service/TransformationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/service/TransformationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/transformationForm.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/transformationForm.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +143,9 @@
       <workItem from="1730895568989" duration="3806000" />
       <workItem from="1730900039305" duration="4166000" />
       <workItem from="1730907138653" duration="1719000" />
-      <workItem from="1730909940470" duration="10112000" />
+      <workItem from="1730909940470" duration="10234000" />
+      <workItem from="1730942107467" duration="609000" />
+      <workItem from="1730942746651" duration="1408000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -198,7 +203,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730918410646</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Untested stock state save">
+      <option name="closed" value="true" />
+      <created>1730921674512</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1730921674512</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -211,6 +224,7 @@
     <MESSAGE value="Unused import removed" />
     <MESSAGE value="Transformation form" />
     <MESSAGE value="Transformation form validation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Transformation form validation" />
+    <MESSAGE value="Untested stock state save" />
+    <option name="LAST_COMMIT_MESSAGE" value="Untested stock state save" />
   </component>
 </project>

@@ -18,7 +18,7 @@ public class MouvementStock {
     private Integer quantiteEntree;
 
     @Column(name = "quantite_sortie", nullable = false)
-    private Double quantiteSortie;
+    private Long quantiteSortie;
 
     @Column(name = "date_heure_mouvement", nullable = false)
     private LocalDateTime dateHeureMouvement;
