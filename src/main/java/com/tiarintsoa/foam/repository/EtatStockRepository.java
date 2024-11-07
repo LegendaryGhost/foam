@@ -19,13 +19,17 @@ public interface EtatStockRepository extends JpaRepository<EtatStock, Long> {
 
     @Query("""
         SELECT new com.tiarintsoa.foam.dto.StockProduitDTO(
-            p.nomProduit, e.quantite, e.prixProduction, f.prixVente
+            p.nomProduit,
+            CAST(SUM(e.quantite) AS int),
+            CAST(SUM(e.quantite * e.prixProduction) / SUM(e.quantite) AS double),
+            f.prixVente
         )
         FROM EtatStock e
         JOIN e.produit p
         JOIN FormeUsuelle f ON f.produit.id = p.id
-        JOIN TypeProduit tp ON tp.idTypeProduit = p.typeProduit.idTypeProduit
+        JOIN p.typeProduit tp
         WHERE tp.nomTypeProduit = 'forme usuelle'
+        GROUP BY p.nomProduit, f.prixVente
         """)
     List<StockProduitDTO> findStockProduitsForFormeUsuelle();
 

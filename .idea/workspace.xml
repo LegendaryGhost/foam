@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96190351-f0b5-4185-b93a-8ef2a1a39164" name="Changes" comment="Update bloc price and name">
+    <list default="true" id="96190351-f0b5-4185-b93a-8ef2a1a39164" name="Changes" comment="Inheriting bloc production cost update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/trigger.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/trigger.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/controller/BlocController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/controller/BlocController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/dto/StockProduitDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/dto/StockProduitDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/repository/EtatStockRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/repository/EtatStockRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,7 +140,7 @@
       <workItem from="1730942107467" duration="609000" />
       <workItem from="1730942746651" duration="1408000" />
       <workItem from="1730944185620" duration="5981000" />
-      <workItem from="1730955604037" duration="16534000" />
+      <workItem from="1730955604037" duration="17962000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -280,7 +278,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730981190499</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Inheriting bloc production cost update">
+      <option name="closed" value="true" />
+      <created>1730982775336</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1730982775336</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -302,6 +308,7 @@
     <MESSAGE value="Bloc form CSS" />
     <MESSAGE value="Table style" />
     <MESSAGE value="Update bloc price and name" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update bloc price and name" />
+    <MESSAGE value="Inheriting bloc production cost update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Inheriting bloc production cost update" />
   </component>
 </project>
