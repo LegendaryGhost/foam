@@ -2,12 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="fr">
 <head>
     <title>Transformation Form</title>
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}" />
 </head>
 <body>
 
+<!-- Include the navbar component here -->
+<div th:include="fragments/navbar"></div>
+
 <h1>Transformation de bloc</h1>
 
-<form th:action="@{/transformation}" th:object="${transformationForm}" method="post">
+<form th:action="@{/transformations}" th:object="${transformationForm}" method="post">
     <label for="blocOrigine">Bloc d'origine:</label>
     <select th:field="*{idBloc}" id="blocOrigine" required>
         <option value="" disabled selected>Choisissez un bloc</option>

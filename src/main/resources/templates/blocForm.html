@@ -2,12 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="fr">
 <head>
     <title>Insertion d'un Bloc</title>
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}" />
 </head>
 <body>
 
+<!-- Include the navbar component here -->
+<div th:include="fragments/navbar"></div>
+
 <h1>Insertion de bloc</h1>
 
-<form th:action="@{/bloc}" th:object="${blocForm}" method="post">
+<form th:action="@{/blocs}" th:object="${blocForm}" method="post">
     <div>
         <label for="nom">Nom :</label>
         <input type="text" th:field="*{nom}" id="nom" required/>

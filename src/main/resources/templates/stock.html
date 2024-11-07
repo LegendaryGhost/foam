@@ -11,8 +11,13 @@
             border-collapse: collapse;
         }
     </style>
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}" />
 </head>
 <body>
+
+<!-- Include the navbar component here -->
+<div th:include="fragments/navbar"></div>
+
 <div class="container mt-4">
     <h1>Stock Details</h1>
     <div th:if="${stockDetails.isEmpty()}">

@@ -28,6 +28,6 @@ public class BlocController {
         // Logique d'insertion (enregistrement en base de données)
         blocService.saveBloc(blocForm);
 
-        return "redirect:/bloc/form"; // Redirection après l'insertion
+        return "redirect:/blocs/form"; // Redirection après l'insertion
     }
 }

@@ -79,7 +79,7 @@ public class TransformationController {
 
         // Si pas d'erreurs, sauvegarde la transformation
         transformationService.saveTransformation(transformationForm);
-        return "redirect:/transformation/form";
+        return "redirect:/transformations/form";
     }
 
 }
