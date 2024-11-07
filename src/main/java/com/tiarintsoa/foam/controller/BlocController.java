@@ -29,14 +29,12 @@ public class BlocController {
         Bloc bloc = idBloc == null ? new Bloc() : blocRepository.findById(idBloc).orElse(new Bloc());
         model.addAttribute("blocForm", bloc.toBlocForm());
         model.addAttribute("isModifying", idBloc != null);
-        return "blocForm"; // Nom du template Thymeleaf
+        return "blocForm";
     }
 
     @PostMapping
     public String submitBlocForm(@ModelAttribute BlocForm blocForm) {
-        // Logique d'insertion (enregistrement en base de données)
         blocService.saveBloc(blocForm);
-
-        return "redirect:/blocs"; // Redirection après l'insertion
+        return "redirect:/blocs";
     }
 }

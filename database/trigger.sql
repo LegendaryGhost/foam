@@ -69,3 +69,32 @@ CREATE TRIGGER trigger_update_etat_stock
     FOR EACH ROW
     WHEN (NEW.quantite != OLD.quantite) -- Condition pour tout changement de quantité
 EXECUTE FUNCTION insert_mouvement_stock_on_update();
+
+
+CREATE OR REPLACE FUNCTION update_prix_production_dependants()
+    RETURNS TRIGGER AS $$
+DECLARE
+    ratio NUMERIC;
+BEGIN
+    -- Calculer le ratio de modification
+    ratio := NEW.prix_production / OLD.prix_production;
+
+    -- Mettre à jour les blocs dérivés ayant ce bloc comme origine
+    UPDATE bloc
+    SET prix_production = prix_production * ratio
+    WHERE id_origine = OLD.id_bloc;
+
+    -- Mettre à jour les états de stock liés aux blocs dérivés
+    UPDATE etat_stock
+    SET prix_production = prix_production * ratio
+    WHERE id_origine = OLD.id_bloc;
+
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trigger_update_prix_production
+    AFTER UPDATE OF prix_production ON bloc
+    FOR EACH ROW
+    WHEN (OLD.prix_production IS DISTINCT FROM NEW.prix_production)
+EXECUTE FUNCTION update_prix_production_dependants();

@@ -1,7 +1,6 @@
 package com.tiarintsoa.foam.dto;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
 public class StockProduitDTO {
