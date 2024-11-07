@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <title>Stock Details</title>
+    <style>
+        table, tr, th, td {
+            border: 1px solid black;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+<div class="container mt-4">
+    <h1>Stock Details</h1>
+    <div th:if="${stockDetails.isEmpty()}">
+        <p>Aucun stock disponible.</p>
+    </div>
+    <div th:if="${!stockDetails.isEmpty()}">
+        <div th:each="stock : ${stockDetails}" class="card mb-3">
+            <hr>
+            <div class="card-header">
+                <h2 th:text="${stock.nomMethode}">Méthode</h2>
+            </div>
+            <div class="card-body">
+                <p><strong>Coût Total de Production:</strong> <span th:text="${stock.coutProductionTotal}">0.00</span></p>
+                <p><strong>Prix Total de Vente:</strong> <span th:text="${stock.prixVenteTotal}">0.00</span></p>
+                <p><strong>Bénéfice Théorique Total</strong> <span th:text="${stock.prixVenteTotal - stock.coutProductionTotal}">0.00</span></p>
+
+                <h3>Produits en Stock</h3>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Nom du Produit</th>
+                        <th>Quantité</th>
+                        <th>Coût de Production Unitaire</th>
+                        <th>Prix de Vente Unitaire</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="produit : ${stock.stockProduits}">
+                        <td th:text="${produit.nomProduit}">Produit</td>
+                        <td th:text="${produit.quantite}">0</td>
+                        <td th:text="${produit.coutProductionUnitaire}">0.00</td>
+                        <td th:text="${produit.prixVenteUnitaire}">0.00</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -4,17 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96190351-f0b5-4185-b93a-8ef2a1a39164" name="Changes" comment="Untested stock state save">
+    <list default="true" id="96190351-f0b5-4185-b93a-8ef2a1a39164" name="Changes" comment="Test stock state save">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/dto/StockDetails.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/dto/StockProduitDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/service/StockService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/stock.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/data.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/mcd.lo1" beforeDir="false" afterPath="$PROJECT_DIR$/database/mcd.lo1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/mcd.loo" beforeDir="false" afterPath="$PROJECT_DIR$/database/mcd.loo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/query.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/query.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/schema.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/test.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/database/test.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/entity/MouvementStock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/entity/MouvementStock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/service/TransformationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/service/TransformationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/transformationForm.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/transformationForm.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/controller/BlocController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/controller/BlocController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/controller/StockController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/controller/StockController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/controller/TransformationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/controller/TransformationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/repository/EtatStockRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/repository/EtatStockRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,8 +23,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -146,6 +145,7 @@
       <workItem from="1730909940470" duration="10234000" />
       <workItem from="1730942107467" duration="609000" />
       <workItem from="1730942746651" duration="1408000" />
+      <workItem from="1730944185620" duration="2194000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -211,7 +211,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730921674512</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Test stock state save">
+      <option name="closed" value="true" />
+      <created>1730944492073</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1730944492073</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -225,6 +233,7 @@
     <MESSAGE value="Transformation form" />
     <MESSAGE value="Transformation form validation" />
     <MESSAGE value="Untested stock state save" />
-    <option name="LAST_COMMIT_MESSAGE" value="Untested stock state save" />
+    <MESSAGE value="Test stock state save" />
+    <option name="LAST_COMMIT_MESSAGE" value="Test stock state save" />
   </component>
 </project>

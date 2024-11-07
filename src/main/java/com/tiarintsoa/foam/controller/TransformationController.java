@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/transformation")
+@RequestMapping("/transformations")
 public class TransformationController {
 
     @Autowired
