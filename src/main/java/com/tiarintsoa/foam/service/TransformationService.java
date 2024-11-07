@@ -85,9 +85,10 @@ public class TransformationService {
         // Insertion du bloc reste
         Bloc origine = blocRepository.findById(transformationForm.getIdBloc())
                 .orElseThrow(() -> new RuntimeException("Bloc d'origine introuvable"));
-        double volumeOrigine = origine.getProduit().getLongueur() * origine.getProduit().getLargeur() * origine.getProduit().getHauteur();
+        Bloc sourceOriginel = origine.getOriginel() == null ? origine : origine.getOriginel();
+        double volumeOrigine = origine.getProduit().getVolume();
         BlocForm blocFormReste = getBlocForm(transformationForm, origine, volumeOrigine);
-        blocService.saveBloc(blocFormReste, origine);
+        blocService.saveBloc(blocFormReste, origine, sourceOriginel);
 
         for(QuantiteUsuelleForm quantiteUsuelleForm: transformationForm.getUsualFormsQuantities()) {
             if (quantiteUsuelleForm.getQuantity() > 0) {
@@ -100,6 +101,7 @@ public class TransformationService {
                 double coutProduction = volumeProduit * origine.getPrixProduction() / volumeOrigine;
                 etatStockFormeUsuelle.setPrixProduction(coutProduction);
                 etatStockFormeUsuelle.setOrigine(origine);
+                etatStockFormeUsuelle.setOriginel(sourceOriginel);
                 etatStockFormeUsuelle.setProduit(produit);
                 etatStockRepository.save(etatStockFormeUsuelle);
             }

@@ -10,5 +10,5 @@ public class StockDetails {
     private String nomProduitUtilise = "Aucun";
     private double coutProductionTotal;
     private double prixVenteTotal;
-    private List<StockProduitDTO> stockProduits;
+    private List<StockProduitPriceAverageDTO> stockProduits;
 }

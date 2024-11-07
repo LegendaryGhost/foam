@@ -11,7 +11,34 @@
 
 <main class="container my-4">
 
+
     <h1 class="text-center">Stock Details</h1>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Nom du Produit</th>
+            <th class="text-end">Quantité</th>
+            <th class="text-end">Coût de Production Unitaire</th>
+            <th class="text-end">Prix de Vente Unitaire</th>
+            <th class="text-end">Bloc d'origine</th>
+            <th class="text-end">Bloc originel</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="stockProduit : ${stockProduits}">
+            <td th:text="${stockProduit.nomProduit}">Produit</td>
+            <td class="text-end" th:text="${stockProduit.quantite}">0</td>
+            <td class="text-end" th:text="${#numbers.formatDecimal(stockProduit.coutProductionUnitaire, 0, 'DEFAULT', 2, 'COMMA') + ' Ar'}">0.00 Ar</td>
+            <td class="text-end" th:text="${#numbers.formatDecimal(stockProduit.prixVenteUnitaire, 0, 'DEFAULT', 2, 'COMMA') + ' Ar'}">0.00 Ar</td>
+            <td class="text-end" th:text="${stockProduit.nomOrigine ?: 'Aucun'}">Aucun</td>
+            <td class="text-end" th:text="${stockProduit.nomOriginel ?: 'Aucun'}">Aucun</td>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <h1 class="text-center">Bénéfice Théorique</h1>
 
     <div th:if="${stockDetails.isEmpty()}">
         <p>Aucun stock disponible.</p>

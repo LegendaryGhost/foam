@@ -24,6 +24,10 @@ public class EtatStock {
     private LocalDateTime dateHeureInsertion;
 
     @ManyToOne
+    @JoinColumn(name = "id_originel")
+    private Bloc originel;
+
+    @ManyToOne
     @JoinColumn(name = "id_origine")
     private Bloc origine;
 

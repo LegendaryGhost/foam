@@ -17,6 +17,7 @@ public class StockController {
     @GetMapping
     public String showStockDetails(Model model) {
         model.addAttribute("stockDetails", stockService.getStockDetails());
+        model.addAttribute("stockProduits", stockService.getStockProduits());
         return "stock";
     }
 

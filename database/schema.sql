@@ -29,10 +29,12 @@ CREATE TABLE mouvement_stock(
 CREATE TABLE bloc(
                      id_bloc SERIAL,
                      prix_production NUMERIC(15,2)   NOT NULL,
+                     id_originel INTEGER,
                      id_origine INTEGER,
                      id_produit INTEGER NOT NULL,
                      PRIMARY KEY(id_bloc),
                      UNIQUE(id_produit),
+                     FOREIGN KEY(id_originel) REFERENCES bloc(id_bloc),
                      FOREIGN KEY(id_origine) REFERENCES bloc(id_bloc),
                      FOREIGN KEY(id_produit) REFERENCES produit(id_produit)
 );
@@ -51,9 +53,11 @@ CREATE TABLE etat_stock(
                            quantite INTEGER NOT NULL,
                            prix_production NUMERIC(15,2)   NOT NULL,
                            date_heure_insertion TIMESTAMP NOT NULL DEFAULT NOW(),
+                           id_originel INTEGER,
                            id_origine INTEGER,
                            id_produit INTEGER NOT NULL,
                            PRIMARY KEY(id_etat_stock),
+                           FOREIGN KEY(id_originel) REFERENCES bloc(id_bloc),
                            FOREIGN KEY(id_origine) REFERENCES bloc(id_bloc),
                            FOREIGN KEY(id_produit) REFERENCES produit(id_produit)
 );

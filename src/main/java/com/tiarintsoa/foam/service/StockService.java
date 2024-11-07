@@ -2,6 +2,7 @@ package com.tiarintsoa.foam.service;
 
 import com.tiarintsoa.foam.dto.StockDetails;
 import com.tiarintsoa.foam.dto.StockProduitDTO;
+import com.tiarintsoa.foam.dto.StockProduitPriceAverageDTO;
 import com.tiarintsoa.foam.entity.Bloc;
 import com.tiarintsoa.foam.entity.EtatStock;
 import com.tiarintsoa.foam.entity.FormeUsuelle;
@@ -24,6 +25,10 @@ public class StockService {
     @Autowired
     private BlocRepository blocRepository;
 
+    public List<StockProduitDTO> getStockProduits() {
+        return etatStockRepository.findStockProduitsForFormeUsuelle();
+    }
+
     public List<StockDetails> getStockDetails() {
         List<StockDetails> stockDetails = new ArrayList<>();
         stockDetails.add(getBasicStockDetails());
@@ -33,7 +38,7 @@ public class StockService {
     }
 
     public StockDetails getBasicStockDetails() {
-        List<StockProduitDTO> stockProduits = etatStockRepository.findStockProduitsForFormeUsuelle();
+        List<StockProduitPriceAverageDTO> stockProduits = etatStockRepository.findStockProduitsPriceAverageForFormeUsuelle();
 
         double coutProductionTotal = stockProduits.stream()
                 .mapToDouble(sp -> sp.getQuantite() * sp.getCoutProductionUnitaire())
@@ -65,26 +70,26 @@ public class StockService {
     }
 
     public StockDetails getStockDetailsWithBlocs(String nomMethode, FormeUsuelle transformationFormeUsuelle) {
-        List<StockProduitDTO> stockProduits = etatStockRepository.findStockProduitsForFormeUsuelle();
+        List<StockProduitPriceAverageDTO> stockProduits = etatStockRepository.findStockProduitsPriceAverageForFormeUsuelle();
         double volumeMeilleurFormeUsuelle = transformationFormeUsuelle.getProduit().getVolume();
         List<Bloc> blocsEnStock = blocRepository.findAllByEtatStockQuantiteGreaterThanZero();
 
         for (Bloc bloc : blocsEnStock) {
-            StockProduitDTO stockProduitDTO = new StockProduitDTO();
+            StockProduitPriceAverageDTO stockProduitPriceAverageDTO = new StockProduitPriceAverageDTO();
 
-            stockProduitDTO.setNomProduit(bloc.getProduit().getNomProduit());
+            stockProduitPriceAverageDTO.setNomProduit(bloc.getProduit().getNomProduit());
 
             EtatStock etatStock = etatStockRepository.findFirstByBlocId(bloc.getId())
                             .orElseThrow(() -> new RuntimeException("Etat de stock introuvable"));
-            stockProduitDTO.setQuantite(etatStock.getQuantite());
+            stockProduitPriceAverageDTO.setQuantite(etatStock.getQuantite());
 
-            stockProduitDTO.setCoutProductionUnitaire(bloc.getPrixProduction());
+            stockProduitPriceAverageDTO.setCoutProductionUnitaire(bloc.getPrixProduction());
 
             double volumeBloc = bloc.getProduit().getVolume();
             int quantiteFaisable = (int) (volumeBloc / volumeMeilleurFormeUsuelle);
-            stockProduitDTO.setPrixVenteUnitaire(quantiteFaisable * transformationFormeUsuelle.getPrixVente());
+            stockProduitPriceAverageDTO.setPrixVenteUnitaire(quantiteFaisable * transformationFormeUsuelle.getPrixVente());
 
-            stockProduits.add(stockProduitDTO);
+            stockProduits.add(stockProduitPriceAverageDTO);
         }
 
         double coutProductionTotal = stockProduits.stream()

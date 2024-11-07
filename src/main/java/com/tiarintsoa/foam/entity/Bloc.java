@@ -17,6 +17,10 @@ public class Bloc {
     private Double prixProduction;
 
     @ManyToOne
+    @JoinColumn(name = "id_originel")
+    private Bloc originel;
+
+    @ManyToOne
     @JoinColumn(name = "id_origine")
     private Bloc origine;
 
