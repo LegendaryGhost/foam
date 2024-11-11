@@ -49,7 +49,7 @@ public class TransformationController {
             double volumeUsualForms = transformationService.calculateUsualFormsVolume(transformationForm.getUsualFormsQuantities());
 
             // Vérifie que les dimensions du reste ne sont pas supérieures à celles du bloc d'origine
-            if (transformationForm.getLongueurReste() > bloc.getProduit().getLongueur()) {
+            /* if (transformationForm.getLongueurReste() > bloc.getProduit().getLongueur()) {
                 bindingResult.rejectValue("longueurReste", "error.transformationForm", "Les dimensions du reste ne doivent pas dépasser celles du bloc d'origine.");
             }
             if (transformationForm.getLargeurReste() > bloc.getProduit().getLargeur()) {
@@ -57,7 +57,7 @@ public class TransformationController {
             }
             if (transformationForm.getHauteurReste() > bloc.getProduit().getHauteur()) {
                 bindingResult.rejectValue("hauteurReste", "error.transformationForm", "Les dimensions du reste ne doivent pas dépasser celles du bloc d'origine.");
-            }
+            } */
 
             // Vérifie que le volume des produits en sortie n'est pas supérieur au volume du bloc d'origine
             if (volumeUsualForms > volumeBloc) {

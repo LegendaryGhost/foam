@@ -17,7 +17,8 @@ reste 500*2*3
 
 T2
 source : B1
-U1 : 80
+U1 : 42
 U2 : 50
 U3 : 1000
-reste 50*2*1
+reste : 50*2*1
+reste valide : 500*2*3

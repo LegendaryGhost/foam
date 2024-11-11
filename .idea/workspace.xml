@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96190351-f0b5-4185-b93a-8ef2a1a39164" name="Changes" comment="Transformation product used">
-      <change afterPath="$PROJECT_DIR$/database/data_alea.sql" afterDir="false" />
+    <list default="true" id="96190351-f0b5-4185-b93a-8ef2a1a39164" name="Changes" comment="Data provided by ITU">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/data_alea.txt" beforeDir="false" afterPath="$PROJECT_DIR$/database/data_alea.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/controller/TransformationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/controller/TransformationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/transformationForm.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/transformationForm.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,7 +154,8 @@
       <workItem from="1731224126555" duration="21000" />
       <workItem from="1731236699148" duration="736000" />
       <workItem from="1731300237298" duration="914000" />
-      <workItem from="1731301197993" duration="3172000" />
+      <workItem from="1731301197993" duration="7161000" />
+      <workItem from="1731309885343" duration="1729000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -331,7 +333,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730992772562</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Data provided by ITU">
+      <option name="closed" value="true" />
+      <created>1731305425391</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1731305425391</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -358,7 +368,8 @@
     <MESSAGE value="Original bloc" />
     <MESSAGE value="Stock change list" />
     <MESSAGE value="Transformation product used" />
-    <option name="LAST_COMMIT_MESSAGE" value="Transformation product used" />
+    <MESSAGE value="Data provided by ITU" />
+    <option name="LAST_COMMIT_MESSAGE" value="Data provided by ITU" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

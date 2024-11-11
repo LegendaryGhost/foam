@@ -23,6 +23,16 @@
             <div class="form-text text-danger" th:if="${#fields.hasErrors('idBloc')}" th:errors="*{idBloc}"></div>
         </div>
 
+        <h3>Quantités des produits</h3>
+        <!-- Quantities for each usual form -->
+        <div th:each="formQuantity, stat : *{usualFormsQuantities}" class="mb-3">
+            <label class="form-label" th:for="${formQuantity.formName}">Quantité pour <span th:text="${formQuantity.formName}">Form</span>:</label>
+            <input class="form-control" type="number" min="0" th:field="*{usualFormsQuantities[__${stat.index}__].quantity}" th:id="${formQuantity.formName}"/>
+            <input type="hidden" th:field="*{usualFormsQuantities[__${stat.index}__].idFormeUsuelle}">
+            <input type="hidden" th:field="*{usualFormsQuantities[__${stat.index}__].formName}">
+        </div>
+
+        <h3>Dimension du reste</h3>
         <!-- Champs des dimensions du reste -->
         <div class="mb-3">
             <label class="form-label" for="longueurReste">Longueur du Reste:</label>
@@ -42,13 +52,6 @@
             <div class="form-text text-danger" th:if="${#fields.hasErrors('hauteurReste')}" th:errors="*{hauteurReste}"></div>
         </div>
 
-        <!-- Quantities for each usual form -->
-        <div th:each="formQuantity, stat : *{usualFormsQuantities}" class="mb-3">
-            <label class="form-label" th:for="${formQuantity.formName}">Quantité pour <span th:text="${formQuantity.formName}">Form</span>:</label>
-            <input class="form-control" type="number" min="0" th:field="*{usualFormsQuantities[__${stat.index}__].quantity}" th:id="${formQuantity.formName}"/>
-            <input type="hidden" th:field="*{usualFormsQuantities[__${stat.index}__].idFormeUsuelle}">
-            <input type="hidden" th:field="*{usualFormsQuantities[__${stat.index}__].formName}">
-        </div>
         <div class="form-text text-danger" th:if="${#fields.hasErrors('usualFormsQuantities')}" th:errors="*{usualFormsQuantities}"></div>
 
         <button class="btn btn-primary mt-3" type="submit">Transformer</button>
