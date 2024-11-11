@@ -45,7 +45,7 @@ public class TransformationController {
         // Vérifications de validation
         if (bloc != null) {
             double volumeBloc = bloc.getProduit().getLongueur() * bloc.getProduit().getLargeur() * bloc.getProduit().getHauteur();
-            double volumeReste = transformationForm.getLongueurReste() * transformationForm.getLargeurReste() * transformationForm.getHauteurReste();
+            double volumeReste = transformationForm.getVolumeReste();
             double volumeUsualForms = transformationService.calculateUsualFormsVolume(transformationForm.getUsualFormsQuantities());
 
             // Vérifie que les dimensions du reste ne sont pas supérieures à celles du bloc d'origine

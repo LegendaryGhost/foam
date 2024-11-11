@@ -111,10 +111,10 @@ public class TransformationService {
     private static BlocForm getBlocForm(TransformationForm transformationForm, Bloc origine, double volumeOrigine) {
         BlocForm blocForm = new BlocForm();
         blocForm.setNom(origine.getProduit().getNomProduit() + "-R");
-        blocForm.setLongueur(transformationForm.getLongueurReste());
-        blocForm.setLargeur(transformationForm.getLargeurReste());
-        blocForm.setHauteur(transformationForm.getHauteurReste());
-        double volumeReste = transformationForm.getLongueurReste() * transformationForm.getLargeurReste() * transformationForm.getHauteurReste();
+        blocForm.setLongueur(transformationForm.getLongueurResteAsDouble());
+        blocForm.setLargeur(transformationForm.getLargeurResteAsDouble());
+        blocForm.setHauteur(transformationForm.getHauteurResteAsDouble());
+        double volumeReste = transformationForm.getVolumeReste();
         Double coutProduction = volumeReste * origine.getPrixProduction() / volumeOrigine;
         blocForm.setCoutProduction(coutProduction);
         return blocForm;

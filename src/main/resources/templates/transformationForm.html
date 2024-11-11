@@ -36,20 +36,20 @@
         <!-- Champs des dimensions du reste -->
         <div class="mb-3">
             <label class="form-label" for="longueurReste">Longueur du Reste:</label>
-            <input class="form-control" type="number" min="0" step="0.01" th:field="*{longueurReste}" id="longueurReste" />
-            <div class="form-text text-danger" th:if="${#fields.hasErrors('longueurReste')}" th:errors="*{longueurReste}"></div>
+            <input class="form-control" type="text" th:field="*{longueurResteString}" id="longueurReste" />
+            <div class="form-text text-danger" th:if="${#fields.hasErrors('longueurResteString')}" th:errors="*{longueurResteString}"></div>
         </div>
 
         <div class="mb-3">
             <label class="form-label" for="largeurReste">Largeur du Reste:</label>
-            <input class="form-control" type="number" min="0" step="0.01" th:field="*{largeurReste}" id="largeurReste" />
-            <div class="form-text text-danger" th:if="${#fields.hasErrors('largeurReste')}" th:errors="*{largeurReste}"></div>
+            <input class="form-control" type="text" th:field="*{largeurResteString}" id="largeurReste" />
+            <div class="form-text text-danger" th:if="${#fields.hasErrors('largeurResteString')}" th:errors="*{largeurResteString}"></div>
         </div>
 
         <div class="mb-3">
             <label class="form-label" for="hauteurReste">Hauteur du Reste:</label>
-            <input class="form-control" type="number" min="0" step="0.01" th:field="*{hauteurReste}" id="hauteurReste" />
-            <div class="form-text text-danger" th:if="${#fields.hasErrors('hauteurReste')}" th:errors="*{hauteurReste}"></div>
+            <input class="form-control" type="text" th:field="*{hauteurResteString}" id="hauteurReste" />
+            <div class="form-text text-danger" th:if="${#fields.hasErrors('hauteurResteString')}" th:errors="*{hauteurResteString}"></div>
         </div>
 
         <div class="form-text text-danger" th:if="${#fields.hasErrors('usualFormsQuantities')}" th:errors="*{usualFormsQuantities}"></div>
