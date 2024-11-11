@@ -49,7 +49,7 @@ public class StockService {
                 .sum();
 
         StockDetails stockDetails = new StockDetails();
-        stockDetails.setNomMethode("Méthode 1 : Produits finis");
+        stockDetails.setNomMethode("Méthode 1 : Produits finis (Moyenne pondérée)");
         stockDetails.setCoutProductionTotal(coutProductionTotal);
         stockDetails.setPrixVenteTotal(prixVenteTotal);
         stockDetails.setStockProduits(stockProduits);
