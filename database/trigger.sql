@@ -6,11 +6,13 @@ BEGIN
     INSERT INTO mouvement_stock (
         quantite_entree,
         quantite_sortie,
+        prix_vente,
         date_heure_mouvement,
-        id_produit
+        id_article
     ) VALUES (
                  NEW.quantite,        -- La quantité initiale devient la quantité d'entrée
                  0,                   -- La quantité de sortie est initialisée à 0
+                 NEW.prix_vente,
                  NEW.date_heure_insertion,
                  NEW.id_produit
              );
@@ -35,11 +37,13 @@ BEGIN
         INSERT INTO mouvement_stock (
             quantite_entree,
             quantite_sortie,
+            prix_vente,
             date_heure_mouvement,
-            id_produit
+            id_article
         ) VALUES (
                      0,                             -- Aucune entrée
                      OLD.quantite - NEW.quantite,   -- Quantité de sortie
+                     OLD.prix_vente,
                      NOW(),                         -- Date et heure actuelles
                      NEW.id_produit                 -- ID du produit
                  );
@@ -49,11 +53,13 @@ BEGIN
         INSERT INTO mouvement_stock (
             quantite_entree,
             quantite_sortie,
+            prix_vente,
             date_heure_mouvement,
-            id_produit
+            id_article
         ) VALUES (
                      NEW.quantite - OLD.quantite,   -- Quantité d'entrée
                      0,                             -- Aucune sortie
+                     OLD.prix_vente,
                      NOW(),                         -- Date et heure actuelles
                      NEW.id_produit                 -- ID du produit
                  );

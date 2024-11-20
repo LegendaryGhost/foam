@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96190351-f0b5-4185-b93a-8ef2a1a39164" name="Changes" comment="Alea 2: ETU display">
+    <list default="true" id="96190351-f0b5-4185-b93a-8ef2a1a39164" name="Changes" comment="Schema update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/data_alea.txt" beforeDir="false" afterPath="$PROJECT_DIR$/database/data_alea.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/mcd.lo1" beforeDir="false" afterPath="$PROJECT_DIR$/database/mcd.lo1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/mcd.loo" beforeDir="false" afterPath="$PROJECT_DIR$/database/mcd.loo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/schema.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/trigger.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/trigger.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,7 +170,8 @@
       <workItem from="1732090891865" duration="8000" />
       <workItem from="1732106381665" duration="577000" />
       <workItem from="1732107285847" duration="575000" />
-      <workItem from="1732110136442" duration="595000" />
+      <workItem from="1732110136442" duration="682000" />
+      <workItem from="1732110878400" duration="537000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -383,7 +381,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731337308272</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Schema update">
+      <option name="closed" value="true" />
+      <created>1732110763824</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1732110763824</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -425,7 +431,8 @@
     <MESSAGE value="Dimension check commented" />
     <MESSAGE value="Alea 2: rest dimension with unity" />
     <MESSAGE value="Alea 2: ETU display" />
-    <option name="LAST_COMMIT_MESSAGE" value="Alea 2: ETU display" />
+    <MESSAGE value="Schema update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Schema update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
