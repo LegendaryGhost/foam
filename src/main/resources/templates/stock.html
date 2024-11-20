@@ -26,7 +26,7 @@
         </thead>
         <tbody>
             <tr th:each="mouvement : ${mouvementsStock}">
-                <td th:text="${mouvement.produit.nomProduit}">Produit</td>
+                <td th:text="${mouvement.article.nomArticle}">Article</td>
                 <td class="text-end" th:text="${#temporals.format(mouvement.dateHeureMouvement, 'dd-MM-yyyy HH:mm:ss')}">dd-MM-yyyy HH:mm:ss</td>
                 <td class="text-end" th:text="${mouvement.quantiteEntree}">0</td>
                 <td class="text-end" th:text="${mouvement.quantiteSortie}">0</td>

@@ -18,7 +18,7 @@
             <label class="form-label" for="blocOrigine">Bloc d'origine:</label>
             <select class="form-select" th:field="*{idBloc}" id="blocOrigine" required>
                 <option value="" disabled selected>Choisissez un bloc</option>
-                <option th:each="bloc : ${blocs}" th:value="${bloc.id}" th:text="${bloc.produit.nomProduit}"></option>
+                <option th:each="bloc : ${blocs}" th:value="${bloc.id}" th:text="${bloc.produit.article.nomArticle}"></option>
             </select>
             <div class="form-text text-danger" th:if="${#fields.hasErrors('idBloc')}" th:errors="*{idBloc}"></div>
         </div>

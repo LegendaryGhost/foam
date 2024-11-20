@@ -27,10 +27,10 @@
         </thead>
         <tbody>
             <tr th:each="bloc : ${blocs}">
-                <td th:text="${bloc.produit.nomProduit}">Bloc</td>
+                <td th:text="${bloc.produit.article.nomArticle}">Bloc</td>
                 <td class="text-end" th:text="${#numbers.formatDecimal(bloc.prixProduction, 0, 'DEFAULT', 2, 'COMMA') + ' Ar'}">0.00 Ar</td>
-                <td class="text-end" th:text="${bloc.origine?.produit?.nomProduit ?: 'Aucun'}">Aucun</td>
-                <td class="text-end" th:text="${bloc.originel?.produit?.nomProduit ?: 'Aucun'}">Aucun</td>
+                <td class="text-end" th:text="${bloc.origine?.produit?.article?.nomArticle ?: 'Aucun'}">Aucun</td>
+                <td class="text-end" th:text="${bloc.originel?.produit?.article?.nomArticle ?: 'Aucun'}">Aucun</td>
                 <td class="text-end" th:text="${#numbers.formatDecimal(bloc.produit.longueur, 0, 'DEFAULT', 2, 'COMMA')}">0.00</td>
                 <td class="text-end" th:text="${#numbers.formatDecimal(bloc.produit.largeur, 0, 'DEFAULT', 2, 'COMMA')}">0.00</td>
                 <td class="text-end" th:text="${#numbers.formatDecimal(bloc.produit.hauteur, 0, 'DEFAULT', 2, 'COMMA')}">0.00</td>

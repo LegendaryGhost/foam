@@ -20,6 +20,8 @@ public class BlocService {
     private EtatStockRepository etatStockRepository;
     @Autowired
     private ArticleRepository articleRepository;
+    @Autowired
+    private MachineRepository machineRepository;
 
     @Transactional
     public void saveBloc(BlocForm blocForm) {
@@ -53,6 +55,9 @@ public class BlocService {
         TypeProduit typeProduit = typeProduitRepository.findById(1L)
                 .orElseThrow(() -> new RuntimeException("Type produit introuvable") );
 
+        Machine machine = machineRepository.findById(blocForm.getIdMachine())
+                .orElseThrow(() -> new RuntimeException("Machine introuvable") );
+
         Article article = new Article();
         article.setNomArticle(blocForm.getNom());
         articleRepository.save(article);
@@ -70,6 +75,7 @@ public class BlocService {
         bloc.setProduit(produit);
         bloc.setOrigine(origne);
         bloc.setOriginel(sourceOriginel);
+        bloc.setMachine(machine);
         blocRepository.save(bloc);
 
         EtatStock etatStock = new EtatStock();

@@ -4,25 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96190351-f0b5-4185-b93a-8ef2a1a39164" name="Changes" comment="Data + triggers fix">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/entity/Article.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/entity/FormuleBloc.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/entity/Machine.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/repository/ArticleRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/repository/FormuleBlocRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/repository/MachineRepository.java" afterDir="false" />
+    <list default="true" id="96190351-f0b5-4185-b93a-8ef2a1a39164" name="Changes" comment="Entities + Repositories update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/schema.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/trigger.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/trigger.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/entity/Bloc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/entity/Bloc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/entity/EtatStock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/entity/EtatStock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/entity/MouvementStock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/entity/MouvementStock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/entity/Produit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/entity/Produit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/repository/BlocRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/repository/BlocRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/repository/EtatStockRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/repository/EtatStockRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/from/BlocForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/from/BlocForm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/service/BlocService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/service/BlocService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/service/StockService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/service/StockService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/service/TransformationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/service/TransformationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/bloc.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/bloc.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/stock.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/stock.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/transformationForm.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/transformationForm.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,7 +179,7 @@
       <workItem from="1732110136442" duration="682000" />
       <workItem from="1732110878400" duration="1211000" />
       <workItem from="1732112112559" duration="2275000" />
-      <workItem from="1732115041131" duration="1704000" />
+      <workItem from="1732115041131" duration="2869000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -423,7 +413,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732112200608</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Entities + Repositories update">
+      <option name="closed" value="true" />
+      <created>1732116898303</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1732116898303</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -441,7 +439,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Bloc insertion" />
     <MESSAGE value="Unused import removed" />
     <MESSAGE value="Transformation form" />
     <MESSAGE value="Transformation form validation" />
@@ -466,7 +463,8 @@
     <MESSAGE value="Schema update" />
     <MESSAGE value="Triggers update" />
     <MESSAGE value="Data + triggers fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Data + triggers fix" />
+    <MESSAGE value="Entities + Repositories update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Entities + Repositories update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

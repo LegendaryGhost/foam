@@ -67,6 +67,7 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope> <!-- Ensure this is runtime so it’s excluded in production -->
 			<optional>true</optional>
 		</dependency>
 	</dependencies>

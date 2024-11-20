@@ -10,4 +10,5 @@ public class BlocForm {
     private Double largeur;
     private Double hauteur;
     private Double coutProduction;
+    private Long idMachine;
 }

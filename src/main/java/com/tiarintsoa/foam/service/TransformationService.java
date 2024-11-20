@@ -117,6 +117,7 @@ public class TransformationService {
         double volumeReste = transformationForm.getVolumeReste();
         Double coutProduction = volumeReste * origine.getPrixProduction() / volumeOrigine;
         blocForm.setCoutProduction(coutProduction);
+        blocForm.setIdMachine(origine.getMachine().getId());
         return blocForm;
     }
 
