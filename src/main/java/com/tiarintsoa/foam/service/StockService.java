@@ -77,7 +77,7 @@ public class StockService {
         for (Bloc bloc : blocsEnStock) {
             StockProduitPriceAverageDTO stockProduitPriceAverageDTO = new StockProduitPriceAverageDTO();
 
-            stockProduitPriceAverageDTO.setNomProduit(bloc.getProduit().getNomProduit());
+            stockProduitPriceAverageDTO.setNomProduit(bloc.getProduit().getArticle().getNomArticle());
 
             EtatStock etatStock = etatStockRepository.findFirstByBlocId(bloc.getId())
                             .orElseThrow(() -> new RuntimeException("Etat de stock introuvable"));
@@ -102,7 +102,7 @@ public class StockService {
 
         StockDetails stockDetails = new StockDetails();
         stockDetails.setNomMethode(nomMethode);
-        stockDetails.setNomProduitUtilise(transformationFormeUsuelle.getProduit().getNomProduit());
+        stockDetails.setNomProduitUtilise(transformationFormeUsuelle.getProduit().getArticle().getNomArticle());
         stockDetails.setCoutProductionTotal(coutProductionTotal);
         stockDetails.setPrixVenteTotal(prixVenteTotal);
         stockDetails.setStockProduits(stockProduits);

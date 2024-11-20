@@ -6,12 +6,12 @@ BEGIN
     -- Insérer un nouveau mouvement de stock
     INSERT INTO mouvement_stock (quantite_entree,
                                  quantite_sortie,
-                                 prix_vente,
+                                 prix_production,
                                  date_heure_mouvement,
                                  id_article)
     VALUES (NEW.quantite, -- La quantité initiale devient la quantité d'entrée
             0, -- La quantité de sortie est initialisée à 0
-            NEW.prix_vente,
+            NEW.prix_production,
             NEW.date_heure_insertion,
             NEW.id_article);
 
@@ -36,12 +36,12 @@ BEGIN
     IF NEW.quantite < OLD.quantite THEN
         INSERT INTO mouvement_stock (quantite_entree,
                                      quantite_sortie,
-                                     prix_vente,
+                                     prix_production,
                                      date_heure_mouvement,
                                      id_article)
         VALUES (0, -- Aucune entrée
                 OLD.quantite - NEW.quantite, -- Quantité de sortie
-                OLD.prix_vente,
+                OLD.prix_production,
                 NOW(), -- Date et heure actuelles
                 NEW.id_article -- ID du produit
                );
@@ -50,12 +50,12 @@ BEGIN
     ELSIF NEW.quantite > OLD.quantite THEN
         INSERT INTO mouvement_stock (quantite_entree,
                                      quantite_sortie,
-                                     prix_vente,
+                                     prix_production,
                                      date_heure_mouvement,
                                      id_article)
         VALUES (NEW.quantite - OLD.quantite, -- Quantité d'entrée
                 0, -- Aucune sortie
-                OLD.prix_vente,
+                OLD.prix_production,
                 NOW(), -- Date et heure actuelles
                 NEW.id_article -- ID du produit
                );

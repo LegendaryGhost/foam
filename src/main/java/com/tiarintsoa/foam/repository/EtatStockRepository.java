@@ -12,45 +12,52 @@ import java.util.Optional;
 
 public interface EtatStockRepository extends JpaRepository<EtatStock, Long> {
 
-    @Query("SELECT es FROM EtatStock es " +
-            "JOIN Produit p ON es.produit.id = p.id " +
-            "JOIN Bloc b ON p.id = b.produit.id " +
-            "WHERE b.id = :idBloc")
+    @Query("""
+            SELECT es FROM EtatStock es
+            JOIN Article a ON es.article.id = a.id
+            JOIN Produit p ON p.article.id = a.id
+            JOIN Bloc b ON p.id = b.produit.id
+            WHERE b.id = :idBloc
+    """)
     Optional<EtatStock> findFirstByBlocId(@Param("idBloc") Long idBloc);
 
     @Query("""
         SELECT new com.tiarintsoa.foam.dto.StockProduitPriceAverageDTO(
-            p.nomProduit,
+            a.nomArticle,
             CAST(SUM(e.quantite) AS int),
             CAST(SUM(e.quantite * e.prixProduction) / SUM(e.quantite) AS double),
             f.prixVente
         )
         FROM EtatStock e
-        JOIN e.produit p
+        JOIN e.article a
+        JOIN Produit p ON p.article.id = a.id
         JOIN FormeUsuelle f ON f.produit.id = p.id
         JOIN p.typeProduit tp
         WHERE tp.nomTypeProduit = 'forme usuelle'
-        GROUP BY p.nomProduit, f.prixVente
+        GROUP BY a.nomArticle, f.prixVente
         """)
     List<StockProduitPriceAverageDTO> findStockProduitsPriceAverageForFormeUsuelle();
 
     @Query("""
         SELECT new com.tiarintsoa.foam.dto.StockProduitDTO(
-            p.nomProduit,
+            a.nomArticle,
             e.quantite,
             e.prixProduction,
             f.prixVente,
-            op.nomProduit,
-            olp.nomProduit
+            oa.nomArticle,
+            ola.nomArticle
         )
         FROM EtatStock e
-        LEFT JOIN e.produit p
+        LEFT JOIN e.article a
+        LEFT JOIN Produit p ON p.article.id = a.id
         LEFT JOIN FormeUsuelle f ON f.produit.id = p.id
         LEFT JOIN p.typeProduit tp
         LEFT JOIN e.origine o
         LEFT JOIN o.produit op
+        LEFT JOIN op.article oa
         LEFT JOIN e.originel ol
         LEFT JOIN ol.produit olp
+        LEFT JOIN olp.article ola
         WHERE tp.nomTypeProduit = 'forme usuelle'
         """)
     List<StockProduitDTO> findStockProduitsForFormeUsuelle();

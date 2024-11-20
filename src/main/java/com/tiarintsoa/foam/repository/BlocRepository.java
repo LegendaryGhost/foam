@@ -8,10 +8,13 @@ import java.util.List;
 
 public interface BlocRepository extends JpaRepository<Bloc, Long> {
 
-    @Query("SELECT b FROM Bloc b " +
-            "JOIN b.produit p " +
-            "JOIN EtatStock e ON p.id = e.produit.id " +
-            "WHERE e.quantite > 0")
+    @Query("""
+            SELECT b FROM Bloc b
+            JOIN b.produit p
+            JOIN p.article a
+            JOIN EtatStock e ON a.id = e.article.id
+            WHERE e.quantite > 0
+    """)
     List<Bloc> findAllByEtatStockQuantiteGreaterThanZero();
 
 }

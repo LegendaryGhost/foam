@@ -12,9 +12,6 @@ public class Produit {
     @Column(name = "id_produit")
     private Long id;
 
-    @Column(name = "nom_produit", nullable = false, unique = true)
-    private String nomProduit;
-
     @Column(name = "longueur", nullable = false)
     private Double longueur;
 
@@ -27,6 +24,10 @@ public class Produit {
     @ManyToOne
     @JoinColumn(name = "id_type_produit", nullable = false)
     private TypeProduit typeProduit;
+
+    @OneToOne
+    @JoinColumn(name = "id_article", nullable = false, unique = true)
+    private Article article;
 
     public double getVolume() {
         return longueur * largeur * hauteur;

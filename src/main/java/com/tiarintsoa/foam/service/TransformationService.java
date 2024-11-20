@@ -43,7 +43,7 @@ public class TransformationService {
         List<QuantiteUsuelleForm> quantiteUsuelleForms = new ArrayList<>();
         for(FormeUsuelle forme : formeUsuelle) {
             QuantiteUsuelleForm quantiteForm = new QuantiteUsuelleForm();
-            quantiteForm.setFormName(forme.getProduit().getNomProduit());
+            quantiteForm.setFormName(forme.getProduit().getArticle().getNomArticle());
             quantiteForm.setIdFormeUsuelle(forme.getId());
             quantiteUsuelleForms.add(quantiteForm);
         }
@@ -102,7 +102,7 @@ public class TransformationService {
                 etatStockFormeUsuelle.setPrixProduction(coutProduction);
                 etatStockFormeUsuelle.setOrigine(origine);
                 etatStockFormeUsuelle.setOriginel(sourceOriginel);
-                etatStockFormeUsuelle.setProduit(produit);
+                etatStockFormeUsuelle.setArticle(produit.getArticle());
                 etatStockRepository.save(etatStockFormeUsuelle);
             }
         }
@@ -110,7 +110,7 @@ public class TransformationService {
 
     private static BlocForm getBlocForm(TransformationForm transformationForm, Bloc origine, double volumeOrigine) {
         BlocForm blocForm = new BlocForm();
-        blocForm.setNom(origine.getProduit().getNomProduit() + "-R");
+        blocForm.setNom(origine.getProduit().getArticle().getNomArticle() + "-R");
         blocForm.setLongueur(transformationForm.getLongueurResteAsDouble());
         blocForm.setLargeur(transformationForm.getLargeurResteAsDouble());
         blocForm.setHauteur(transformationForm.getHauteurResteAsDouble());

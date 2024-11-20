@@ -20,10 +20,13 @@ public class MouvementStock {
     @Column(name = "quantite_sortie", nullable = false)
     private Long quantiteSortie;
 
+    @Column(name = "prix_production", nullable = false)
+    private Double prixProduction;
+
     @Column(name = "date_heure_mouvement", nullable = false)
     private LocalDateTime dateHeureMouvement;
 
     @ManyToOne
-    @JoinColumn(name = "id_produit", nullable = false)
-    private Produit produit;
+    @JoinColumn(name = "id_article", nullable = false)
+    private Article article;
 }

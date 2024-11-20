@@ -32,6 +32,6 @@ public class EtatStock {
     private Bloc origine;
 
     @ManyToOne
-    @JoinColumn(name = "id_produit", nullable = false)
-    private Produit produit;
+    @JoinColumn(name = "id_article", nullable = false)
+    private Article article;
 }

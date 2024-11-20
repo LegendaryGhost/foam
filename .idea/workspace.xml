@@ -4,10 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96190351-f0b5-4185-b93a-8ef2a1a39164" name="Changes" comment="Triggers update">
+    <list default="true" id="96190351-f0b5-4185-b93a-8ef2a1a39164" name="Changes" comment="Data + triggers fix">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/entity/Article.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/entity/FormuleBloc.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/entity/Machine.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/repository/ArticleRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/repository/FormuleBlocRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/repository/MachineRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/data_alea.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/data_alea.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/schema.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/trigger.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/trigger.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/entity/Bloc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/entity/Bloc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/entity/EtatStock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/entity/EtatStock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/entity/MouvementStock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/entity/MouvementStock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/entity/Produit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/entity/Produit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/repository/BlocRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/repository/BlocRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/repository/EtatStockRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/repository/EtatStockRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/service/BlocService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/service/BlocService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/service/StockService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/service/StockService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/service/TransformationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/service/TransformationService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +33,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="com.intellij.jpb.JpaEntity" />
         <option value="Class" />
+        <option value="com.intellij.jpb.JpaEntity" />
       </list>
     </option>
   </component>
@@ -97,8 +112,8 @@
       <recent name="D:\ITU\S5\architecture-logiciel\foam\src\main\resources" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.tiarintsoa.foam.dto" />
       <recent name="com.tiarintsoa.foam.repository" />
+      <recent name="com.tiarintsoa.foam.dto" />
     </key>
   </component>
   <component name="RunManager">
@@ -173,6 +188,8 @@
       <workItem from="1732107285847" duration="575000" />
       <workItem from="1732110136442" duration="682000" />
       <workItem from="1732110878400" duration="1211000" />
+      <workItem from="1732112112559" duration="2275000" />
+      <workItem from="1732115041131" duration="1704000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -398,7 +415,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732111455817</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Data + triggers fix">
+      <option name="closed" value="true" />
+      <created>1732112200608</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1732112200608</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -416,7 +441,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Application properties in gitignore" />
     <MESSAGE value="Bloc insertion" />
     <MESSAGE value="Unused import removed" />
     <MESSAGE value="Transformation form" />
@@ -441,14 +465,15 @@
     <MESSAGE value="Alea 2: ETU display" />
     <MESSAGE value="Schema update" />
     <MESSAGE value="Triggers update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Triggers update" />
+    <MESSAGE value="Data + triggers fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Data + triggers fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/repository/EtatStockRepository.java</url>
-          <line>37</line>
+          <line>41</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

@@ -1,14 +1,8 @@
 package com.tiarintsoa.foam.service;
 
-import com.tiarintsoa.foam.entity.Bloc;
-import com.tiarintsoa.foam.entity.EtatStock;
-import com.tiarintsoa.foam.entity.Produit;
-import com.tiarintsoa.foam.entity.TypeProduit;
+import com.tiarintsoa.foam.entity.*;
 import com.tiarintsoa.foam.from.BlocForm;
-import com.tiarintsoa.foam.repository.BlocRepository;
-import com.tiarintsoa.foam.repository.EtatStockRepository;
-import com.tiarintsoa.foam.repository.ProduitRepository;
-import com.tiarintsoa.foam.repository.TypeProduitRepository;
+import com.tiarintsoa.foam.repository.*;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +18,8 @@ public class BlocService {
     private BlocRepository blocRepository;
     @Autowired
     private EtatStockRepository etatStockRepository;
+    @Autowired
+    private ArticleRepository articleRepository;
 
     @Transactional
     public void saveBloc(BlocForm blocForm) {
@@ -43,9 +39,10 @@ public class BlocService {
     protected void updateBloc(BlocForm blocForm) {
         Bloc bloc = blocRepository.findById(blocForm.getId())
                 .orElseThrow(() -> new RuntimeException("Bloc introuvable"));
-        Produit produit = bloc.getProduit();
-        produit.setNomProduit(blocForm.getNom());
-        produitRepository.save(produit);
+
+        Article article = bloc.getProduit().getArticle();
+        article.setNomArticle(blocForm.getNom());
+        articleRepository.save(article);
 
         bloc.setPrixProduction(blocForm.getCoutProduction());
         blocRepository.save(bloc);
@@ -56,12 +53,16 @@ public class BlocService {
         TypeProduit typeProduit = typeProduitRepository.findById(1L)
                 .orElseThrow(() -> new RuntimeException("Type produit introuvable") );
 
+        Article article = new Article();
+        article.setNomArticle(blocForm.getNom());
+        articleRepository.save(article);
+
         Produit produit = new Produit();
         produit.setTypeProduit(typeProduit);
-        produit.setNomProduit(blocForm.getNom());
         produit.setHauteur(blocForm.getHauteur());
         produit.setLongueur(blocForm.getLongueur());
         produit.setLargeur(blocForm.getLargeur());
+        produit.setArticle(article);
         produitRepository.save(produit);
 
         Bloc bloc = new Bloc();
@@ -72,7 +73,7 @@ public class BlocService {
         blocRepository.save(bloc);
 
         EtatStock etatStock = new EtatStock();
-        etatStock.setProduit(produit);
+        etatStock.setArticle(article);
         etatStock.setPrixProduction(blocForm.getCoutProduction());
         etatStock.setQuantite(1);
         etatStock.setOrigine(origne);
