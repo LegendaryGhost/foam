@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96190351-f0b5-4185-b93a-8ef2a1a39164" name="Changes" comment="Alea 2: rest dimension with unity">
+    <list default="true" id="96190351-f0b5-4185-b93a-8ef2a1a39164" name="Changes" comment="Alea 2: ETU display">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/data_alea.txt" beforeDir="false" afterPath="$PROJECT_DIR$/database/data_alea.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/service/StockService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/service/StockService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/stock.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/stock.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/mcd.lo1" beforeDir="false" afterPath="$PROJECT_DIR$/database/mcd.lo1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/mcd.loo" beforeDir="false" afterPath="$PROJECT_DIR$/database/mcd.loo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/schema.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +27,11 @@
   </component>
   <component name="Git.Settings">
     <option name="PREVIEW_PUSH_PROTECTED_ONLY" value="true" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="dev" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -69,7 +74,7 @@
     &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;Spring Boot.FoamApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature-machine&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/ITU/S5/architecture-logiciel/foam/database&quot;,
@@ -161,7 +166,14 @@
       <workItem from="1731314394615" duration="1442000" />
       <workItem from="1731329252567" duration="1656000" />
       <workItem from="1731330978060" duration="771000" />
-      <workItem from="1731331766803" duration="791000" />
+      <workItem from="1731331766803" duration="1850000" />
+      <workItem from="1731422297469" duration="24000" />
+      <workItem from="1731918988749" duration="259000" />
+      <workItem from="1732088187216" duration="288000" />
+      <workItem from="1732090891865" duration="8000" />
+      <workItem from="1732106381665" duration="577000" />
+      <workItem from="1732107285847" duration="575000" />
+      <workItem from="1732110136442" duration="595000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -363,11 +375,30 @@
       <option name="project" value="LOCAL" />
       <updated>1731331579041</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Alea 2: ETU display">
+      <option name="closed" value="true" />
+      <created>1731337308272</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1731337308272</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit" />
@@ -393,7 +424,8 @@
     <MESSAGE value="Data provided by ITU" />
     <MESSAGE value="Dimension check commented" />
     <MESSAGE value="Alea 2: rest dimension with unity" />
-    <option name="LAST_COMMIT_MESSAGE" value="Alea 2: rest dimension with unity" />
+    <MESSAGE value="Alea 2: ETU display" />
+    <option name="LAST_COMMIT_MESSAGE" value="Alea 2: ETU display" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

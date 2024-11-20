@@ -25,7 +25,12 @@ U3 : 1000
 reste : 50*2*1
 reste valide : 500*2*3
 
-
+T3
+source : B1-R
+U1 : 0
+U2 : 30
+U3 : 10
+reste : 50*10*1
 
 ALEA 2
 
