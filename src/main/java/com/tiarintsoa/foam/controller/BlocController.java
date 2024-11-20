@@ -3,6 +3,7 @@ package com.tiarintsoa.foam.controller;
 import com.tiarintsoa.foam.entity.Bloc;
 import com.tiarintsoa.foam.from.BlocForm;
 import com.tiarintsoa.foam.repository.BlocRepository;
+import com.tiarintsoa.foam.repository.MachineRepository;
 import com.tiarintsoa.foam.service.BlocService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,8 @@ public class BlocController {
     private BlocService blocService;
     @Autowired
     private BlocRepository blocRepository;
+    @Autowired
+    private MachineRepository machineRepository;
 
     @GetMapping
     public String blocs(Model model) {
@@ -28,6 +31,7 @@ public class BlocController {
     public String showBlocForm(@RequestParam(value = "idBloc", required = false) Long idBloc, Model model) {
         Bloc bloc = idBloc == null ? new Bloc() : blocRepository.findById(idBloc).orElse(new Bloc());
         model.addAttribute("blocForm", bloc.toBlocForm());
+        model.addAttribute("machines", machineRepository.findAll());
         model.addAttribute("isModifying", idBloc != null);
         return "blocForm";
     }

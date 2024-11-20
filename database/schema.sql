@@ -21,6 +21,7 @@ CREATE TABLE article(
 CREATE TABLE formule_bloc(
                              id_formule_bloc SERIAL,
                              quantite_necessaire NUMERIC(15,2)   NOT NULL,
+                             unite VARCHAR(50)  NOT NULL,
                              id_article INTEGER NOT NULL,
                              PRIMARY KEY(id_formule_bloc),
                              UNIQUE(id_article),

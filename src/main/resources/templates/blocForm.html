@@ -21,6 +21,15 @@
         </div>
 
         <div class="mb-3">
+            <label class="form-label" for="machine">Machine de production :</label>
+            <select class="form-select" th:field="*{idMachine}" id="machine" required>
+                <option value="" disabled selected>Choisissez une machine</option>
+                <option th:each="machine : ${machines}" th:value="${machine.id}" th:text="${machine.nomMachine}"></option>
+            </select>
+            <div class="form-text text-danger" th:if="${#fields.hasErrors('idMachine')}" th:errors="*{idMachine}"></div>
+        </div>
+
+        <div class="mb-3">
             <label class="form-label" for="longueur">Longueur :</label>
             <input class="form-control" th:disabled="${isModifying}" type="number" min="0.01" step="0.01" th:field="*{longueur}" id="longueur" required/>
         </div>
