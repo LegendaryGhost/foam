@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96190351-f0b5-4185-b93a-8ef2a1a39164" name="Changes" comment="Schema update">
+    <list default="true" id="96190351-f0b5-4185-b93a-8ef2a1a39164" name="Changes" comment="Triggers update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/data_alea.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/data_alea.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/trigger.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/trigger.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -171,7 +172,7 @@
       <workItem from="1732106381665" duration="577000" />
       <workItem from="1732107285847" duration="575000" />
       <workItem from="1732110136442" duration="682000" />
-      <workItem from="1732110878400" duration="537000" />
+      <workItem from="1732110878400" duration="1211000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -389,7 +390,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732110763824</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Triggers update">
+      <option name="closed" value="true" />
+      <created>1732111455817</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1732111455817</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -407,7 +416,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Initial commit" />
     <MESSAGE value="Application properties in gitignore" />
     <MESSAGE value="Bloc insertion" />
     <MESSAGE value="Unused import removed" />
@@ -432,7 +440,8 @@
     <MESSAGE value="Alea 2: rest dimension with unity" />
     <MESSAGE value="Alea 2: ETU display" />
     <MESSAGE value="Schema update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Schema update" />
+    <MESSAGE value="Triggers update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Triggers update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
