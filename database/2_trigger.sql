@@ -129,6 +129,7 @@ BEGIN
         SELECT * FROM bloc
             INNER JOIN produit ON bloc.id_produit = produit.id_produit
             WHERE traite IS FALSE
+            ORDER BY date_heure_insertion
         LOOP
             -- Calcul du volume du bloc
             besoin_total := bloc_record.longueur * bloc_record.largeur * bloc_record.hauteur;

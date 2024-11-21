@@ -45,6 +45,7 @@ CREATE TABLE bloc(
                      id_bloc SERIAL,
                      prix_production NUMERIC(15,2)   NOT NULL,
                      traite BOOLEAN NOT NULL DEFAULT FALSE,
+                     date_heure_insertion TIMESTAMP NOT NULL DEFAULT NOW(),
                      id_machine INTEGER NOT NULL,
                      id_originel INTEGER,
                      id_origine INTEGER,

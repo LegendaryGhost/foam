@@ -37,9 +37,9 @@ INSERT INTO article(nom_article) VALUES
 INSERT INTO produit(id_article, longueur, largeur, hauteur, id_type_produit) VALUES
                                                                                   (4,  100, 20, 10, 1),
                                                                                   (5,  100, 40, 10, 1);
-INSERT INTO bloc(prix_production, id_machine, id_produit) VALUES
-                                                              (2000000, 1, 4),
-                                                              (3000000, 2, 5);
+INSERT INTO bloc(prix_production, id_machine, id_produit, date_heure_insertion) VALUES
+                                                              (2000000, 1, 4, '2022-05-06'),
+                                                              (3000000, 2, 5, '2024-01-12');
 INSERT INTO etat_stock(quantite, prix_production, id_article) VALUES
                                                                               (1, 2000000, 4),
                                                                               (1, 3000000, 5);
@@ -51,9 +51,9 @@ INSERT INTO article(nom_article) VALUES
                                      ('papier'),
                                      ('durcissant');
 INSERT INTO formule_bloc(quantite_necessaire, id_article, unite) VALUES
-                                                                     (2, 6, 'l'),
-                                                                     (3, 7, 'kg'),
-                                                                     (0.5, 8, 'l');
+                                                                     (1, 6, 'litre'),
+                                                                     (1, 7, 'kilogramme'),
+                                                                     (0.5, 8, 'boite');
 -- Achat d'articles
 INSERT INTO etat_stock(quantite, prix_production, date_heure_insertion, id_article) VALUES
                                                                                         (80000, 100, '2022-01-01', 6),

@@ -16,7 +16,16 @@ public class MachineService {
     }
 
     public List<MachineDTO> getMachineStatistics() {
-        List<Object[]> results = machineRepository.findMachineStatisticsNative();
+        List<Object[]> results = machineRepository.findMachineStatistics();
+        return convertToMachineDTO(results);
+    }
+
+    public List<MachineDTO> getMachineStatisticsByYear(Integer year) {
+        List<Object[]> results = machineRepository.findMachineStatisticsByYear(year);
+        return convertToMachineDTO(results);
+    }
+
+    private List<MachineDTO> convertToMachineDTO(List<Object[]> results) {
         List<MachineDTO> machineStatistics = new ArrayList<>();
 
         for (Object[] row : results) {
@@ -29,7 +38,14 @@ public class MachineService {
             );
             machineStatistics.add(dto);
         }
-
         return machineStatistics;
+    }
+
+    public List<Integer> getMachineStatsYears() {
+        List<Integer> years = new ArrayList<>();
+        years.add(2024);
+        years.add(2023);
+        years.add(2022);
+        return years;
     }
 }

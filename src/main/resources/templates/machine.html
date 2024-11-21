@@ -12,6 +12,18 @@
 <main class="container my-4">
 
     <h1 class="text-center">Statistiques des machines</h1>
+
+    <form th:action="@{/machines}" method="get">
+        <div class="form-group">
+            <label class="form-label" for="year">Année :</label>
+            <select class="form-select" id="year" name="year">
+                <option value="" selected>Toutes</option>
+                <option th:each="year : ${years}" th:value="${year}" th:text="${year}"></option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Filter</button>
+    </form>
+
     <table class="table table-striped">
         <thead>
             <tr>
