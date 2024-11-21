@@ -41,20 +41,10 @@ CREATE TABLE produit(
                         FOREIGN KEY(id_article) REFERENCES article(id_article)
 );
 
-CREATE TABLE mouvement_stock(
-                                id_mouvement_stock SERIAL,
-                                quantite_entree INTEGER NOT NULL,
-                                quantite_sortie INTEGER NOT NULL,
-                                prix_production NUMERIC(15,2)  ,
-                                date_heure_mouvement TIMESTAMP NOT NULL DEFAULT NOW(),
-                                id_article INTEGER NOT NULL,
-                                PRIMARY KEY(id_mouvement_stock),
-                                FOREIGN KEY(id_article) REFERENCES article(id_article)
-);
-
 CREATE TABLE bloc(
                      id_bloc SERIAL,
                      prix_production NUMERIC(15,2)   NOT NULL,
+                     traite BOOLEAN NOT NULL DEFAULT FALSE,
                      id_machine INTEGER NOT NULL,
                      id_originel INTEGER,
                      id_origine INTEGER,
@@ -81,11 +71,26 @@ CREATE TABLE etat_stock(
                            quantite INTEGER NOT NULL,
                            prix_production NUMERIC(15,2)   NOT NULL,
                            date_heure_insertion TIMESTAMP NOT NULL DEFAULT NOW(),
+                           id_source_temp INTEGER,
                            id_originel INTEGER,
                            id_origine INTEGER,
                            id_article INTEGER NOT NULL,
                            PRIMARY KEY(id_etat_stock),
+                           FOREIGN KEY(id_source_temp) REFERENCES bloc(id_bloc),
                            FOREIGN KEY(id_originel) REFERENCES bloc(id_bloc),
                            FOREIGN KEY(id_origine) REFERENCES bloc(id_bloc),
                            FOREIGN KEY(id_article) REFERENCES article(id_article)
+);
+
+CREATE TABLE mouvement_stock(
+                                id_mouvement_stock SERIAL,
+                                quantite_entree INTEGER NOT NULL,
+                                quantite_sortie INTEGER NOT NULL,
+                                prix_production NUMERIC(15,2)  ,
+                                date_heure_mouvement TIMESTAMP NOT NULL DEFAULT NOW(),
+                                id_source INTEGER,
+                                id_article INTEGER NOT NULL,
+                                PRIMARY KEY(id_mouvement_stock),
+                                FOREIGN KEY(id_source) REFERENCES bloc(id_bloc),
+                                FOREIGN KEY(id_article) REFERENCES article(id_article)
 );
