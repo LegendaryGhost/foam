@@ -22,6 +22,6 @@ public class FormuleBloc {
 
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_article", nullable = false)
-    private Article idArticle;
+    private Article article;
 
 }

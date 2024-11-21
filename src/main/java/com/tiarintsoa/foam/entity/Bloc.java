@@ -6,6 +6,8 @@ import lombok.Data;
 import org.hibernate.annotations.ColumnDefault;
 
 import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.List;
 
 @Entity
 @Table(name = "bloc")
@@ -19,11 +21,15 @@ public class Bloc {
     @Column(name = "prix_production", nullable = false)
     private Double prixProduction;
 
-    @ManyToOne
+    @Column(name = "prix_production", nullable = false)
+    @ColumnDefault("0")
+    private Double prixProductionTheorique;
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_originel")
     private Bloc originel;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_origine")
     private Bloc origine;
 
@@ -31,11 +37,11 @@ public class Bloc {
     @ColumnDefault("NOW()")
     private LocalDateTime dateHeureInsertion;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_produit", nullable = false, unique = true)
     private Produit produit;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_machine", nullable = false)
     private Machine machine;
 

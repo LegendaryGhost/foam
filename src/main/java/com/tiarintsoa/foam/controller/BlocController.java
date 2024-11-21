@@ -14,12 +14,15 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class BlocController {
 
-    @Autowired
-    private BlocService blocService;
-    @Autowired
-    private BlocRepository blocRepository;
-    @Autowired
-    private MachineRepository machineRepository;
+    private final BlocService blocService;
+    private final BlocRepository blocRepository;
+    private final MachineRepository machineRepository;
+
+    public BlocController(BlocService blocService, BlocRepository blocRepository, MachineRepository machineRepository) {
+        this.blocService = blocService;
+        this.blocRepository = blocRepository;
+        this.machineRepository = machineRepository;
+    }
 
     @GetMapping
     public String blocs(Model model) {
@@ -40,5 +43,11 @@ public class BlocController {
     public String submitBlocForm(@ModelAttribute BlocForm blocForm) {
         blocService.saveBloc(blocForm);
         return "redirect:/blocs";
+    }
+
+    @GetMapping("/update-theoretical-price")
+    public String updateTheoreticalPrice() {
+        blocService.updateBlocsTheoreticalCostPrice();
+        return "redirect:/machines";
     }
 }

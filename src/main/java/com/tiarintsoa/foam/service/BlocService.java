@@ -6,26 +6,31 @@ import com.tiarintsoa.foam.from.BlocForm;
 import com.tiarintsoa.foam.repository.*;
 import com.tiarintsoa.foam.utils.DateConverter;
 import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Service
 public class BlocService {
 
-    @Autowired
-    private TypeProduitRepository typeProduitRepository;
-    @Autowired
-    private ProduitRepository produitRepository;
-    @Autowired
-    private BlocRepository blocRepository;
-    @Autowired
-    private EtatStockRepository etatStockRepository;
-    @Autowired
-    private ArticleRepository articleRepository;
-    @Autowired
-    private MachineRepository machineRepository;
+    private final TypeProduitRepository typeProduitRepository;
+    private final ProduitRepository produitRepository;
+    private final BlocRepository blocRepository;
+    private final EtatStockRepository etatStockRepository;
+    private final ArticleRepository articleRepository;
+    private final MachineRepository machineRepository;
+    private final FormuleBlocRepository formuleBlocRepository;
+
+    public BlocService(TypeProduitRepository typeProduitRepository, ProduitRepository produitRepository, BlocRepository blocRepository, EtatStockRepository etatStockRepository, ArticleRepository articleRepository, MachineRepository machineRepository, FormuleBlocRepository formuleBlocRepository) {
+        this.typeProduitRepository = typeProduitRepository;
+        this.produitRepository = produitRepository;
+        this.blocRepository = blocRepository;
+        this.etatStockRepository = etatStockRepository;
+        this.articleRepository = articleRepository;
+        this.machineRepository = machineRepository;
+        this.formuleBlocRepository = formuleBlocRepository;
+    }
 
     public void saveAllCsvDTO(List<BlocCsvDTO> blocCsvDTOS) {
         TypeProduit typeProduit = typeProduitRepository.findById(1L)
@@ -61,7 +66,7 @@ public class BlocService {
             EtatStock etatStock = new EtatStock();
             etatStock.setArticle(article);
             etatStock.setPrixProduction(blocCsvDTO.getCoutRevient());
-            etatStock.setQuantite(1);
+            etatStock.setQuantite(1.0);
             etatStock.setDateHeureInsertion(DateConverter.convertToLocalDateTime(blocCsvDTO.getDate()));
             etatStockRepository.save(etatStock);
         }
@@ -134,8 +139,44 @@ public class BlocService {
         EtatStock etatStock = new EtatStock();
         etatStock.setArticle(article);
         etatStock.setPrixProduction(blocForm.getCoutProduction());
-        etatStock.setQuantite(1);
+        etatStock.setQuantite(1.0);
         etatStock.setOrigine(origne);
         etatStockRepository.save(etatStock);
+    }
+
+    public void updateBlocsTheoreticalCostPrice() {
+        List<Bloc> blocs = blocRepository.findAllOrderByDate();
+        List<FormuleBloc> formules=formuleBlocRepository.findAll();
+        HashMap<Long,List<EtatStock>> etatStockMap= new HashMap<>();
+        for (FormuleBloc formuleBloc : formules) {
+            List<EtatStock> etatStocks = etatStockRepository.findAllByArticleInFormule(formuleBloc.getArticle().getId());
+            etatStockMap.put(formuleBloc.getArticle().getId(), etatStocks);
+        }
+
+        for (Bloc bloc : blocs) {
+            double prixProductionTheorique = 0.0;
+            for (FormuleBloc formule : formules) {
+                Double quantiteNecessaire = bloc.getProduit().getVolume() * formule.getQuantiteNecessaire();
+
+                for(EtatStock etatStock : etatStockMap.get(formule.getArticle().getId())) {
+                    if(etatStock.getQuantite() < quantiteNecessaire) {
+                        quantiteNecessaire -= etatStock.getQuantite();
+                        prixProductionTheorique += etatStock.getPrixProduction() * etatStock.getQuantite();
+                        etatStock.setQuantite(0.0);
+                    } else {
+                        etatStock.setQuantite(etatStock.getQuantite() - quantiteNecessaire);
+                        prixProductionTheorique += etatStock.getPrixProduction() * quantiteNecessaire;
+                        break;
+                    }
+                }
+
+                if (quantiteNecessaire > 0) {
+                    throw new RuntimeException("Insufficient article quantity");
+                }
+            }
+            bloc.setPrixProduction(prixProductionTheorique);
+        }
+
+        blocRepository.saveAll(blocs);
     }
 }

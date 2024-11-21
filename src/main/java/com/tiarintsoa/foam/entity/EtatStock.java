@@ -15,7 +15,7 @@ public class EtatStock {
     private Long id;
 
     @Column(name = "quantite", nullable = false)
-    private Integer quantite;
+    private Double quantite;
 
     @Column(name = "prix_production", nullable = false)
     private Double prixProduction;
@@ -23,15 +23,15 @@ public class EtatStock {
     @Column(name = "date_heure_insertion", nullable = false, insertable = false, updatable = false)
     private LocalDateTime dateHeureInsertion;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_originel")
     private Bloc originel;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_origine")
     private Bloc origine;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_article", nullable = false)
     private Article article;
 }

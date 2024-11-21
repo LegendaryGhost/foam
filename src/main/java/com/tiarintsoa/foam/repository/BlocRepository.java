@@ -17,4 +17,10 @@ public interface BlocRepository extends JpaRepository<Bloc, Long> {
     """)
     List<Bloc> findAllByEtatStockQuantiteGreaterThanZero();
 
+    @Query("""
+        SELECT b FROM Bloc b
+        ORDER by b.dateHeureInsertion
+    """)
+    List<Bloc> findAllOrderByDate();
+
 }

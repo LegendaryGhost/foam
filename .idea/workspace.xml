@@ -4,22 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96190351-f0b5-4185-b93a-8ef2a1a39164" name="Changes" comment="CSV import service">
-      <change afterPath="$PROJECT_DIR$/database/import/donnee.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/import/import.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/96ebcce8-91e3-474c-92f6-eef1d2eee3a3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/96ebcce8-91e3-474c-92f6-eef1d2eee3a3.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/96ebcce8-91e3-474c-92f6-eef1d2eee3a3/storage_v2/_src_/database/foam.tQowAA/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/96ebcce8-91e3-474c-92f6-eef1d2eee3a3/storage_v2/_src_/database/foam.tQowAA/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+    <list default="true" id="96190351-f0b5-4185-b93a-8ef2a1a39164" name="Changes" comment="20 minutes SQL function">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/1_schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/1_schema.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/2_trigger.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/2_trigger.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/4_data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/4_data.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/controller/CsvController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/controller/CsvController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/service/CsvService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/service/CsvService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/controller/CsvController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/controller/CsvController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/entity/Bloc.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/entity/Bloc.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/service/BlocService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/service/BlocService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/service/CsvService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/service/CsvService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/controller/BlocController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/controller/BlocController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/entity/Bloc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/entity/Bloc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/entity/EtatStock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/entity/EtatStock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/entity/FormuleBloc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/entity/FormuleBloc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/repository/BlocRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/repository/BlocRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/repository/EtatStockRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/repository/EtatStockRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/service/BlocService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/service/BlocService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,6 +200,7 @@
       <workItem from="1732179010543" duration="1066000" />
       <workItem from="1732180108662" duration="96000" />
       <workItem from="1732180241339" duration="2102000" />
+      <workItem from="1732184815226" duration="5047000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -495,7 +490,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732177771372</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="20 minutes SQL function">
+      <option name="closed" value="true" />
+      <created>1732184864097</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1732184864097</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -513,7 +516,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Max gain stock details" />
     <MESSAGE value="Bootstrap + Navbar" />
     <MESSAGE value="Number format" />
     <MESSAGE value="Bloc form CSS" />
@@ -538,17 +540,7 @@
     <MESSAGE value="Machine stats view" />
     <MESSAGE value="Year filter" />
     <MESSAGE value="CSV import service" />
-    <option name="LAST_COMMIT_MESSAGE" value="CSV import service" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/repository/EtatStockRepository.java</url>
-          <line>41</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="20 minutes SQL function" />
+    <option name="LAST_COMMIT_MESSAGE" value="20 minutes SQL function" />
   </component>
 </project>

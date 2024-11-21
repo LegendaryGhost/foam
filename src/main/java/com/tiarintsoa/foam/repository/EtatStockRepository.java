@@ -62,4 +62,10 @@ public interface EtatStockRepository extends JpaRepository<EtatStock, Long> {
         """)
     List<StockProduitDTO> findStockProduitsForFormeUsuelle();
 
+
+    @Query("""
+        SELECT es FROM EtatStock es
+       where es.article.id = :idArticle order by es.dateHeureInsertion
+    """)
+    List<EtatStock> findAllByArticleInFormule(@Param("idArticle") Long idArticle);
 }
