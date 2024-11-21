@@ -6,5 +6,5 @@ import lombok.Data;
 public class QuantiteUsuelleForm {
     private String formName;
     private Long idFormeUsuelle;
-    private int quantity;
+    private double quantity;
 }

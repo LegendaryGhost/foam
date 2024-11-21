@@ -14,15 +14,14 @@ public interface MachineRepository extends JpaRepository<Machine, Long> {
             machine.id_machine AS idMachine,
             machine.nom_machine AS nomMachine,
             COALESCE(SUM(bloc.prix_production), 0) AS prixProductionPratique,
-            COALESCE(SUM(mouvement_stock.prix_production * mouvement_stock.quantite_sortie), 0) AS prixProductionTheorique,
+            COALESCE(SUM(bloc.prix_production_theorique), 0) AS prixProductionTheorique,
             COALESCE(SUM(produit.longueur * produit.largeur * produit.hauteur), 0) AS volumeTotalProduit
         FROM machine
         LEFT JOIN bloc ON machine.id_machine = bloc.id_machine
-        LEFT JOIN mouvement_stock ON bloc.id_bloc = mouvement_stock.id_source
         INNER JOIN produit ON bloc.id_produit = produit.id_produit
         GROUP BY machine.id_machine, machine.nom_machine
         ORDER BY (
-                COALESCE(SUM(bloc.prix_production), 0) - COALESCE(SUM(mouvement_stock.prix_production * mouvement_stock.quantite_sortie), 0)
+                COALESCE(SUM(bloc.prix_production), 0) - COALESCE(SUM(bloc.prix_production_theorique), 0)
             ) / COALESCE(SUM(produit.longueur*produit.largeur*produit.hauteur), 0)
     """, nativeQuery = true)
     List<Object[]> findMachineStatistics();
@@ -32,16 +31,15 @@ public interface MachineRepository extends JpaRepository<Machine, Long> {
             machine.id_machine AS idMachine,
             machine.nom_machine AS nomMachine,
             COALESCE(SUM(bloc.prix_production), 0) AS prixProductionPratique,
-            COALESCE(SUM(mouvement_stock.prix_production * mouvement_stock.quantite_sortie), 0) AS prixProductionTheorique,
+            COALESCE(SUM(bloc.prix_production_theorique), 0) AS prixProductionTheorique,
             COALESCE(SUM(produit.longueur * produit.largeur * produit.hauteur), 0) AS volumeTotalProduit
         FROM machine
         LEFT JOIN bloc ON machine.id_machine = bloc.id_machine
-        LEFT JOIN mouvement_stock ON bloc.id_bloc = mouvement_stock.id_source
         INNER JOIN produit ON bloc.id_produit = produit.id_produit
         WHERE EXTRACT(YEAR FROM bloc.date_heure_insertion) = :year
         GROUP BY machine.id_machine, machine.nom_machine
         ORDER BY (
-                COALESCE(SUM(bloc.prix_production), 0) - COALESCE(SUM(mouvement_stock.prix_production * mouvement_stock.quantite_sortie), 0)
+                COALESCE(SUM(bloc.prix_production), 0) - COALESCE(SUM(bloc.prix_production_theorique), 0)
             ) / COALESCE(SUM(produit.longueur*produit.largeur*produit.hauteur), 0)
     """, nativeQuery = true)
     List<Object[]> findMachineStatisticsByYear(@Param("year") Integer year);

@@ -19,7 +19,7 @@ public class Bloc {
     @Column(name = "prix_production", nullable = false)
     private Double prixProduction;
 
-    @Column(name = "prix_production", nullable = false)
+    @Column(name = "prix_production_theorique", nullable = false)
     @ColumnDefault("0")
     private Double prixProductionTheorique;
 

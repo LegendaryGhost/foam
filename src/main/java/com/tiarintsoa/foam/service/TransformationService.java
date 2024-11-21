@@ -79,7 +79,7 @@ public class TransformationService {
         // Mise à jour de l'état du stock et mouvement de sortie
         EtatStock etatStockOrigine = etatStockRepository.findFirstByBlocId(transformationForm.getIdBloc())
                 .orElseThrow(() -> new RuntimeException("Etat de stock introuvable pour l'id bloc : " + transformationForm.getIdBloc()));
-        etatStockOrigine.setQuantite(0);
+        etatStockOrigine.setQuantite(0.0);
         etatStockRepository.save(etatStockOrigine);
 
         // Insertion du bloc reste

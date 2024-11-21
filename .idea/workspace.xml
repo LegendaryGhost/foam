@@ -5,10 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="96190351-f0b5-4185-b93a-8ef2a1a39164" name="Changes" comment="Theoretical bloc price calculus">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/controller/BlocController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/controller/BlocController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/dto/StockProduitDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/dto/StockProduitDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/dto/StockProduitPriceAverageDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/dto/StockProduitPriceAverageDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/96ebcce8-91e3-474c-92f6-eef1d2eee3a3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/96ebcce8-91e3-474c-92f6-eef1d2eee3a3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/96ebcce8-91e3-474c-92f6-eef1d2eee3a3/storage_v2/_src_/database/foam.tQowAA/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/96ebcce8-91e3-474c-92f6-eef1d2eee3a3/storage_v2/_src_/database/foam.tQowAA/schema/public.abK9xQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/3_views.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/3_views.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/controller/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/entity/Bloc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/entity/Bloc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/from/QuantiteUsuelleForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/from/QuantiteUsuelleForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/repository/MachineRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/repository/MachineRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/service/TransformationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/service/TransformationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/navbar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/entity/Bloc.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/entity/Bloc.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/service/BlocService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/service/BlocService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,7 +204,7 @@
       <workItem from="1732179010543" duration="1066000" />
       <workItem from="1732180108662" duration="96000" />
       <workItem from="1732180241339" duration="2102000" />
-      <workItem from="1732184815226" duration="5162000" />
+      <workItem from="1732184815226" duration="6150000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -501,7 +510,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732189955789</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Theoretical bloc price calculus">
+      <option name="closed" value="true" />
+      <created>1732190028421</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1732190028421</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
