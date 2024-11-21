@@ -1,9 +1,11 @@
 package com.tiarintsoa.foam.service;
 
 import com.tiarintsoa.foam.dto.csv.BlocCsvDTO;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class CsvService {
 
     private final BlocService blocService;

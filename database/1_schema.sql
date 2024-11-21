@@ -95,3 +95,10 @@ CREATE TABLE mouvement_stock(
                                 FOREIGN KEY(id_source) REFERENCES bloc(id_bloc),
                                 FOREIGN KEY(id_article) REFERENCES article(id_article)
 );
+
+CREATE INDEX idx_bloc_traite ON bloc (traite);
+CREATE INDEX idx_etat_stock_id_article ON etat_stock (id_article);
+CREATE INDEX idx_etat_stock_date_heure_insertion ON etat_stock (date_heure_insertion);
+CREATE INDEX idx_formule_bloc_id_article ON formule_bloc (id_article);
+CREATE INDEX idx_bloc_date_heure_insertion ON bloc (date_heure_insertion);
+

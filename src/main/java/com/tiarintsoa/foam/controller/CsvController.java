@@ -1,5 +1,7 @@
 package com.tiarintsoa.foam.controller;
 
+import com.tiarintsoa.foam.service.CsvService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +18,9 @@ import java.util.List;
 @Controller
 @RequestMapping("/csv")
 public class CsvController {
+
+    @Autowired
+    private CsvService csvService;
 
     @GetMapping
     public String uploadPage() {
@@ -36,8 +41,8 @@ public class CsvController {
             while ((line = reader.readLine()) != null) {
                 String[] values = line.split(","); // Ajustez le séparateur si nécessaire
                 data.add(values);
-                System.out.println(line);
             }
+            csvService.saveCsvData(data);
         } catch (Exception e) {
             model.addAttribute("message", "Erreur lors de la lecture du fichier : " + e.getMessage());
             return "csv";
