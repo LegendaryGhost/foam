@@ -13,4 +13,12 @@ public class MachineDTO {
     private Double prixProductionPratique; // Prix de production pratique
     private Double prixProductionTheorique; // Prix de production théorique
     private Double volumeTotalProduit;    // Volume total des produits
+
+    public Double getEcart() {
+        return prixProductionPratique - prixProductionTheorique;
+    }
+
+    public Double getEcartVolumique() {
+        return getEcart() / volumeTotalProduit;
+    }
 }

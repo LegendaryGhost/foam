@@ -24,16 +24,8 @@ select *, forme_usuelle.prix_vente/(produit.longueur * produit.largeur * produit
     order by rapport_prix_volume desc ;
 
 -- practical and theoretical production cost and gap
-select machine.id_machine,
-       machine.nom_machine,
-       coalesce(sum(bloc.prix_production), 0) as prix_production_pratique,
-       coalesce(sum(mouvement_stock.prix_production * mouvement_stock.quantite_sortie), 0) as prix_production_théorique,
-       coalesce(sum(produit.longueur*produit.largeur*produit.hauteur), 0) as volume_total_produit
-from machine
-    left join bloc on machine.id_machine = bloc.id_machine
-    left join mouvement_stock on bloc.id_bloc = mouvement_stock.id_source
-    inner join produit on bloc.id_produit = produit.id_produit
-    group by machine.id_machine, machine.nom_machine;
+select * from statistiques_machine
+    order by (prix_production_pratique - prix_production_théorique) / volume_total_produit;
 
 select traiter_blocs();
 

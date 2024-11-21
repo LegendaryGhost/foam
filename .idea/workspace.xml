@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96190351-f0b5-4185-b93a-8ef2a1a39164" name="Changes" comment="Stock change generation function">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/controller/MachineController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/dto/MachineDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/machine.html" afterDir="false" />
+    <list default="true" id="96190351-f0b5-4185-b93a-8ef2a1a39164" name="Changes" comment="Machine stats view">
+      <change afterPath="$PROJECT_DIR$/database/views.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/query.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/query.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/dto/MachineDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/dto/MachineDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/repository/MachineRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/repository/MachineRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -186,7 +186,7 @@
       <workItem from="1732163621873" duration="2354000" />
       <workItem from="1732166039797" duration="40000" />
       <workItem from="1732166100137" duration="402000" />
-      <workItem from="1732166523829" duration="1146000" />
+      <workItem from="1732166523829" duration="1891000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -452,7 +452,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732167059139</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Machine stats view">
+      <option name="closed" value="true" />
+      <created>1732167928090</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1732167928090</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -470,7 +478,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Untested stock state save" />
     <MESSAGE value="Test stock state save" />
     <MESSAGE value="Basic stock details" />
     <MESSAGE value="Max gain stock details" />
@@ -495,7 +502,8 @@
     <MESSAGE value="Views update + origin's machine in transformation" />
     <MESSAGE value="Article data" />
     <MESSAGE value="Stock change generation function" />
-    <option name="LAST_COMMIT_MESSAGE" value="Stock change generation function" />
+    <MESSAGE value="Machine stats view" />
+    <option name="LAST_COMMIT_MESSAGE" value="Machine stats view" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

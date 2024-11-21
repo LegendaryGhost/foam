@@ -19,6 +19,8 @@
                 <th class="text-end">Prix de production pratique</th>
                 <th class="text-end">Prix de production théorique</th>
                 <th class="text-end">Volume total produit</th>
+                <th class="text-end">Ecart</th>
+                <th class="text-end">Ecart volumique</th>
             </tr>
         </thead>
         <tbody>
@@ -27,6 +29,8 @@
                 <td class="text-end" th:text="${#numbers.formatDecimal(machine.prixProductionPratique, 0, 'DEFAULT', 2, 'COMMA') + ' Ar'}">0.00 Ar</td>
                 <td class="text-end" th:text="${#numbers.formatDecimal(machine.prixProductionTheorique, 0, 'DEFAULT', 2, 'COMMA') + ' Ar'}">0.00 Ar</td>
                 <td class="text-end" th:text="${#numbers.formatDecimal(machine.volumeTotalProduit, 0, 'DEFAULT', 2, 'COMMA') + ' m^3'}">0.00 m^3</td>
+                <td class="text-end" th:text="${#numbers.formatDecimal(machine.getEcart(), 0, 'DEFAULT', 2, 'COMMA') + ' Ar'}">0.00 Ar</td>
+                <td class="text-end" th:text="${#numbers.formatDecimal(machine.getEcartVolumique(), 0, 'DEFAULT', 2, 'COMMA') + ' Ar'}">0.00 Ar/m^3</td>
             </tr>
         </tbody>
     </table>
