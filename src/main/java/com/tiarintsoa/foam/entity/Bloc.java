@@ -3,6 +3,9 @@ package com.tiarintsoa.foam.entity;
 import com.tiarintsoa.foam.from.BlocForm;
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.ColumnDefault;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "bloc")
@@ -23,6 +26,10 @@ public class Bloc {
     @ManyToOne
     @JoinColumn(name = "id_origine")
     private Bloc origine;
+
+    @Column(name = "date_heure_insertion")
+    @ColumnDefault("NOW()")
+    private LocalDateTime dateHeureInsertion;
 
     @OneToOne
     @JoinColumn(name = "id_produit", nullable = false, unique = true)

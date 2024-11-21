@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <title>Insertion d'un Bloc</title>
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}" />
+</head>
+<body>
+
+<!-- Include the navbar component here -->
+<header th:include="fragments/navbar"></header>
+
+<main class="container my-4">
+    <h1 class="text-center">Insertion de bloc</h1>
+
+    <form th:action="@{/blocs}" th:object="${blocForm}" method="post">
+        <input type="hidden" th:field="*{id}">
+
+        <div class="mb-3">
+            <label class="form-label" for="nom">Nom :</label>
+            <input class="form-control" type="text" th:field="*{nom}" id="nom" required/>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="machine">Machine de production :</label>
+            <select class="form-select" th:field="*{idMachine}" id="machine" required>
+                <option value="" disabled selected>Choisissez une machine</option>
+                <option th:each="machine : ${machines}" th:value="${machine.id}" th:text="${machine.nomMachine}"></option>
+            </select>
+            <div class="form-text text-danger" th:if="${#fields.hasErrors('idMachine')}" th:errors="*{idMachine}"></div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="longueur">Longueur :</label>
+            <input class="form-control" th:disabled="${isModifying}" type="number" min="0.01" step="0.01" th:field="*{longueur}" id="longueur" required/>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="largeur">Largeur :</label>
+            <input class="form-control" th:disabled="${isModifying}" type="number" min="0.01" step="0.01" th:field="*{largeur}" id="largeur" required/>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="hauteur">Hauteur :</label>
+            <input class="form-control" th:disabled="${isModifying}" type="number" min="0.01" step="0.01" th:field="*{hauteur}" id="hauteur" required/>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="coutProduction">Coût de production :</label>
+            <input class="form-control" type="number" min="0.01" step="0.01" th:field="*{coutProduction}" id="coutProduction" required/>
+        </div>
+
+        <button class="btn btn-primary mt-3" type="submit">Insérer</button>
+    </form>
+</main>
+
+</body>
+</html>

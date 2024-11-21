@@ -1,0 +1,3 @@
+- update prix de revient mère après transformation => update prix de revient produits filles
+- moyenne pondérée du prix de revient des formes usuelles
+- source primaire des formes usuelles

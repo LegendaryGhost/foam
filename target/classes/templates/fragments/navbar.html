@@ -1,0 +1,23 @@
+<!-- navbar.html -->
+<th:block xmlns:th="http://www.thymeleaf.org">
+    <ul class="nav justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link" aria-current="page" th:href="@{/blocs}">Liste blocs</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" aria-current="page" th:href="@{/machines}">Statistiques des machines</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" aria-current="page" th:href="@{/csv}">Import CSV</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" aria-current="page" th:href="@{/blocs/form}">Insertion bloc</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{/transformations/form}">Transformation</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{/stocks}">Stock</a>
+        </li>
+    </ul>
+</th:block>

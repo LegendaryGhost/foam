@@ -4,18 +4,132 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96190351-f0b5-4185-b93a-8ef2a1a39164" name="Changes" comment="Gap per volume">
+    <list default="true" id="96190351-f0b5-4185-b93a-8ef2a1a39164" name="Changes" comment="CSV Controller">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/96ebcce8-91e3-474c-92f6-eef1d2eee3a3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/96ebcce8-91e3-474c-92f6-eef1d2eee3a3/storage_v2/_src_/database/foam.tQowAA.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/96ebcce8-91e3-474c-92f6-eef1d2eee3a3/storage_v2/_src_/database/foam.tQowAA/schema/public.abK9xQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jpa.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_21_11_2024_09_02_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_21_11_2024_09_02__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TODO.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/Data 1M.csv.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/LoopingImage.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/data.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/data_1million.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/import.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/foam.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/controller/CsvController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/dto/csv/BlocCsvDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/service/CsvService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/utils/DateConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/csv.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/application.example.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/FoamApplication.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/ServletInitializer.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/config/TransformationConfig.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/controller/BlocController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/controller/CsvController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/controller/MachineController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/controller/MainController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/controller/StockController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/controller/TransformationController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/dto/MachineDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/dto/StockDetails.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/dto/StockProduitDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/dto/StockProduitPriceAverageDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/entity/Article.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/entity/Bloc.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/entity/EtatStock.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/entity/FormeUsuelle.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/entity/FormuleBloc.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/entity/Machine.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/entity/MouvementStock.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/entity/Produit.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/entity/TypeProduit.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/from/BlocForm.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/from/QuantiteUsuelleForm.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/from/TransformationForm.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/repository/ArticleRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/repository/BlocRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/repository/EtatStockRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/repository/FormeUsuelleRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/repository/FormuleBlocRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/repository/MachineRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/repository/MouvementStockRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/repository/ProduitRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/repository/TypeProduitRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/service/BlocService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/service/CsvService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/service/MachineService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/service/StockService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/service/TransformationService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tiarintsoa/foam/utils/UnitConverter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/bootstrap/css/bootstrap-grid.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/bootstrap/css/bootstrap-grid.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/bootstrap/css/bootstrap-grid.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/bootstrap/css/bootstrap-grid.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/bootstrap/css/bootstrap-grid.rtl.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/bootstrap/css/bootstrap-grid.rtl.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/bootstrap/css/bootstrap-grid.rtl.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/bootstrap/css/bootstrap-grid.rtl.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/bootstrap/css/bootstrap-reboot.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/bootstrap/css/bootstrap-reboot.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/bootstrap/css/bootstrap-reboot.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/bootstrap/css/bootstrap-reboot.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/bootstrap/css/bootstrap-reboot.rtl.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/bootstrap/css/bootstrap-reboot.rtl.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/bootstrap/css/bootstrap-reboot.rtl.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/bootstrap/css/bootstrap-reboot.rtl.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/bootstrap/css/bootstrap-utilities.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/bootstrap/css/bootstrap-utilities.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/bootstrap/css/bootstrap-utilities.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/bootstrap/css/bootstrap-utilities.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/bootstrap/css/bootstrap-utilities.rtl.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/bootstrap/css/bootstrap-utilities.rtl.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/bootstrap/css/bootstrap-utilities.rtl.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/bootstrap/css/bootstrap-utilities.rtl.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/bootstrap/css/bootstrap.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/bootstrap/css/bootstrap.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/bootstrap/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/bootstrap/css/bootstrap.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/bootstrap/css/bootstrap.rtl.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/bootstrap/css/bootstrap.rtl.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/bootstrap/css/bootstrap.rtl.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/bootstrap/css/bootstrap.rtl.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/bootstrap/js/bootstrap.bundle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/bootstrap/js/bootstrap.bundle.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/bootstrap/js/bootstrap.bundle.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/bootstrap/js/bootstrap.bundle.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/bootstrap/js/bootstrap.esm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/bootstrap/js/bootstrap.esm.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/bootstrap/js/bootstrap.esm.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/bootstrap/js/bootstrap.esm.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/bootstrap/js/bootstrap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/bootstrap/js/bootstrap.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/bootstrap/js/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/static/bootstrap/js/bootstrap.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/bloc.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/blocForm.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/csv.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/fragments/navbar.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/machine.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/stock.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/transformationForm.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/com/tiarintsoa/foam/FoamApplicationTests.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/4_data.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/mcd.lo1" beforeDir="false" afterPath="$PROJECT_DIR$/database/mcd.lo1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/mcd.loo" beforeDir="false" afterPath="$PROJECT_DIR$/database/mcd.loo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/1_schema.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/trigger.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/2_trigger.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/views.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/3_views.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/controller/MachineController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/controller/MachineController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/repository/MachineRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/repository/MachineRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/service/MachineService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/service/MachineService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/machine.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/machine.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/entity/Bloc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/entity/Bloc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/service/BlocService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/service/BlocService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/navbar.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,7 +309,8 @@
       <workItem from="1732166100137" duration="402000" />
       <workItem from="1732166523829" duration="1891000" />
       <workItem from="1732169964505" duration="838000" />
-      <workItem from="1732170823818" duration="2850000" />
+      <workItem from="1732170823818" duration="4490000" />
+      <workItem from="1732175337095" duration="2374000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -469,7 +584,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732167928090</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Year filter">
+      <option name="closed" value="true" />
+      <created>1732173743677</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1732173743677</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -487,7 +610,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Test stock state save" />
     <MESSAGE value="Basic stock details" />
     <MESSAGE value="Max gain stock details" />
     <MESSAGE value="Bootstrap + Navbar" />
@@ -512,7 +634,8 @@
     <MESSAGE value="Article data" />
     <MESSAGE value="Stock change generation function" />
     <MESSAGE value="Machine stats view" />
-    <option name="LAST_COMMIT_MESSAGE" value="Machine stats view" />
+    <MESSAGE value="Year filter" />
+    <option name="LAST_COMMIT_MESSAGE" value="Year filter" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <title>Transformation Form</title>
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}" />
+</head>
+<body>
+
+<!-- Include the navbar component here -->
+<header th:include="fragments/navbar"></header>
+
+<main class="container my-4">
+
+    <h1 class="text-center">Transformation de bloc</h1>
+
+    <form th:action="@{/transformations}" th:object="${transformationForm}" method="post">
+        <div class="mb-3">
+            <label class="form-label" for="blocOrigine">Bloc d'origine:</label>
+            <select class="form-select" th:field="*{idBloc}" id="blocOrigine" required>
+                <option value="" disabled selected>Choisissez un bloc</option>
+                <option th:each="bloc : ${blocs}" th:value="${bloc.id}" th:text="${bloc.produit.article.nomArticle}"></option>
+            </select>
+            <div class="form-text text-danger" th:if="${#fields.hasErrors('idBloc')}" th:errors="*{idBloc}"></div>
+        </div>
+
+        <h3>Quantités des produits</h3>
+        <!-- Quantities for each usual form -->
+        <div th:each="formQuantity, stat : *{usualFormsQuantities}" class="mb-3">
+            <label class="form-label" th:for="${formQuantity.formName}">Quantité pour <span th:text="${formQuantity.formName}">Form</span>:</label>
+            <input class="form-control" type="number" min="0" th:field="*{usualFormsQuantities[__${stat.index}__].quantity}" th:id="${formQuantity.formName}"/>
+            <input type="hidden" th:field="*{usualFormsQuantities[__${stat.index}__].idFormeUsuelle}">
+            <input type="hidden" th:field="*{usualFormsQuantities[__${stat.index}__].formName}">
+        </div>
+
+        <h3>Dimension du reste</h3>
+        <!-- Champs des dimensions du reste -->
+        <div class="mb-3">
+            <label class="form-label" for="longueurReste">Longueur du Reste:</label>
+            <input class="form-control" type="text" th:field="*{longueurResteString}" id="longueurReste" />
+            <div class="form-text text-danger" th:if="${#fields.hasErrors('longueurResteString')}" th:errors="*{longueurResteString}"></div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="largeurReste">Largeur du Reste:</label>
+            <input class="form-control" type="text" th:field="*{largeurResteString}" id="largeurReste" />
+            <div class="form-text text-danger" th:if="${#fields.hasErrors('largeurResteString')}" th:errors="*{largeurResteString}"></div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="hauteurReste">Hauteur du Reste:</label>
+            <input class="form-control" type="text" th:field="*{hauteurResteString}" id="hauteurReste" />
+            <div class="form-text text-danger" th:if="${#fields.hasErrors('hauteurResteString')}" th:errors="*{hauteurResteString}"></div>
+        </div>
+
+        <div class="form-text text-danger" th:if="${#fields.hasErrors('usualFormsQuantities')}" th:errors="*{usualFormsQuantities}"></div>
+
+        <button class="btn btn-primary mt-3" type="submit">Transformer</button>
+    </form>
+
+</main>
+
+</body>
+</html>
