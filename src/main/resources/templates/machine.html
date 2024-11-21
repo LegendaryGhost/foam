@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <title>Blocs</title>
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}" />
+</head>
+<body>
+
+<!-- Include the navbar component here -->
+<header th:include="fragments/navbar"></header>
+
+<main class="container my-4">
+
+    <h1 class="text-center">Statistiques des machines</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nom de la Machine</th>
+                <th class="text-end">Prix de production pratique</th>
+                <th class="text-end">Prix de production théorique</th>
+                <th class="text-end">Volume total produit</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="machine : ${machines}">
+                <td th:text="${machine.nomMachine}">Machine</td>
+                <td class="text-end" th:text="${#numbers.formatDecimal(machine.prixProductionPratique, 0, 'DEFAULT', 2, 'COMMA') + ' Ar'}">0.00 Ar</td>
+                <td class="text-end" th:text="${#numbers.formatDecimal(machine.prixProductionTheorique, 0, 'DEFAULT', 2, 'COMMA') + ' Ar'}">0.00 Ar</td>
+                <td class="text-end" th:text="${#numbers.formatDecimal(machine.volumeTotalProduit, 0, 'DEFAULT', 2, 'COMMA') + ' m^3'}">0.00 m^3</td>
+            </tr>
+        </tbody>
+    </table>
+</main>
+</body>
+</html>
