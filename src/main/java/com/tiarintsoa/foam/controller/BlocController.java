@@ -5,7 +5,6 @@ import com.tiarintsoa.foam.from.BlocForm;
 import com.tiarintsoa.foam.repository.BlocRepository;
 import com.tiarintsoa.foam.repository.MachineRepository;
 import com.tiarintsoa.foam.service.BlocService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
