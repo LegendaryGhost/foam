@@ -23,7 +23,7 @@ public class Bloc {
 
     @Column(name = "prix_production_theorique", nullable = false)
     @ColumnDefault("0")
-    private Double prixProductionTheorique;
+    private Double prixProductionTheorique = 0.0;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_originel")

@@ -52,7 +52,7 @@ public class BlocController {
 
     @GetMapping("/generate-data")
     public String generateData() {
-        blocService.generateData(10);
+        blocService.generateData(1000000);
         return "redirect:/machines";
     }
 }

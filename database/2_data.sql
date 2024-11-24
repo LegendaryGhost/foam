@@ -14,7 +14,7 @@ INSERT INTO machine(nom_machine) VALUES
 
 
 
--- Formes usuelles
+-- -- Formes usuelles
 -- INSERT INTO article(nom_article) VALUES
 --                                      ('U1'),
 --                                      ('U2'),
@@ -27,9 +27,9 @@ INSERT INTO machine(nom_machine) VALUES
 --                                                       (20000, 1),
 --                                                       (12000, 2),
 --                                                       (600, 3);
-
-
--- Blocs
+--
+--
+-- -- Blocs
 -- INSERT INTO article(nom_article) VALUES
 --                                      ('Bloc 1'),
 --                                      ('Bloc 2');
@@ -41,5 +41,5 @@ INSERT INTO machine(nom_machine) VALUES
 --                                                               (2000000, 1, 4, '2022-05-06'),
 --                                                               (3000000, 2, 5, '2024-01-12');
 -- INSERT INTO etat_stock(quantite, prix_production, id_article) VALUES
---                                                                               (1, 2000000, 1000001),
---                                                                               (1, 3000000, 1000002);
+--                                                                               (1, 2000000, 4),
+--                                                                               (1, 3000000, 5);
