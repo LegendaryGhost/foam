@@ -181,4 +181,9 @@ public class BlocService {
         }
         blocRepository.saveAll(blocs);
     }
+
+    public void generateData(int blocCount) {
+        Double averageProductionCost = blocRepository.findAverageProductionCost();
+        System.out.println(averageProductionCost);
+    }
 }

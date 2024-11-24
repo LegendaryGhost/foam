@@ -34,3 +34,8 @@ select a.nom_article, sum(e.quantite), sum(e.prix_production) from etat_stock e
 inner join article a on a.id_article = e.id_article
 inner join formule_bloc fb on a.id_article = fb.id_article
 group by a.nom_article;
+
+
+
+SELECT AVG(b.prix_production/(p.longueur*p.largeur*p.hauteur)) FROM bloc b
+    INNER JOIN produit p ON b.id_produit = p.id_produit;

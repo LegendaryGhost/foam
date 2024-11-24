@@ -23,4 +23,8 @@ public interface BlocRepository extends JpaRepository<Bloc, Long> {
     """)
     List<Bloc> findAllOrderByDate();
 
+    @Query("SELECT AVG(b.prixProduction / (p.longueur * p.largeur * p.hauteur)) " +
+            "FROM Bloc b INNER JOIN b.produit p")
+    Double findAverageProductionCost();
+
 }

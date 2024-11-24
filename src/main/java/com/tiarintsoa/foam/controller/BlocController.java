@@ -49,4 +49,10 @@ public class BlocController {
         blocService.updateBlocsTheoreticalCostPrice();
         return "redirect:/machines";
     }
+
+    @GetMapping("/generate-data")
+    public String generateData() {
+        blocService.generateData(10);
+        return "redirect:/machines";
+    }
 }
