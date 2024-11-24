@@ -189,6 +189,7 @@ public class BlocService {
         blocRepository.saveAll(blocs);
     }
 
+    @Transactional
     public void generateData(int blocCount) {
         List<Machine> machines = machineRepository.findAll();
         Double averageProductionCost = blocRepository.findAverageProductionCost();
@@ -200,6 +201,8 @@ public class BlocService {
         List<Article> articles = new ArrayList<>();
         List<Produit> produits = new ArrayList<>();
         List<Bloc> blocs = new ArrayList<>();
+
+        int batchSize = 500; // Set batch size for saving
 
         for (int i = 0; i < blocCount; i++) {
             Article article = new Article();
@@ -217,15 +220,22 @@ public class BlocService {
             Bloc bloc = new Bloc();
             Machine randomMachine = machines.get(ThreadLocalRandom.current().nextInt(machines.size()));
             Double costVariation = ThreadLocalRandom.current().nextDouble(-10, 10);
-            bloc.setPrixProduction(averageProductionCost + averageProductionCost*costVariation/100);
+            bloc.setPrixProduction(averageProductionCost + averageProductionCost * costVariation / 100);
             bloc.setDateHeureInsertion(DateUtils.generateRandomDate(startDate, endDate));
             bloc.setProduit(produit);
             bloc.setMachine(randomMachine);
             blocs.add(bloc);
-        }
 
-        articleRepository.saveAll(articles);
-        produitRepository.saveAll(produits);
-        blocRepository.saveAll(blocs);
+            // Save in batches
+            if ((i + 1) % batchSize == 0 || i + 1 == blocCount) {
+                articleRepository.saveAll(articles);
+                produitRepository.saveAll(produits);
+                blocRepository.saveAll(blocs);
+                // Clear the lists to free memory
+                articles.clear();
+                produits.clear();
+                blocs.clear();
+            }
+        }
     }
 }
