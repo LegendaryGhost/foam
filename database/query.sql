@@ -39,3 +39,5 @@ group by a.nom_article;
 
 SELECT AVG(b.prix_production/(p.longueur*p.largeur*p.hauteur)) FROM bloc b
     INNER JOIN produit p ON b.id_produit = p.id_produit;
+
+SELECT MAX(id_bloc) FROM bloc;

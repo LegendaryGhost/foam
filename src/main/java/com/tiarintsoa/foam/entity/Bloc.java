@@ -3,6 +3,7 @@ package com.tiarintsoa.foam.entity;
 import com.tiarintsoa.foam.from.BlocForm;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
 
 import java.time.LocalDateTime;
@@ -10,6 +11,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "bloc")
 @Data
+@NoArgsConstructor
 public class Bloc {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

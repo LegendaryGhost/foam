@@ -4,12 +4,17 @@ import com.tiarintsoa.foam.dto.csv.BlocCsvDTO;
 import com.tiarintsoa.foam.entity.*;
 import com.tiarintsoa.foam.from.BlocForm;
 import com.tiarintsoa.foam.repository.*;
-import com.tiarintsoa.foam.utils.DateConverter;
+import com.tiarintsoa.foam.utils.DateUtils;
+import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.Month;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 @Service
 public class BlocService {
@@ -21,8 +26,9 @@ public class BlocService {
     private final ArticleRepository articleRepository;
     private final MachineRepository machineRepository;
     private final FormuleBlocRepository formuleBlocRepository;
+    private final EntityManager entityManager;
 
-    public BlocService(TypeProduitRepository typeProduitRepository, ProduitRepository produitRepository, BlocRepository blocRepository, EtatStockRepository etatStockRepository, ArticleRepository articleRepository, MachineRepository machineRepository, FormuleBlocRepository formuleBlocRepository) {
+    public BlocService(TypeProduitRepository typeProduitRepository, ProduitRepository produitRepository, BlocRepository blocRepository, EtatStockRepository etatStockRepository, ArticleRepository articleRepository, MachineRepository machineRepository, FormuleBlocRepository formuleBlocRepository, EntityManager entityManager) {
         this.typeProduitRepository = typeProduitRepository;
         this.produitRepository = produitRepository;
         this.blocRepository = blocRepository;
@@ -30,6 +36,7 @@ public class BlocService {
         this.articleRepository = articleRepository;
         this.machineRepository = machineRepository;
         this.formuleBlocRepository = formuleBlocRepository;
+        this.entityManager = entityManager;
     }
 
     public void saveAllCsvDTO(List<BlocCsvDTO> blocCsvDTOS) {
@@ -55,7 +62,7 @@ public class BlocService {
 
             Bloc bloc = new Bloc();
             bloc.setPrixProduction(blocCsvDTO.getCoutRevient());
-            bloc.setDateHeureInsertion(DateConverter.convertToLocalDateTime(blocCsvDTO.getDate()));
+            bloc.setDateHeureInsertion(DateUtils.convertToLocalDateTime(blocCsvDTO.getDate()));
             bloc.setProduit(produit);
             bloc.setMachine(findMachineByName(
                     machines,
@@ -67,7 +74,7 @@ public class BlocService {
             etatStock.setArticle(article);
             etatStock.setPrixProduction(blocCsvDTO.getCoutRevient());
             etatStock.setQuantite(1.0);
-            etatStock.setDateHeureInsertion(DateConverter.convertToLocalDateTime(blocCsvDTO.getDate()));
+            etatStock.setDateHeureInsertion(DateUtils.convertToLocalDateTime(blocCsvDTO.getDate()));
             etatStockRepository.save(etatStock);
         }
     }
@@ -183,7 +190,42 @@ public class BlocService {
     }
 
     public void generateData(int blocCount) {
+        List<Machine> machines = machineRepository.findAll();
         Double averageProductionCost = blocRepository.findAverageProductionCost();
-        System.out.println(averageProductionCost);
+        Long maxIdBloc = blocRepository.findMaxId();
+        TypeProduit typeProduitBloc = entityManager.getReference(TypeProduit.class, 1L);
+        LocalDate startDate = LocalDate.of(2022, Month.JANUARY, 1);
+        LocalDate endDate = LocalDate.of(2024, Month.DECEMBER, 31);
+
+        List<Article> articles = new ArrayList<>();
+        List<Produit> produits = new ArrayList<>();
+        List<Bloc> blocs = new ArrayList<>();
+
+        for (int i = 0; i < blocCount; i++) {
+            Article article = new Article();
+            article.setNomArticle("Bloc " + (maxIdBloc + i + 1));
+            articles.add(article);
+
+            Produit produit = new Produit();
+            produit.setLongueur(ThreadLocalRandom.current().nextDouble(20, 25));
+            produit.setLargeur(ThreadLocalRandom.current().nextDouble(5, 7));
+            produit.setHauteur(ThreadLocalRandom.current().nextDouble(10, 15));
+            produit.setTypeProduit(typeProduitBloc);
+            produit.setArticle(article);
+            produits.add(produit);
+
+            Bloc bloc = new Bloc();
+            Machine randomMachine = machines.get(ThreadLocalRandom.current().nextInt(machines.size()));
+            Double costVariation = ThreadLocalRandom.current().nextDouble(-10, 10);
+            bloc.setPrixProduction(averageProductionCost + averageProductionCost*costVariation/100);
+            bloc.setDateHeureInsertion(DateUtils.generateRandomDate(startDate, endDate));
+            bloc.setProduit(produit);
+            bloc.setMachine(randomMachine);
+            blocs.add(bloc);
+        }
+
+        articleRepository.saveAll(articles);
+        produitRepository.saveAll(produits);
+        blocRepository.saveAll(blocs);
     }
 }

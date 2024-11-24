@@ -27,4 +27,9 @@ public interface BlocRepository extends JpaRepository<Bloc, Long> {
             "FROM Bloc b INNER JOIN b.produit p")
     Double findAverageProductionCost();
 
+    @Query("""
+        SELECT MAX(b.id) FROM Bloc b
+    """)
+    Long findMaxId();
+
 }
