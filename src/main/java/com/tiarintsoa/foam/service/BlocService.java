@@ -159,13 +159,16 @@ public class BlocService {
                 Double quantiteNecessaire = bloc.getProduit().getVolume() * formule.getQuantiteNecessaire();
 
                 for(EtatStock etatStock : etatStockMap.get(formule.getArticle().getId())) {
+                    if(quantiteNecessaire == 0) break;
+
                     if(etatStock.getQuantite() < quantiteNecessaire) {
-                        quantiteNecessaire -= etatStock.getQuantite();
                         prixProductionTheorique += etatStock.getPrixProduction() * etatStock.getQuantite();
+                        quantiteNecessaire -= etatStock.getQuantite();
                         etatStock.setQuantite(0.0);
                     } else {
                         etatStock.setQuantite(etatStock.getQuantite() - quantiteNecessaire);
                         prixProductionTheorique += etatStock.getPrixProduction() * quantiteNecessaire;
+                        quantiteNecessaire = 0.0;
                         break;
                     }
                 }
@@ -174,9 +177,8 @@ public class BlocService {
                     throw new RuntimeException("Insufficient article quantity");
                 }
             }
-            bloc.setPrixProduction(prixProductionTheorique);
+            bloc.setPrixProductionTheorique(prixProductionTheorique);
         }
-
         blocRepository.saveAll(blocs);
     }
 }

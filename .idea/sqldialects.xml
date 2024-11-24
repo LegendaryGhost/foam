@@ -2,11 +2,11 @@
 <project version="4">
   <component name="SqlDialectMappings">
     <file url="file://$PROJECT_DIR$/database/1_schema.sql" dialect="PostgreSQL" />
-    <file url="file://$PROJECT_DIR$/database/2_trigger.sql" dialect="PostgreSQL" />
-    <file url="file://$PROJECT_DIR$/database/3_views.sql" dialect="PostgreSQL" />
-    <file url="file://$PROJECT_DIR$/database/4_data.sql" dialect="PostgreSQL" />
-    <file url="file://$PROJECT_DIR$/database/import/import.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/database/2_data.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/database/import/3_import.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/database/query.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/database/trigger.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/database/views.sql" dialect="PostgreSQL" />
     <file url="PROJECT" dialect="PostgreSQL" />
   </component>
 </project>

@@ -20,9 +20,7 @@ public interface MachineRepository extends JpaRepository<Machine, Long> {
         LEFT JOIN bloc ON machine.id_machine = bloc.id_machine
         INNER JOIN produit ON bloc.id_produit = produit.id_produit
         GROUP BY machine.id_machine, machine.nom_machine
-        ORDER BY (
-                COALESCE(SUM(bloc.prix_production), 0) - COALESCE(SUM(bloc.prix_production_theorique), 0)
-            ) / COALESCE(SUM(produit.longueur*produit.largeur*produit.hauteur), 0)
+        ORDER BY COALESCE(SUM(bloc.prix_production), 0) - COALESCE(SUM(bloc.prix_production_theorique), 0)
     """, nativeQuery = true)
     List<Object[]> findMachineStatistics();
 
@@ -38,9 +36,7 @@ public interface MachineRepository extends JpaRepository<Machine, Long> {
         INNER JOIN produit ON bloc.id_produit = produit.id_produit
         WHERE EXTRACT(YEAR FROM bloc.date_heure_insertion) = :year
         GROUP BY machine.id_machine, machine.nom_machine
-        ORDER BY (
-                COALESCE(SUM(bloc.prix_production), 0) - COALESCE(SUM(bloc.prix_production_theorique), 0)
-            ) / COALESCE(SUM(produit.longueur*produit.largeur*produit.hauteur), 0)
+        ORDER BY COALESCE(SUM(bloc.prix_production), 0) - COALESCE(SUM(bloc.prix_production_theorique), 0)
     """, nativeQuery = true)
     List<Object[]> findMachineStatisticsByYear(@Param("year") Integer year);
 
