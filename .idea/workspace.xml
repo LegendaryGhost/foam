@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96190351-f0b5-4185-b93a-8ef2a1a39164" name="Changes" comment="Batch size + transactional queries optimization">
+    <list default="true" id="96190351-f0b5-4185-b93a-8ef2a1a39164" name="Changes" comment="Batch size 50">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/2_data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/2_data.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/controller/BlocController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/controller/BlocController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/entity/Bloc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/entity/Bloc.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/service/BlocService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/service/BlocService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.example.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.example.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
@@ -550,7 +547,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732463233634</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Batch size 50">
+      <option name="closed" value="true" />
+      <created>1732466722759</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1732466722759</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -568,7 +573,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Usual form average production cost" />
     <MESSAGE value="Original bloc" />
     <MESSAGE value="Stock change list" />
     <MESSAGE value="Transformation product used" />
@@ -593,6 +597,7 @@
     <MESSAGE value="Bloc average price" />
     <MESSAGE value="Bloc generation" />
     <MESSAGE value="Batch size + transactional queries optimization" />
-    <option name="LAST_COMMIT_MESSAGE" value="Batch size + transactional queries optimization" />
+    <MESSAGE value="Batch size 50" />
+    <option name="LAST_COMMIT_MESSAGE" value="Batch size 50" />
   </component>
 </project>

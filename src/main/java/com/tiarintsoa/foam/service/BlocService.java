@@ -7,6 +7,7 @@ import com.tiarintsoa.foam.repository.*;
 import com.tiarintsoa.foam.utils.DateUtils;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -27,8 +28,11 @@ public class BlocService {
     private final MachineRepository machineRepository;
     private final FormuleBlocRepository formuleBlocRepository;
     private final EntityManager entityManager;
+    private final JdbcTemplate jdbcTemplate;
 
-    public BlocService(TypeProduitRepository typeProduitRepository, ProduitRepository produitRepository, BlocRepository blocRepository, EtatStockRepository etatStockRepository, ArticleRepository articleRepository, MachineRepository machineRepository, FormuleBlocRepository formuleBlocRepository, EntityManager entityManager) {
+    private final static int GENERATION_BATCH_SIZE = 1000;
+
+    public BlocService(TypeProduitRepository typeProduitRepository, ProduitRepository produitRepository, BlocRepository blocRepository, EtatStockRepository etatStockRepository, ArticleRepository articleRepository, MachineRepository machineRepository, FormuleBlocRepository formuleBlocRepository, EntityManager entityManager, JdbcTemplate jdbcTemplate) {
         this.typeProduitRepository = typeProduitRepository;
         this.produitRepository = produitRepository;
         this.blocRepository = blocRepository;
@@ -37,6 +41,7 @@ public class BlocService {
         this.machineRepository = machineRepository;
         this.formuleBlocRepository = formuleBlocRepository;
         this.entityManager = entityManager;
+        this.jdbcTemplate = jdbcTemplate;
     }
 
     public void saveAllCsvDTO(List<BlocCsvDTO> blocCsvDTOS) {
@@ -198,50 +203,73 @@ public class BlocService {
         LocalDate startDate = LocalDate.of(2022, Month.JANUARY, 1);
         LocalDate endDate = LocalDate.of(2024, Month.DECEMBER, 31);
 
-        List<Article> articles = new ArrayList<>();
-        List<Produit> produits = new ArrayList<>();
-        List<Bloc> blocs = new ArrayList<>();
+        List<Object[]> articleParams = new ArrayList<>();
+        List<Object[]> produitParams = new ArrayList<>();
+        List<Object[]> blocParams = new ArrayList<>();
 
         for (int i = 0; i < blocCount; i++) {
-            Article article = new Article();
-            article.setNomArticle("Bloc " + (maxIdBloc + i + 1));
-            articles.add(article);
+            // Collect article parameters for batch
+            articleParams.add(new Object[]{"Bloc " + (maxIdBloc + i + 1)});
 
-            Produit produit = new Produit();
-            produit.setLongueur(ThreadLocalRandom.current().nextDouble(20, 25));
-            produit.setLargeur(ThreadLocalRandom.current().nextDouble(5, 7));
-            produit.setHauteur(ThreadLocalRandom.current().nextDouble(10, 15));
-            produit.setTypeProduit(typeProduitBloc);
-            produit.setArticle(article);
-            produits.add(produit);
+            produitParams.add(new Object[]{
+                    ThreadLocalRandom.current().nextDouble(20, 25),
+                    ThreadLocalRandom.current().nextDouble(5, 7),
+                    ThreadLocalRandom.current().nextDouble(10, 15),
+                    typeProduitBloc.getIdTypeProduit(),
+                    null
+            });
 
-            Bloc bloc = new Bloc();
             Machine randomMachine = machines.get(ThreadLocalRandom.current().nextInt(machines.size()));
             Double costVariation = ThreadLocalRandom.current().nextDouble(-10, 10);
-            bloc.setPrixProduction(averageProductionCost + averageProductionCost*costVariation/100);
-            bloc.setDateHeureInsertion(DateUtils.generateRandomDate(startDate, endDate));
-            bloc.setProduit(produit);
-            bloc.setMachine(randomMachine);
-            blocs.add(bloc);
+            blocParams.add(new Object[]{
+                    averageProductionCost + averageProductionCost * costVariation / 100,
+                    DateUtils.generateRandomDate(startDate, endDate),
+                    null,
+                    randomMachine.getId()
+            });
 
-            // Batch size: flush and clear after every 50 records
-            if (i % 50 == 0) {
-                articleRepository.saveAll(articles);
-                produitRepository.saveAll(produits);
-                blocRepository.saveAll(blocs);
+            // Execute batch after every 500 records
+            if (i % GENERATION_BATCH_SIZE == 0) {
+                saveBatch(articleParams, produitParams, blocParams);
 
-                entityManager.flush();
-                entityManager.clear();
-
-                articles.clear();
-                produits.clear();
-                blocs.clear();
+                // Clear lists for the next batch
+                articleParams.clear();
+                produitParams.clear();
+                blocParams.clear();
             }
         }
 
-        // Final batch insert if any remaining
-        articleRepository.saveAll(articles);
-        produitRepository.saveAll(produits);
-        blocRepository.saveAll(blocs);
+        // Final batch insert if necessary
+        if (!articleParams.isEmpty()) {
+            saveBatch(articleParams, produitParams, blocParams);
+        }
+    }
+
+    private void saveBatch(List<Object[]> articleParams, List<Object[]> produitParams, List<Object[]> blocParams) {
+        String articleInsertQuery = "INSERT INTO article (nom_article) VALUES (?)";
+        String produitInsertQuery = "INSERT INTO produit (longueur, largeur, hauteur, id_type_produit, id_article) VALUES (?, ?, ?, ?, ?)";
+        String blocInsertQuery = "INSERT INTO bloc (prix_production, date_heure_insertion, id_produit, id_machine) VALUES (?, ?, ?, ?)";
+
+        // Insert articles
+        jdbcTemplate.batchUpdate(articleInsertQuery, articleParams);
+
+        // After articles are inserted, we can get the generated IDs (assuming auto-incremented IDs)
+        List<Long> articleIds = jdbcTemplate.queryForList("SELECT id_article FROM article ORDER BY id_article DESC LIMIT " + GENERATION_BATCH_SIZE, Long.class);
+
+        // Now, update produitParams and blocParams with the correct article IDs
+        for (int j = 0; j < articleParams.size(); j++) {
+            produitParams.get(j)[4] = articleIds.get(j); // Set article ID in produitParams
+        }
+
+        // Insert produits and blocs with updated IDs
+        jdbcTemplate.batchUpdate(produitInsertQuery, produitParams);
+
+        List<Long> produitIds = jdbcTemplate.queryForList("SELECT id_produit FROM produit ORDER BY id_produit DESC LIMIT " + GENERATION_BATCH_SIZE, Long.class);
+
+        for (int j = 0; j < produitParams.size(); j++) {
+            blocParams.get(j)[2] = produitIds.get(j); // Set produit ID in blocParams
+        }
+
+        jdbcTemplate.batchUpdate(blocInsertQuery, blocParams);
     }
 }
