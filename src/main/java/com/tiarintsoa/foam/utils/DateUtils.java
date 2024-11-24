@@ -2,13 +2,12 @@ package com.tiarintsoa.foam.utils;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class DateUtils {
     public static LocalDateTime convertToLocalDateTime(String dateStr) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter.ofPattern("dd/MM/yyyy");
         return LocalDateTime.parse(dateStr + "T00:00:00", DateTimeFormatter.ISO_LOCAL_DATE_TIME);
     }
 
@@ -17,7 +16,7 @@ public class DateUtils {
         // Generate a random number of days between the start and end date
         long startEpoch = startDate.toEpochDay();
         long endEpoch = endDate.toEpochDay();
-        long randomEpochDay = ThreadLocalRandom.current().longs(startEpoch, endEpoch).findFirst().getAsLong();
+        long randomEpochDay = ThreadLocalRandom.current().nextLong(startEpoch, endEpoch);
 
         // Convert the random epoch day to a LocalDate
         LocalDate randomDate = LocalDate.ofEpochDay(randomEpochDay);
