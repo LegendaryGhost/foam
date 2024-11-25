@@ -5,6 +5,8 @@ import com.tiarintsoa.foam.from.BlocForm;
 import com.tiarintsoa.foam.repository.BlocRepository;
 import com.tiarintsoa.foam.repository.MachineRepository;
 import com.tiarintsoa.foam.service.BlocService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -24,8 +26,17 @@ public class BlocController {
     }
 
     @GetMapping
-    public String blocs(Model model) {
-        model.addAttribute("blocs", blocRepository.findAll());
+    public String blocs(Model model,
+                        @RequestParam(defaultValue = "1") int page,
+                        @RequestParam(defaultValue = "10") int size) {
+
+        Page<Bloc> pageBlocs = blocRepository.findAll(PageRequest.of(page - 1, size));
+        model.addAttribute("blocs", pageBlocs.getContent());
+        model.addAttribute("totalPages", pageBlocs.getTotalPages());
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalItems", pageBlocs.getTotalElements());
+        model.addAttribute("pageSize", size);
+
         return "bloc";
     }
 

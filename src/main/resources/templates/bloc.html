@@ -12,6 +12,24 @@
 <main class="container my-4">
 
     <h1 class="text-center">Liste des Blocs</h1>
+
+    <!-- Pagination Summary -->
+    <div class="mb-3">
+        <p class="text-center">
+            Page <span th:text="${currentPage}"></span> of <span th:text="${totalPages}"></span> — Total: <span th:text="${totalItems}"></span> items.
+        </p>
+    </div>
+
+    <nav aria-label="Page bloc navigation">
+        <ul class="pagination justify-content-center">
+            <li class="page-item"><a class="page-link" th:href="@{/blocs(page=${currentPage - 1})}">Previous</a></li>
+<!--            <li class="page-item"><a class="page-link" href="#">1</a></li>-->
+<!--            <li class="page-item"><a class="page-link" href="#">2</a></li>-->
+<!--            <li class="page-item"><a class="page-link" href="#">3</a></li>-->
+            <li class="page-item"><a class="page-link" th:href="@{/blocs(page=${currentPage + 1})}">Next</a></li>
+        </ul>
+    </nav>
+
     <table class="table table-striped">
         <thead>
             <tr>
