@@ -30,7 +30,7 @@ public class BlocService {
     private final EntityManager entityManager;
     private final JdbcTemplate jdbcTemplate;
 
-    private final static int GENERATION_BATCH_SIZE = 1000;
+    private final static int BATCH_SIZE = 1000;
 
     public BlocService(TypeProduitRepository typeProduitRepository, ProduitRepository produitRepository, BlocRepository blocRepository, EtatStockRepository etatStockRepository, ArticleRepository articleRepository, MachineRepository machineRepository, FormuleBlocRepository formuleBlocRepository, EntityManager entityManager, JdbcTemplate jdbcTemplate) {
         this.typeProduitRepository = typeProduitRepository;
@@ -156,30 +156,40 @@ public class BlocService {
         etatStockRepository.save(etatStock);
     }
 
+    @Transactional
     public void updateBlocsTheoreticalCostPrice() {
+        // Fetch data
         List<Bloc> blocs = blocRepository.findAllOrderByDate();
-        List<FormuleBloc> formules=formuleBlocRepository.findAll();
-        HashMap<Long,List<EtatStock>> etatStockMap= new HashMap<>();
+        List<FormuleBloc> formules = formuleBlocRepository.findAll();
+
+        // Create a map for EtatStock grouped by article ID
+        HashMap<Long, List<EtatStock>> etatStockMap = new HashMap<>();
         for (FormuleBloc formuleBloc : formules) {
             List<EtatStock> etatStocks = etatStockRepository.findAllByArticleInFormule(formuleBloc.getArticle().getId());
             etatStockMap.put(formuleBloc.getArticle().getId(), etatStocks);
         }
 
+        // Step 2: Prepare updates
+        String updateBlocQuery = "UPDATE bloc SET prix_production_theorique = ? WHERE id_bloc = ?";
+        List<Object[]> blocUpdates = new ArrayList<>();
+
         for (Bloc bloc : blocs) {
             double prixProductionTheorique = 0.0;
+
             for (FormuleBloc formule : formules) {
-                Double quantiteNecessaire = bloc.getProduit().getVolume() * formule.getQuantiteNecessaire();
+                double quantiteNecessaire = bloc.getProduit().getVolume() * formule.getQuantiteNecessaire();
 
-                for(EtatStock etatStock : etatStockMap.get(formule.getArticle().getId())) {
-                    if(quantiteNecessaire == 0) break;
+                List<EtatStock> etatStocks = etatStockMap.get(formule.getArticle().getId());
+                for (EtatStock etatStock : etatStocks) {
+                    if (quantiteNecessaire == 0) break;
 
-                    if(etatStock.getQuantite() < quantiteNecessaire) {
+                    if (etatStock.getQuantite() < quantiteNecessaire) {
                         prixProductionTheorique += etatStock.getPrixProduction() * etatStock.getQuantite();
                         quantiteNecessaire -= etatStock.getQuantite();
                         etatStock.setQuantite(0.0);
                     } else {
-                        etatStock.setQuantite(etatStock.getQuantite() - quantiteNecessaire);
                         prixProductionTheorique += etatStock.getPrixProduction() * quantiteNecessaire;
+                        etatStock.setQuantite(etatStock.getQuantite() - quantiteNecessaire);
                         quantiteNecessaire = 0.0;
                         break;
                     }
@@ -189,9 +199,21 @@ public class BlocService {
                     throw new RuntimeException("Insufficient article quantity");
                 }
             }
-            bloc.setPrixProductionTheorique(prixProductionTheorique);
+
+            // Add the prepared statement parameters to the list
+            blocUpdates.add(new Object[]{prixProductionTheorique, bloc.getId()});
+
+            // Step 3: Execute in batches
+            if (blocUpdates.size() >= BATCH_SIZE) {
+                jdbcTemplate.batchUpdate(updateBlocQuery, blocUpdates);
+                blocUpdates.clear(); // Clear the list after batch execution
+            }
         }
-        blocRepository.saveAll(blocs);
+
+        // Step 4: Execute remaining updates
+        if (!blocUpdates.isEmpty()) {
+            jdbcTemplate.batchUpdate(updateBlocQuery, blocUpdates);
+        }
     }
 
     @Transactional
@@ -229,7 +251,7 @@ public class BlocService {
             });
 
             // Execute batch after every 500 records
-            if (i % GENERATION_BATCH_SIZE == 0) {
+            if (i % BATCH_SIZE == 0) {
                 saveBatch(articleParams, produitParams, blocParams);
 
                 // Clear lists for the next batch
@@ -254,7 +276,7 @@ public class BlocService {
         jdbcTemplate.batchUpdate(articleInsertQuery, articleParams);
 
         // After articles are inserted, we can get the generated IDs (assuming auto-incremented IDs)
-        List<Long> articleIds = jdbcTemplate.queryForList("SELECT id_article FROM article ORDER BY id_article DESC LIMIT " + GENERATION_BATCH_SIZE, Long.class);
+        List<Long> articleIds = jdbcTemplate.queryForList("SELECT id_article FROM article ORDER BY id_article DESC LIMIT " + BATCH_SIZE, Long.class);
 
         // Now, update produitParams and blocParams with the correct article IDs
         for (int j = 0; j < articleParams.size(); j++) {
@@ -264,7 +286,7 @@ public class BlocService {
         // Insert produits and blocs with updated IDs
         jdbcTemplate.batchUpdate(produitInsertQuery, produitParams);
 
-        List<Long> produitIds = jdbcTemplate.queryForList("SELECT id_produit FROM produit ORDER BY id_produit DESC LIMIT " + GENERATION_BATCH_SIZE, Long.class);
+        List<Long> produitIds = jdbcTemplate.queryForList("SELECT id_produit FROM produit ORDER BY id_produit DESC LIMIT " + BATCH_SIZE, Long.class);
 
         for (int j = 0; j < produitParams.size(); j++) {
             blocParams.get(j)[2] = produitIds.get(j); // Set produit ID in blocParams
