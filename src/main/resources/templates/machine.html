@@ -19,8 +19,8 @@
         <div class="form-group">
             <label class="form-label" for="year">Année :</label>
             <select class="form-select" id="year" name="year">
-                <option value="" selected>Toutes</option>
-                <option th:each="year : ${years}" th:value="${year}" th:text="${year}"></option>
+                <option value="" th:selected="selectedYear == null">Toutes</option>
+                <option th:each="year : ${years}" th:value="${year}" th:text="${year}" th:selected="year == selectedYear"></option>
             </select>
         </div>
         <button type="submit" class="btn btn-primary">Filter</button>

@@ -1,3 +1,0 @@
-pg_dump --table=bloc --data-only --column-inserts -U postgres foam_test > bloc.sql;
-pg_dump --table=produit --data-only --column-inserts -U postgres foam_test > produit.sql;
-pg_dump --table=article --data-only --column-inserts -U postgres foam_test > article.sql;

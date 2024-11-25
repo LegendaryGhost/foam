@@ -21,6 +21,7 @@ public class MachineController {
     @GetMapping
     public String statistiquesMachines(@RequestParam(value = "year", required = false) Integer year, Model model) {
         model.addAttribute("years", machineService.getMachineStatsYears());
+        model.addAttribute("selectedYear", year);
         if (year == null) {
             model.addAttribute("machines", machineService.getMachineStatistics());
         } else {

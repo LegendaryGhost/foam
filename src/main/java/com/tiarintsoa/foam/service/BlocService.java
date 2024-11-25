@@ -32,7 +32,17 @@ public class BlocService {
 
     private final static int BATCH_SIZE = 1000;
 
-    public BlocService(TypeProduitRepository typeProduitRepository, ProduitRepository produitRepository, BlocRepository blocRepository, EtatStockRepository etatStockRepository, ArticleRepository articleRepository, MachineRepository machineRepository, FormuleBlocRepository formuleBlocRepository, EntityManager entityManager, JdbcTemplate jdbcTemplate) {
+    public BlocService(
+            TypeProduitRepository typeProduitRepository,
+            ProduitRepository produitRepository,
+            BlocRepository blocRepository,
+            EtatStockRepository etatStockRepository,
+            ArticleRepository articleRepository,
+            MachineRepository machineRepository,
+            FormuleBlocRepository formuleBlocRepository,
+            EntityManager entityManager,
+            JdbcTemplate jdbcTemplate
+    ) {
         this.typeProduitRepository = typeProduitRepository;
         this.produitRepository = produitRepository;
         this.blocRepository = blocRepository;
@@ -188,13 +198,6 @@ public class BlocService {
                         quantiteNecessaire -= etatStock.getQuantite();
                         etatStock.setQuantite(0.0);
                     } else {
-                        System.out.println(
-                                        etatStock.getArticle().getNomArticle() + " " +
-                                        etatStock.getDateHeureInsertion().toString() + " " +
-                                        quantiteNecessaire + " " +
-                                        bloc.getProduit().getId() + " " +
-                                        bloc.getProduit().getVolume()
-                        );
                         prixProductionTheorique += etatStock.getPrixProduction() * quantiteNecessaire;
                         etatStock.setQuantite(etatStock.getQuantite() - quantiteNecessaire);
                         quantiteNecessaire = 0.0;
@@ -206,11 +209,6 @@ public class BlocService {
                     throw new RuntimeException("Insufficient article quantity");
                 }
             }
-
-            System.out.println(
-                    bloc.getProduit().getArticle().getNomArticle() + " " +
-                    bloc.getDateHeureInsertion()
-            );
 
             // Add the prepared statement parameters to the list
             blocUpdates.add(new Object[]{prixProductionTheorique, bloc.getId()});
@@ -295,7 +293,7 @@ public class BlocService {
         jdbcTemplate.batchUpdate(articleInsertQuery, articleParams);
 
         // After articles are inserted, we can get the generated IDs (assuming auto-incremented IDs)
-        List<Long> articleIds = jdbcTemplate.queryForList("SELECT id_article FROM article ORDER BY id_article DESC LIMIT " + BATCH_SIZE, Long.class);
+        List<Long> articleIds = jdbcTemplate.queryForList("SELECT id_article FROM article ORDER BY id_article DESC LIMIT " + articleParams.size(), Long.class);
 
         // Now, update produitParams and blocParams with the correct article IDs
         for (int j = 0; j < articleParams.size(); j++) {
@@ -305,7 +303,7 @@ public class BlocService {
         // Insert produits and blocs with updated IDs
         jdbcTemplate.batchUpdate(produitInsertQuery, produitParams);
 
-        List<Long> produitIds = jdbcTemplate.queryForList("SELECT id_produit FROM produit ORDER BY id_produit DESC LIMIT " + BATCH_SIZE, Long.class);
+        List<Long> produitIds = jdbcTemplate.queryForList("SELECT id_produit FROM produit ORDER BY id_produit DESC LIMIT " + produitParams.size(), Long.class);
 
         for (int j = 0; j < produitParams.size(); j++) {
             blocParams.get(j)[2] = produitIds.get(j); // Set produit ID in blocParams
