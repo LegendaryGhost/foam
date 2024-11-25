@@ -19,7 +19,7 @@ public interface BlocRepository extends JpaRepository<Bloc, Long> {
 
     @Query("""
         SELECT b FROM Bloc b
-        ORDER by b.dateHeureInsertion
+        ORDER by b.dateHeureInsertion, b.id
     """)
     List<Bloc> findAllOrderByDate();
 

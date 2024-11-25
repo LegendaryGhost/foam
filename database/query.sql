@@ -42,11 +42,21 @@ SELECT AVG(b.prix_production/(p.longueur*p.largeur*p.hauteur)) FROM bloc b
 
 SELECT MAX(id_bloc) FROM bloc;
 
-select a.nom_article, b.prix_production, b.prix_production_theorique, p.longueur, p.largeur, p.hauteur, b.id_machine, b.date_heure_insertion from bloc b
+-- détails bloc
+select a.nom_article, b.prix_production, b.prix_production_theorique, p.longueur, p.largeur, p.hauteur, b.id_machine, b.date_heure_insertion,
+       p.longueur*p.largeur*p.hauteur as volume
+from bloc b
       inner join produit p on b.id_produit = p.id_produit
       inner join article a on p.id_article = a.id_article
 order by b.id_bloc;
 
+-- état de stock + article
 select * from etat_stock es
     inner join article a on es.id_article = a.id_article
 order by a.id_article, es.date_heure_insertion;
+
+-- volume d'éponge par année
+SELECT SUM(p.longueur*p.largeur*p.hauteur) AS volume_total, EXTRACT(YEAR FROM b.date_heure_insertion) AS year FROM bloc b
+      INNER JOIN produit p ON b.id_produit = p.id_produit
+GROUP BY year
+ORDER by year;

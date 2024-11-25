@@ -188,6 +188,13 @@ public class BlocService {
                         quantiteNecessaire -= etatStock.getQuantite();
                         etatStock.setQuantite(0.0);
                     } else {
+                        System.out.println(
+                                        etatStock.getArticle().getNomArticle() + " " +
+                                        etatStock.getDateHeureInsertion().toString() + " " +
+                                        quantiteNecessaire + " " +
+                                        bloc.getProduit().getId() + " " +
+                                        bloc.getProduit().getVolume()
+                        );
                         prixProductionTheorique += etatStock.getPrixProduction() * quantiteNecessaire;
                         etatStock.setQuantite(etatStock.getQuantite() - quantiteNecessaire);
                         quantiteNecessaire = 0.0;
@@ -199,6 +206,11 @@ public class BlocService {
                     throw new RuntimeException("Insufficient article quantity");
                 }
             }
+
+            System.out.println(
+                    bloc.getProduit().getArticle().getNomArticle() + " " +
+                    bloc.getDateHeureInsertion()
+            );
 
             // Add the prepared statement parameters to the list
             blocUpdates.add(new Object[]{prixProductionTheorique, bloc.getId()});
