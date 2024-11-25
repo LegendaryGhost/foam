@@ -35,6 +35,7 @@
             <tr>
                 <th>Nom du Bloc</th>
                 <th class="text-end">Coût de production</th>
+                <th class="text-end">Coût de production théorique</th>
                 <th class="text-end">Bloc d'origine</th>
                 <th class="text-end">Bloc originel</th>
                 <th class="text-end">Longueur</th>
@@ -47,6 +48,7 @@
             <tr th:each="bloc : ${blocs}">
                 <td th:text="${bloc.produit.article.nomArticle}">Bloc</td>
                 <td class="text-end" th:text="${#numbers.formatDecimal(bloc.prixProduction, 0, 'DEFAULT', 2, 'COMMA') + ' Ar'}">0.00 Ar</td>
+                <td class="text-end" th:text="${#numbers.formatDecimal(bloc.prixProductionTheorique, 0, 'DEFAULT', 2, 'COMMA') + ' Ar'}">0.00 Ar</td>
                 <td class="text-end" th:text="${bloc.origine?.produit?.article?.nomArticle ?: 'Aucun'}">Aucun</td>
                 <td class="text-end" th:text="${bloc.originel?.produit?.article?.nomArticle ?: 'Aucun'}">Aucun</td>
                 <td class="text-end" th:text="${#numbers.formatDecimal(bloc.produit.longueur, 0, 'DEFAULT', 2, 'COMMA')}">0.00</td>

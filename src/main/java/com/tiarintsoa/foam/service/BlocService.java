@@ -219,8 +219,10 @@ public class BlocService {
     @Transactional
     public void generateData(int blocCount) {
         List<Machine> machines = machineRepository.findAll();
-        Double averageProductionCost = blocRepository.findAverageProductionCost();
+        Double averageVolumicProductionCost = blocRepository.findAverageVolumicProductionCost();
+        averageVolumicProductionCost = averageVolumicProductionCost == null ? 6000 : averageVolumicProductionCost;
         Long maxIdBloc = blocRepository.findMaxId();
+        maxIdBloc = maxIdBloc == null ? 0 : maxIdBloc;
         TypeProduit typeProduitBloc = entityManager.getReference(TypeProduit.class, 1L);
         LocalDate startDate = LocalDate.of(2022, Month.JANUARY, 1);
         LocalDate endDate = LocalDate.of(2024, Month.DECEMBER, 31);
@@ -233,18 +235,23 @@ public class BlocService {
             // Collect article parameters for batch
             articleParams.add(new Object[]{"Bloc " + (maxIdBloc + i + 1)});
 
+            int longueur = ThreadLocalRandom.current().nextInt(20, 26); // 25
+            int largeur = ThreadLocalRandom.current().nextInt(5, 8); // 7
+            int hauteur = ThreadLocalRandom.current().nextInt(10, 16); // 15
             produitParams.add(new Object[]{
-                    ThreadLocalRandom.current().nextDouble(20, 25),
-                    ThreadLocalRandom.current().nextDouble(5, 7),
-                    ThreadLocalRandom.current().nextDouble(10, 15),
+                    longueur,
+                    largeur,
+                    hauteur,
                     typeProduitBloc.getIdTypeProduit(),
                     null
             });
 
             Machine randomMachine = machines.get(ThreadLocalRandom.current().nextInt(machines.size()));
-            Double costVariation = ThreadLocalRandom.current().nextDouble(-10, 10);
+            double costVariation = ThreadLocalRandom.current().nextDouble(-10, 10);
+            double productionCost = averageVolumicProductionCost * longueur * largeur * hauteur;
+            productionCost = productionCost + productionCost * costVariation / 100;
             blocParams.add(new Object[]{
-                    averageProductionCost + averageProductionCost * costVariation / 100,
+                    productionCost,
                     DateUtils.generateRandomDate(startDate, endDate),
                     null,
                     randomMachine.getId()

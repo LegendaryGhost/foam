@@ -63,7 +63,7 @@ public class BlocController {
 
     @GetMapping("/generate-data")
     public String generateData() {
-        blocService.generateData(1000000);
+        blocService.generateData(10);
         return "redirect:/machines";
     }
 }

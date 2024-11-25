@@ -4,9 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96190351-f0b5-4185-b93a-8ef2a1a39164" name="Changes" comment="DateUtils warning fixed">
+    <list default="true" id="96190351-f0b5-4185-b93a-8ef2a1a39164" name="Changes" comment="Bloc pagination">
+      <change afterPath="$PROJECT_DIR$/database/test_theoretical_cost/.~lock.theoretical_cost.ods#" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/test_theoretical_cost/2_data.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/test_theoretical_cost/export" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/test_theoretical_cost/theoretical_cost.ods" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/test_theoretical_cost/theoretical_cost.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/delete.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/delete.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/query.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/query.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/controller/BlocController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/controller/BlocController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/repository/BlocRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/repository/BlocRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/service/BlocService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/service/BlocService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/bloc.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/bloc.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -75,7 +87,7 @@
     "git-widget-placeholder": "pagination",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/ITU/S5/architecture-logiciel/foam/database/import",
+    "last_opened_file_path": "D:/ITU/S5/architecture-logiciel/foam/database/test_theoritical_cost",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -92,6 +104,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\ITU\S5\architecture-logiciel\foam\database\test_theoritical_cost" />
       <recent name="D:\ITU\S5\architecture-logiciel\foam\database\import" />
       <recent name="D:\ITU\S5\architecture-logiciel\foam\database" />
       <recent name="D:\ITU\S5\architecture-logiciel\foam\src\main\resources\templates" />
@@ -573,7 +586,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732471083268</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="Bloc pagination">
+      <option name="closed" value="true" />
+      <created>1732520147119</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1732520147119</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -591,7 +612,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Transformation product used" />
     <MESSAGE value="Data provided by ITU" />
     <MESSAGE value="Dimension check commented" />
     <MESSAGE value="Alea 2: rest dimension with unity" />
@@ -616,6 +636,7 @@
     <MESSAGE value="Batch size 50" />
     <MESSAGE value="Native query data generation" />
     <MESSAGE value="DateUtils warning fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="DateUtils warning fixed" />
+    <MESSAGE value="Bloc pagination" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bloc pagination" />
   </component>
 </project>
