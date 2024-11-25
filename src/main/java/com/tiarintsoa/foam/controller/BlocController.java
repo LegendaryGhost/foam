@@ -2,6 +2,7 @@ package com.tiarintsoa.foam.controller;
 
 import com.tiarintsoa.foam.entity.Bloc;
 import com.tiarintsoa.foam.from.BlocForm;
+import com.tiarintsoa.foam.from.GenerationForm;
 import com.tiarintsoa.foam.repository.BlocRepository;
 import com.tiarintsoa.foam.repository.MachineRepository;
 import com.tiarintsoa.foam.service.BlocService;
@@ -62,8 +63,14 @@ public class BlocController {
     }
 
     @GetMapping("/generate-data")
-    public String generateData() {
-        blocService.generateData(1000000);
+    public String showDataGenerationForm(Model model) {
+        model.addAttribute("generationForm", new GenerationForm());
+        return "generation";
+    }
+
+    @PostMapping("/generate-data")
+    public String generateData(@ModelAttribute GenerationForm generationForm) {
+        blocService.generateData(generationForm);
         return "redirect:/machines";
     }
 }

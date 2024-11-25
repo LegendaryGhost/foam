@@ -3,6 +3,7 @@ package com.tiarintsoa.foam.service;
 import com.tiarintsoa.foam.dto.csv.BlocCsvDTO;
 import com.tiarintsoa.foam.entity.*;
 import com.tiarintsoa.foam.from.BlocForm;
+import com.tiarintsoa.foam.from.GenerationForm;
 import com.tiarintsoa.foam.repository.*;
 import com.tiarintsoa.foam.utils.DateUtils;
 import jakarta.persistence.EntityManager;
@@ -227,7 +228,7 @@ public class BlocService {
     }
 
     @Transactional
-    public void generateData(int blocCount) {
+    public void generateData(GenerationForm generationForm) {
         List<Machine> machines = machineRepository.findAll();
         Double averageVolumicProductionCost = blocRepository.findAverageVolumicProductionCost();
         averageVolumicProductionCost = averageVolumicProductionCost == null ? 6000 : averageVolumicProductionCost;
@@ -241,13 +242,13 @@ public class BlocService {
         List<Object[]> produitParams = new ArrayList<>();
         List<Object[]> blocParams = new ArrayList<>();
 
-        for (int i = 0; i < blocCount; i++) {
+        for (int i = 0; i < generationForm.getBlocCount(); i++) {
             // Collect article parameters for batch
             articleParams.add(new Object[]{"Bloc " + (maxIdBloc + i + 1)});
 
-            int longueur = ThreadLocalRandom.current().nextInt(20, 26); // 25
-            int largeur = ThreadLocalRandom.current().nextInt(5, 8); // 7
-            int hauteur = ThreadLocalRandom.current().nextInt(10, 16); // 15
+            int longueur = ThreadLocalRandom.current().nextInt(generationForm.getMinLongueur(), generationForm.getMaxLongueur()); // 20 - 25 (26)
+            int largeur = ThreadLocalRandom.current().nextInt(generationForm.getMinLargeur(), generationForm.getMaxLargeur()); // 5 - 7 (8)
+            int hauteur = ThreadLocalRandom.current().nextInt(generationForm.getMinHauteur(), generationForm.getMaxHauteur()); // 10 - 15 (16)
             produitParams.add(new Object[]{
                     longueur,
                     largeur,

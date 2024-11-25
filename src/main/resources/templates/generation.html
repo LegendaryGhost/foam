@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <title>Génération de Blocs</title>
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}" />
+</head>
+<body>
+
+<!-- Include the navbar component here -->
+<header th:include="fragments/navbar"></header>
+
+<main class="container my-4">
+    <h1 class="text-center">Génération de blocs</h1>
+
+    <form th:action="@{/blocs/generate-data}" th:object="${generationForm}" method="post">
+
+        <div class="mb-3">
+            <label class="form-label" for="blocCount">Nombre de blocs :</label>
+            <input class="form-control" type="number" min="1" th:field="*{blocCount}" id="blocCount" required/>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="minLongueur">Longueur minimum :</label>
+            <input class="form-control" type="number" min="1" th:field="*{minLongueur}" id="minLongueur" required/>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="maxLongueur">Longueur maximum :</label>
+            <input class="form-control" type="number" min="1" th:field="*{maxLongueur}" id="maxLongueur" required/>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="minLargeur">Largeur minimum :</label>
+            <input class="form-control" type="number" min="1" th:field="*{minLargeur}" id="minLargeur" required/>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="maxLargeur">Largeur maximum :</label>
+            <input class="form-control" type="number" min="1" th:field="*{maxLargeur}" id="maxLargeur" required/>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="minHauteur">Hauteur minimum :</label>
+            <input class="form-control" type="number" min="1" th:field="*{minHauteur}" id="minHauteur" required/>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="maxHauteur">Hauteur maximum :</label>
+            <input class="form-control" type="number" min="1" th:field="*{maxHauteur}" id="maxHauteur" required/>
+        </div>
+
+        <button class="btn btn-primary mt-3" type="submit">Générer</button>
+    </form>
+</main>
+
+</body>
+</html>
