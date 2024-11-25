@@ -31,6 +31,8 @@ public class BlocController {
                         @RequestParam(defaultValue = "1") int page,
                         @RequestParam(defaultValue = "10") int size) {
 
+        page = page < 1 ? 1 : page;
+
         Page<Bloc> pageBlocs = blocRepository.findAll(PageRequest.of(page - 1, size));
         model.addAttribute("blocs", pageBlocs.getContent());
         model.addAttribute("totalPages", pageBlocs.getTotalPages());

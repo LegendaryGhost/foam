@@ -1,7 +1,6 @@
 package com.tiarintsoa.foam.controller;
 
 import com.tiarintsoa.foam.service.MachineService;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

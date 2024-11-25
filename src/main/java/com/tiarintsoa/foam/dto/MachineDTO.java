@@ -8,11 +8,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MachineDTO {
-    private Long idMachine;               // ID de la machine
-    private String nomMachine;            // Nom de la machine
-    private Double prixProductionPratique; // Prix de production pratique
-    private Double prixProductionTheorique; // Prix de production théorique
-    private Double volumeTotalProduit;    // Volume total des produits
+    private Long idMachine;
+    private String nomMachine;
+    private Double prixProductionPratique;
+    private Double prixProductionTheorique;
+    private Double volumeTotalProduit;
 
     public Double getEcart() {
         return prixProductionPratique - prixProductionTheorique;
