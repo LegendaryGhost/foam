@@ -1,6 +1,5 @@
 package com.tiarintsoa.foam.controller;
 
-import com.tiarintsoa.foam.service.CsvService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,39 +18,39 @@ import java.util.List;
 @RequestMapping("/csv")
 public class CsvController {
 
-    @Autowired
-    private CsvService csvService;
-
-    @GetMapping
-    public String uploadPage() {
-        return "csv";
-    }
-
-    @PostMapping
-    public String uploadCsv(MultipartFile file, Model model) {
-        if (file.isEmpty()) {
-            model.addAttribute("message", "Veuillez sélectionner un fichier.");
-            return "csv";
-        }
-
-        List<String[]> data = new ArrayList<>();
-        try (BufferedReader reader = new BufferedReader(
-                new InputStreamReader(file.getInputStream(), StandardCharsets.UTF_8))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] values = line.split(","); // Ajustez le séparateur si nécessaire
-                data.add(values);
-            }
-            csvService.saveCsvData(data);
-        } catch (Exception e) {
-            model.addAttribute("message", "Erreur lors de la lecture du fichier : " + e.getMessage());
-            return "csv";
-        }
-
-        // Traitez les données ici (sauvegarde en base de données, validation, etc.)
-        model.addAttribute("message", "Fichier importé avec succès !");
-        model.addAttribute("data", data); // Facultatif : Pour afficher les données
-
-        return "csv";
-    }
+//    @Autowired
+//    private CsvService csvService;
+//
+//    @GetMapping
+//    public String uploadPage() {
+//        return "csv";
+//    }
+//
+//    @PostMapping
+//    public String uploadCsv(MultipartFile file, Model model) {
+//        if (file.isEmpty()) {
+//            model.addAttribute("message", "Veuillez sélectionner un fichier.");
+//            return "csv";
+//        }
+//
+//        List<String[]> data = new ArrayList<>();
+//        try (BufferedReader reader = new BufferedReader(
+//                new InputStreamReader(file.getInputStream(), StandardCharsets.UTF_8))) {
+//            String line;
+//            while ((line = reader.readLine()) != null) {
+//                String[] values = line.split(","); // Ajustez le séparateur si nécessaire
+//                data.add(values);
+//            }
+//            csvService.saveCsvData(data);
+//        } catch (Exception e) {
+//            model.addAttribute("message", "Erreur lors de la lecture du fichier : " + e.getMessage());
+//            return "csv";
+//        }
+//
+//        // Traitez les données ici (sauvegarde en base de données, validation, etc.)
+//        model.addAttribute("message", "Fichier importé avec succès !");
+//        model.addAttribute("data", data); // Facultatif : Pour afficher les données
+//
+//        return "csv";
+//    }
 }

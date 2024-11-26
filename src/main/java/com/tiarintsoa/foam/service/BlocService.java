@@ -55,6 +55,7 @@ public class BlocService {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    // TODO: remove after new implementation is changed
     public void saveAllCsvDTO(List<BlocCsvDTO> blocCsvDTOS) {
         TypeProduit typeProduit = typeProduitRepository.findById(1L)
                 .orElseThrow(() -> new RuntimeException("Type produit introuvable") );
@@ -232,8 +233,14 @@ public class BlocService {
         List<Machine> machines = machineRepository.findAll();
         Double averageVolumicProductionCost = blocRepository.findAverageVolumicProductionCost();
         averageVolumicProductionCost = averageVolumicProductionCost == null ? 6000 : averageVolumicProductionCost;
+
+        Long maxIdArticle = articleRepository.findMaxId();
+        maxIdArticle = maxIdArticle == null ? 0 : maxIdArticle;
+        Long maxIdProduit = produitRepository.findMaxId();
+        maxIdProduit = maxIdProduit == null ? 0 : maxIdProduit;
         Long maxIdBloc = blocRepository.findMaxId();
         maxIdBloc = maxIdBloc == null ? 0 : maxIdBloc;
+
         TypeProduit typeProduitBloc = entityManager.getReference(TypeProduit.class, 1L);
         LocalDate startDate = LocalDate.of(2022, Month.JANUARY, 1);
         LocalDate endDate = LocalDate.of(2024, Month.DECEMBER, 31);
@@ -242,19 +249,23 @@ public class BlocService {
         List<Object[]> produitParams = new ArrayList<>();
         List<Object[]> blocParams = new ArrayList<>();
 
-        for (int i = 0; i < generationForm.getBlocCount(); i++) {
+        for (int i = 1; i <= generationForm.getBlocCount(); i++) {
             // Collect article parameters for batch
-            articleParams.add(new Object[]{"Bloc " + (maxIdBloc + i + 1)});
+            articleParams.add(new Object[]{
+                    maxIdArticle + i,
+                    "Bloc " + (maxIdBloc + i)
+            });
 
             int longueur = ThreadLocalRandom.current().nextInt(generationForm.getMinLongueur(), generationForm.getMaxLongueur()); // 20 - 25 (26)
             int largeur = ThreadLocalRandom.current().nextInt(generationForm.getMinLargeur(), generationForm.getMaxLargeur()); // 5 - 7 (8)
             int hauteur = ThreadLocalRandom.current().nextInt(generationForm.getMinHauteur(), generationForm.getMaxHauteur()); // 10 - 15 (16)
             produitParams.add(new Object[]{
+                    maxIdProduit + i,
                     longueur,
                     largeur,
                     hauteur,
                     typeProduitBloc.getIdTypeProduit(),
-                    null
+                    maxIdArticle + i
             });
 
             Machine randomMachine = machines.get(ThreadLocalRandom.current().nextInt(machines.size()));
@@ -262,9 +273,10 @@ public class BlocService {
             double productionCost = averageVolumicProductionCost * longueur * largeur * hauteur;
             productionCost = productionCost + productionCost * costVariation / 100;
             blocParams.add(new Object[]{
+                    maxIdBloc + i,
                     productionCost,
                     DateUtils.generateRandomDate(startDate, endDate),
-                    null,
+                    maxIdProduit + i,
                     randomMachine.getId()
             });
 
@@ -283,33 +295,35 @@ public class BlocService {
         if (!articleParams.isEmpty()) {
             saveBatch(articleParams, produitParams, blocParams);
         }
+
+        restartSequence(
+                maxIdArticle + generationForm.getBlocCount() + 1,
+                maxIdProduit + generationForm.getBlocCount() + 1,
+                maxIdBloc + generationForm.getBlocCount() + 1
+        );
     }
 
-    private void saveBatch(List<Object[]> articleParams, List<Object[]> produitParams, List<Object[]> blocParams) {
-        String articleInsertQuery = "INSERT INTO article (nom_article) VALUES (?)";
-        String produitInsertQuery = "INSERT INTO produit (longueur, largeur, hauteur, id_type_produit, id_article) VALUES (?, ?, ?, ?, ?)";
-        String blocInsertQuery = "INSERT INTO bloc (prix_production, date_heure_insertion, id_produit, id_machine) VALUES (?, ?, ?, ?)";
+    protected void saveBatch(List<Object[]> articleParams, List<Object[]> produitParams, List<Object[]> blocParams) {
+        String articleInsertQuery = "INSERT INTO article (id_article, nom_article) VALUES (?, ?)";
+        String produitInsertQuery = "INSERT INTO produit (id_produit, longueur, largeur, hauteur, id_type_produit, id_article) VALUES (?, ?, ?, ?, ?, ?)";
+        String blocInsertQuery = "INSERT INTO bloc (id_bloc, prix_production, date_heure_insertion, id_produit, id_machine) VALUES (?, ?, ?, ?, ?)";
 
-        // Insert articles
         jdbcTemplate.batchUpdate(articleInsertQuery, articleParams);
-
-        // After articles are inserted, we can get the generated IDs (assuming auto-incremented IDs)
-        List<Long> articleIds = jdbcTemplate.queryForList("SELECT id_article FROM article ORDER BY id_article DESC LIMIT " + articleParams.size(), Long.class);
-
-        // Now, update produitParams and blocParams with the correct article IDs
-        for (int j = 0; j < articleParams.size(); j++) {
-            produitParams.get(j)[4] = articleIds.get(j); // Set article ID in produitParams
-        }
-
-        // Insert produits and blocs with updated IDs
         jdbcTemplate.batchUpdate(produitInsertQuery, produitParams);
-
-        List<Long> produitIds = jdbcTemplate.queryForList("SELECT id_produit FROM produit ORDER BY id_produit DESC LIMIT " + produitParams.size(), Long.class);
-
-        for (int j = 0; j < produitParams.size(); j++) {
-            blocParams.get(j)[2] = produitIds.get(j); // Set produit ID in blocParams
-        }
-
         jdbcTemplate.batchUpdate(blocInsertQuery, blocParams);
+    }
+
+    protected void restartSequence(long idArticle, long idProduit, long idBloc) {
+        jdbcTemplate.execute("ALTER SEQUENCE article_id_article_seq START WITH " + idArticle);
+        jdbcTemplate.execute("ALTER SEQUENCE produit_id_produit_seq START WITH " + idProduit);
+        jdbcTemplate.execute("ALTER SEQUENCE bloc_id_bloc_seq START WITH " + idBloc);
+    }
+
+    public void saveCsv(List<Object> csvData) {
+        List<Object[]> articleParams = new ArrayList<>();
+        List<Object[]> produitParams = new ArrayList<>();
+        List<Object[]> blocParams = new ArrayList<>();
+
+        // TODO: continue import
     }
 }

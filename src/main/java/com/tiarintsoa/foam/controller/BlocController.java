@@ -34,6 +34,9 @@ public class BlocController {
         page = page < 1 ? 1 : page;
 
         Page<Bloc> pageBlocs = blocRepository.findAll(PageRequest.of(page - 1, size));
+
+        page = page > pageBlocs.getTotalPages() - 1 ? pageBlocs.getTotalPages() - 1 : page;
+
         model.addAttribute("blocs", pageBlocs.getContent());
         model.addAttribute("totalPages", pageBlocs.getTotalPages());
         model.addAttribute("currentPage", page);
