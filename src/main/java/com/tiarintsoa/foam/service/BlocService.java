@@ -1,6 +1,5 @@
 package com.tiarintsoa.foam.service;
 
-import com.tiarintsoa.foam.dto.csv.BlocCsvDTO;
 import com.tiarintsoa.foam.entity.*;
 import com.tiarintsoa.foam.from.BlocForm;
 import com.tiarintsoa.foam.from.GenerationForm;
@@ -30,6 +29,7 @@ public class BlocService {
     private final FormuleBlocRepository formuleBlocRepository;
     private final EntityManager entityManager;
     private final JdbcTemplate jdbcTemplate;
+    private final RepositoryService repositoryService;
 
     private final static int BATCH_SIZE = 1000;
 
@@ -42,7 +42,8 @@ public class BlocService {
             MachineRepository machineRepository,
             FormuleBlocRepository formuleBlocRepository,
             EntityManager entityManager,
-            JdbcTemplate jdbcTemplate
+            JdbcTemplate jdbcTemplate,
+            RepositoryService repositoryService
     ) {
         this.typeProduitRepository = typeProduitRepository;
         this.produitRepository = produitRepository;
@@ -53,56 +54,7 @@ public class BlocService {
         this.formuleBlocRepository = formuleBlocRepository;
         this.entityManager = entityManager;
         this.jdbcTemplate = jdbcTemplate;
-    }
-
-    // TODO: remove after new implementation is changed
-    public void saveAllCsvDTO(List<BlocCsvDTO> blocCsvDTOS) {
-        TypeProduit typeProduit = typeProduitRepository.findById(1L)
-                .orElseThrow(() -> new RuntimeException("Type produit introuvable") );
-
-        List<Machine> machines = machineRepository.findAll();
-
-        for (int i = 0; i < blocCsvDTOS.size(); i++) {
-            BlocCsvDTO blocCsvDTO = blocCsvDTOS.get(i);
-
-            Article article = new Article();
-            article.setNomArticle("B" + i);
-            articleRepository.save(article);
-
-            Produit produit = new Produit();
-            produit.setLongueur(blocCsvDTO.getLongueur());
-            produit.setLargeur(blocCsvDTO.getLargeur());
-            produit.setHauteur(blocCsvDTO.getHauteur());
-            produit.setTypeProduit(typeProduit);
-            produit.setArticle(article);
-            produitRepository.save(produit);
-
-            Bloc bloc = new Bloc();
-            bloc.setPrixProduction(blocCsvDTO.getCoutRevient());
-            bloc.setDateHeureInsertion(DateUtils.convertToLocalDateTime(blocCsvDTO.getDate()));
-            bloc.setProduit(produit);
-            bloc.setMachine(findMachineByName(
-                    machines,
-                    blocCsvDTO.getNomMachine())
-            );
-            blocRepository.save(bloc);
-
-            EtatStock etatStock = new EtatStock();
-            etatStock.setArticle(article);
-            etatStock.setPrixProduction(blocCsvDTO.getCoutRevient());
-            etatStock.setQuantite(1.0);
-            etatStock.setDateHeureInsertion(DateUtils.convertToLocalDateTime(blocCsvDTO.getDate()));
-            etatStockRepository.save(etatStock);
-        }
-    }
-
-    private Machine findMachineByName(List<Machine> machines, String name) {
-        for (Machine machine : machines) {
-            if (machine.getNomMachine().equals(name)) {
-                return machine;
-            }
-        }
-        return null;
+        this.repositoryService = repositoryService;
     }
 
     @Transactional
@@ -234,12 +186,9 @@ public class BlocService {
         Double averageVolumicProductionCost = blocRepository.findAverageVolumicProductionCost();
         averageVolumicProductionCost = averageVolumicProductionCost == null ? 6000 : averageVolumicProductionCost;
 
-        Long maxIdArticle = articleRepository.findMaxId();
-        maxIdArticle = maxIdArticle == null ? 0 : maxIdArticle;
-        Long maxIdProduit = produitRepository.findMaxId();
-        maxIdProduit = maxIdProduit == null ? 0 : maxIdProduit;
-        Long maxIdBloc = blocRepository.findMaxId();
-        maxIdBloc = maxIdBloc == null ? 0 : maxIdBloc;
+        Long maxIdArticle = repositoryService.getMaxIdOrDefault(articleRepository::findMaxId, 0L);
+        Long maxIdProduit = repositoryService.getMaxIdOrDefault(produitRepository::findMaxId, 0L);
+        Long maxIdBloc = repositoryService.getMaxIdOrDefault(blocRepository::findMaxId, 0L);
 
         TypeProduit typeProduitBloc = entityManager.getReference(TypeProduit.class, 1L);
         LocalDate startDate = LocalDate.of(2022, Month.JANUARY, 1);
@@ -253,7 +202,7 @@ public class BlocService {
             // Collect article parameters for batch
             articleParams.add(new Object[]{
                     maxIdArticle + i,
-                    "Bloc " + (maxIdBloc + i)
+                    "Bloc " + (maxIdArticle + i)
             });
 
             int longueur = ThreadLocalRandom.current().nextInt(generationForm.getMinLongueur(), generationForm.getMaxLongueur()); // 20 - 25 (26)
@@ -280,7 +229,6 @@ public class BlocService {
                     randomMachine.getId()
             });
 
-            // Execute batch after every 500 records
             if (i % BATCH_SIZE == 0) {
                 saveBatch(articleParams, produitParams, blocParams);
 
@@ -319,11 +267,59 @@ public class BlocService {
         jdbcTemplate.execute("ALTER SEQUENCE bloc_id_bloc_seq START WITH " + idBloc);
     }
 
-    public void saveCsv(List<Object> csvData) {
+    public void saveCsv(List<String[]> csvData) {
+        Long maxIdArticle = repositoryService.getMaxIdOrDefault(articleRepository::findMaxId, 0L);
+        Long maxIdProduit = repositoryService.getMaxIdOrDefault(produitRepository::findMaxId, 0L);
+        Long maxIdBloc = repositoryService.getMaxIdOrDefault(blocRepository::findMaxId, 0L);
+
         List<Object[]> articleParams = new ArrayList<>();
         List<Object[]> produitParams = new ArrayList<>();
         List<Object[]> blocParams = new ArrayList<>();
 
-        // TODO: continue import
+        // Starts with the index 1 to ignore the headers
+        for (int i = 1; i < csvData.size(); i++) {
+            String[] row = csvData.get(i);
+
+            articleParams.add(new Object[]{
+                    maxIdArticle + i,
+                    "Bloc " + (maxIdArticle + i)
+            });
+
+            produitParams.add(new Object[]{
+                    maxIdProduit + i,
+                    Double.parseDouble(row[1]),
+                    Double.parseDouble(row[2]),
+                    Double.parseDouble(row[3]),
+                    1,
+                    maxIdArticle + i
+            });
+
+            blocParams.add(new Object[]{
+                    maxIdBloc + i,
+                    Double.parseDouble(row[4]),
+                    DateUtils.convertToLocalDateTime(row[0]),
+                    maxIdProduit + i,
+                    Integer.parseInt(row[5].replace("M", "")),
+            });
+
+            if (i % BATCH_SIZE == 0) {
+                saveBatch(articleParams, produitParams, blocParams);
+
+                // Clear lists for the next batch
+                articleParams.clear();
+                produitParams.clear();
+                blocParams.clear();
+            }
+        }
+
+        if (!articleParams.isEmpty()) {
+            saveBatch(articleParams, produitParams, blocParams);
+        }
+
+        restartSequence(
+                maxIdArticle + csvData.size(),
+                maxIdProduit + csvData.size(),
+                maxIdBloc + csvData.size()
+        );
     }
 }

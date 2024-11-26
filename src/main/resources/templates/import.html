@@ -12,11 +12,12 @@
 <main class="container my-4">
     <h1 class="text-center">Import CSV</h1>
 
-    <form th:action="@{/csv}" method="post" enctype="multipart/form-data">
+    <form th:action="@{/blocs/import}" method="post" enctype="multipart/form-data">
 
         <div class="mb-3">
             <label class="form-label" for="file">Choisissez un fichier CSV :</label>
             <input class="form-control" type="file" name="file" id="file" required/>
+            <div class="form-text text-danger" th:if="${message != null}" th:text="*{message}"></div>
         </div>
 
         <button class="btn btn-primary mt-3" type="submit">Importer</button>

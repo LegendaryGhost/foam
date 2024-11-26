@@ -1,14 +1,18 @@
 package com.tiarintsoa.foam.utils;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class DateUtils {
+
     public static LocalDateTime convertToLocalDateTime(String dateStr) {
-        DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        return LocalDateTime.parse(dateStr + "T00:00:00", DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+        return LocalDateTime.parse(
+                dateStr + " 00:00:00",
+                DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")
+        );
     }
 
     public static LocalDateTime generateRandomDate(LocalDate startDate, LocalDate endDate) {

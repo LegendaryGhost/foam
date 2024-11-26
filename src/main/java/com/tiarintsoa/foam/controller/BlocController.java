@@ -11,6 +11,14 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Logger;
 
 @RequestMapping("/blocs")
 @Controller
@@ -77,5 +85,42 @@ public class BlocController {
     public String generateData(@ModelAttribute GenerationForm generationForm) {
         blocService.generateData(generationForm);
         return "redirect:/machines";
+    }
+
+    @GetMapping("/import")
+    public String uploadPage() {
+        return "import";
+    }
+
+    @PostMapping("/import")
+    public String uploadCsv(MultipartFile file, Model model) {
+        if (file.isEmpty()) {
+            model.addAttribute("message", "Veuillez sélectionner un fichier.");
+            return "import";
+        }
+
+        List<String[]> data = new ArrayList<>();
+        try (
+                BufferedReader reader = new BufferedReader(
+                    new InputStreamReader(file.getInputStream(), StandardCharsets.UTF_8)
+                )
+        ) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] values = line.split(","); // Ajustez le séparateur si nécessaire
+                data.add(values);
+            }
+            blocService.saveCsv(data);
+        } catch (Exception e) {
+            e.printStackTrace();
+            model.addAttribute("message", "Erreur lors de la lecture du fichier : " + e.getMessage());
+            return "import";
+        }
+
+        // Traitez les données ici (sauvegarde en base de données, validation, etc.)
+        model.addAttribute("message", "Fichier importé avec succès !");
+        model.addAttribute("data", data); // Facultatif : Pour afficher les données
+
+        return "redirect:/blocs";
     }
 }
