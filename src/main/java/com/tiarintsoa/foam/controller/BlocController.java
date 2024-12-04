@@ -6,6 +6,7 @@ import com.tiarintsoa.foam.from.GenerationForm;
 import com.tiarintsoa.foam.repository.BlocRepository;
 import com.tiarintsoa.foam.repository.MachineRepository;
 import com.tiarintsoa.foam.service.BlocService;
+import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
@@ -18,8 +19,8 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
+@AllArgsConstructor
 @RequestMapping("/blocs")
 @Controller
 public class BlocController {
@@ -27,12 +28,6 @@ public class BlocController {
     private final BlocService blocService;
     private final BlocRepository blocRepository;
     private final MachineRepository machineRepository;
-
-    public BlocController(BlocService blocService, BlocRepository blocRepository, MachineRepository machineRepository) {
-        this.blocService = blocService;
-        this.blocRepository = blocRepository;
-        this.machineRepository = machineRepository;
-    }
 
     @GetMapping
     public String blocs(Model model,
@@ -112,7 +107,7 @@ public class BlocController {
             }
             blocService.saveCsv(data);
         } catch (Exception e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
             model.addAttribute("message", "Erreur lors de la lecture du fichier : " + e.getMessage());
             return "import";
         }

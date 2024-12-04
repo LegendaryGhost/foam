@@ -4,16 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96190351-f0b5-4185-b93a-8ef2a1a39164" name="Changes" comment="CSV import in code">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_21_11_2024_09_02_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_21_11_2024_09_02__Changes_.xml" beforeDir="false" />
+    <list default="true" id="96190351-f0b5-4185-b93a-8ef2a1a39164" name="Changes" comment="Usage of lombok in controller dependency injection">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/import/blocs.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/import/import.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/query.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/query.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/dto/csv/BlocCsvDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.example.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.example.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/data.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/import.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/controller/BlocController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/controller/BlocController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/controller/MachineController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/controller/MachineController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/controller/StockController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/controller/StockController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/controller/TransformationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiarintsoa/foam/controller/TransformationController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,18 +36,18 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-        &quot;lastFilter&quot;: {
-        &quot;state&quot;: &quot;OPEN&quot;,
-        &quot;assignee&quot;: &quot;LegendaryGhost&quot;
-        }
-        }</component>
-  <component name="GithubPullRequestsUISettings">{
-        &quot;selectedUrlAndAccountId&quot;: {
-        &quot;url&quot;: &quot;https://github.com/LegendaryGhost/foam.git&quot;,
-        &quot;accountId&quot;: &quot;cc2e340a-d319-431b-9654-1964de07a83b&quot;
-        }
-        }</component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "LegendaryGhost"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/LegendaryGhost/foam.git",
+    "accountId": "cc2e340a-d319-431b-9654-1964de07a83b"
+  }
+}]]></component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -81,7 +79,7 @@
     &quot;git-widget-placeholder&quot;: &quot;feature-csv-import&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/ITU/S5/architecture-logiciel/foam/src/main/resources/templates&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/ITU/S5/architecture-logiciel/foam/src/main/resources&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -98,11 +96,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\ITU\S5\architecture-logiciel\foam\src\main\resources" />
       <recent name="D:\ITU\S5\architecture-logiciel\foam\src\main\resources\templates" />
       <recent name="D:\ITU\S5\architecture-logiciel\foam\database\test_theoritical_cost" />
       <recent name="D:\ITU\S5\architecture-logiciel\foam\database\import" />
       <recent name="D:\ITU\S5\architecture-logiciel\foam\database" />
-      <recent name="D:\ITU\S5\architecture-logiciel\foam\src\main\resources" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.tiarintsoa.foam.repository" />
@@ -219,15 +217,8 @@
       <workItem from="1732781770890" duration="1643000" />
       <workItem from="1732784821225" duration="1171000" />
       <workItem from="1732798498205" duration="15000" />
-      <workItem from="1733318783253" duration="179000" />
-    </task>
-    <task id="LOCAL-00005" summary="Unused import removed">
-      <option name="closed" value="true" />
-      <created>1730903625742</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1730903625742</updated>
+      <workItem from="1733318783253" duration="530000" />
+      <workItem from="1733319981047" duration="454000" />
     </task>
     <task id="LOCAL-00006" summary="Transformation form">
       <option name="closed" value="true" />
@@ -613,7 +604,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732622283657</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="Application properties removed">
+      <option name="closed" value="true" />
+      <created>1733319019360</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1733319019360</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -631,8 +630,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Data + triggers fix" />
-    <MESSAGE value="Entities + Repositories update" />
     <MESSAGE value="Views update + origin's machine in transformation" />
     <MESSAGE value="Article data" />
     <MESSAGE value="Stock change generation function" />
@@ -656,6 +653,8 @@
     <MESSAGE value="Bloc min page number" />
     <MESSAGE value="Set IDs in bloc data generation" />
     <MESSAGE value="CSV import in code" />
-    <option name="LAST_COMMIT_MESSAGE" value="CSV import in code" />
+    <MESSAGE value="Application properties removed" />
+    <MESSAGE value="Usage of lombok in controller dependency injection" />
+    <option name="LAST_COMMIT_MESSAGE" value="Usage of lombok in controller dependency injection" />
   </component>
 </project>
