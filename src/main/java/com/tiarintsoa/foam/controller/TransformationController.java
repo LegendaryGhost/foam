@@ -4,7 +4,7 @@ import com.tiarintsoa.foam.entity.Bloc;
 import com.tiarintsoa.foam.from.TransformationForm;
 import com.tiarintsoa.foam.repository.BlocRepository;
 import com.tiarintsoa.foam.service.TransformationService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,15 +13,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+@AllArgsConstructor
 @Controller
 @RequestMapping("/transformations")
 public class TransformationController {
 
-    @Autowired
-    private BlocRepository blocRepository;
-
-    @Autowired
-    private TransformationService transformationService;
+    private final BlocRepository blocRepository;
+    private final TransformationService transformationService;
 
     @GetMapping("/form")
     public String showTransformationForm(Model model) {

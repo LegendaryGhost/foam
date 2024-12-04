@@ -1,6 +1,5 @@
 package com.tiarintsoa.foam.service;
 
-import com.tiarintsoa.foam.dto.csv.BlocCsvDTO;
 import com.tiarintsoa.foam.entity.*;
 import com.tiarintsoa.foam.from.BlocForm;
 import com.tiarintsoa.foam.from.GenerationForm;
@@ -30,6 +29,7 @@ public class BlocService {
     private final FormuleBlocRepository formuleBlocRepository;
     private final EntityManager entityManager;
     private final JdbcTemplate jdbcTemplate;
+    private final RepositoryService repositoryService;
 
     private final static int BATCH_SIZE = 1000;
 
@@ -42,7 +42,8 @@ public class BlocService {
             MachineRepository machineRepository,
             FormuleBlocRepository formuleBlocRepository,
             EntityManager entityManager,
-            JdbcTemplate jdbcTemplate
+            JdbcTemplate jdbcTemplate,
+            RepositoryService repositoryService
     ) {
         this.typeProduitRepository = typeProduitRepository;
         this.produitRepository = produitRepository;
@@ -53,55 +54,7 @@ public class BlocService {
         this.formuleBlocRepository = formuleBlocRepository;
         this.entityManager = entityManager;
         this.jdbcTemplate = jdbcTemplate;
-    }
-
-    public void saveAllCsvDTO(List<BlocCsvDTO> blocCsvDTOS) {
-        TypeProduit typeProduit = typeProduitRepository.findById(1L)
-                .orElseThrow(() -> new RuntimeException("Type produit introuvable") );
-
-        List<Machine> machines = machineRepository.findAll();
-
-        for (int i = 0; i < blocCsvDTOS.size(); i++) {
-            BlocCsvDTO blocCsvDTO = blocCsvDTOS.get(i);
-
-            Article article = new Article();
-            article.setNomArticle("B" + i);
-            articleRepository.save(article);
-
-            Produit produit = new Produit();
-            produit.setLongueur(blocCsvDTO.getLongueur());
-            produit.setLargeur(blocCsvDTO.getLargeur());
-            produit.setHauteur(blocCsvDTO.getHauteur());
-            produit.setTypeProduit(typeProduit);
-            produit.setArticle(article);
-            produitRepository.save(produit);
-
-            Bloc bloc = new Bloc();
-            bloc.setPrixProduction(blocCsvDTO.getCoutRevient());
-            bloc.setDateHeureInsertion(DateUtils.convertToLocalDateTime(blocCsvDTO.getDate()));
-            bloc.setProduit(produit);
-            bloc.setMachine(findMachineByName(
-                    machines,
-                    blocCsvDTO.getNomMachine())
-            );
-            blocRepository.save(bloc);
-
-            EtatStock etatStock = new EtatStock();
-            etatStock.setArticle(article);
-            etatStock.setPrixProduction(blocCsvDTO.getCoutRevient());
-            etatStock.setQuantite(1.0);
-            etatStock.setDateHeureInsertion(DateUtils.convertToLocalDateTime(blocCsvDTO.getDate()));
-            etatStockRepository.save(etatStock);
-        }
-    }
-
-    private Machine findMachineByName(List<Machine> machines, String name) {
-        for (Machine machine : machines) {
-            if (machine.getNomMachine().equals(name)) {
-                return machine;
-            }
-        }
-        return null;
+        this.repositoryService = repositoryService;
     }
 
     @Transactional
@@ -232,8 +185,11 @@ public class BlocService {
         List<Machine> machines = machineRepository.findAll();
         Double averageVolumicProductionCost = blocRepository.findAverageVolumicProductionCost();
         averageVolumicProductionCost = averageVolumicProductionCost == null ? 6000 : averageVolumicProductionCost;
-        Long maxIdBloc = blocRepository.findMaxId();
-        maxIdBloc = maxIdBloc == null ? 0 : maxIdBloc;
+
+        Long maxIdArticle = repositoryService.getMaxIdOrDefault(articleRepository::findMaxId, 0L);
+        Long maxIdProduit = repositoryService.getMaxIdOrDefault(produitRepository::findMaxId, 0L);
+        Long maxIdBloc = repositoryService.getMaxIdOrDefault(blocRepository::findMaxId, 0L);
+
         TypeProduit typeProduitBloc = entityManager.getReference(TypeProduit.class, 1L);
         LocalDate startDate = LocalDate.of(2022, Month.JANUARY, 1);
         LocalDate endDate = LocalDate.of(2024, Month.DECEMBER, 31);
@@ -242,19 +198,23 @@ public class BlocService {
         List<Object[]> produitParams = new ArrayList<>();
         List<Object[]> blocParams = new ArrayList<>();
 
-        for (int i = 0; i < generationForm.getBlocCount(); i++) {
+        for (int i = 1; i <= generationForm.getBlocCount(); i++) {
             // Collect article parameters for batch
-            articleParams.add(new Object[]{"Bloc " + (maxIdBloc + i + 1)});
+            articleParams.add(new Object[]{
+                    maxIdArticle + i,
+                    "Bloc " + (maxIdArticle + i)
+            });
 
             int longueur = ThreadLocalRandom.current().nextInt(generationForm.getMinLongueur(), generationForm.getMaxLongueur()); // 20 - 25 (26)
             int largeur = ThreadLocalRandom.current().nextInt(generationForm.getMinLargeur(), generationForm.getMaxLargeur()); // 5 - 7 (8)
             int hauteur = ThreadLocalRandom.current().nextInt(generationForm.getMinHauteur(), generationForm.getMaxHauteur()); // 10 - 15 (16)
             produitParams.add(new Object[]{
+                    maxIdProduit + i,
                     longueur,
                     largeur,
                     hauteur,
                     typeProduitBloc.getIdTypeProduit(),
-                    null
+                    maxIdArticle + i
             });
 
             Machine randomMachine = machines.get(ThreadLocalRandom.current().nextInt(machines.size()));
@@ -262,13 +222,13 @@ public class BlocService {
             double productionCost = averageVolumicProductionCost * longueur * largeur * hauteur;
             productionCost = productionCost + productionCost * costVariation / 100;
             blocParams.add(new Object[]{
+                    maxIdBloc + i,
                     productionCost,
                     DateUtils.generateRandomDate(startDate, endDate),
-                    null,
+                    maxIdProduit + i,
                     randomMachine.getId()
             });
 
-            // Execute batch after every 500 records
             if (i % BATCH_SIZE == 0) {
                 saveBatch(articleParams, produitParams, blocParams);
 
@@ -283,33 +243,83 @@ public class BlocService {
         if (!articleParams.isEmpty()) {
             saveBatch(articleParams, produitParams, blocParams);
         }
+
+        restartSequence(
+                maxIdArticle + generationForm.getBlocCount() + 1,
+                maxIdProduit + generationForm.getBlocCount() + 1,
+                maxIdBloc + generationForm.getBlocCount() + 1
+        );
     }
 
-    private void saveBatch(List<Object[]> articleParams, List<Object[]> produitParams, List<Object[]> blocParams) {
-        String articleInsertQuery = "INSERT INTO article (nom_article) VALUES (?)";
-        String produitInsertQuery = "INSERT INTO produit (longueur, largeur, hauteur, id_type_produit, id_article) VALUES (?, ?, ?, ?, ?)";
-        String blocInsertQuery = "INSERT INTO bloc (prix_production, date_heure_insertion, id_produit, id_machine) VALUES (?, ?, ?, ?)";
+    protected void saveBatch(List<Object[]> articleParams, List<Object[]> produitParams, List<Object[]> blocParams) {
+        String articleInsertQuery = "INSERT INTO article (id_article, nom_article) VALUES (?, ?)";
+        String produitInsertQuery = "INSERT INTO produit (id_produit, longueur, largeur, hauteur, id_type_produit, id_article) VALUES (?, ?, ?, ?, ?, ?)";
+        String blocInsertQuery = "INSERT INTO bloc (id_bloc, prix_production, date_heure_insertion, id_produit, id_machine) VALUES (?, ?, ?, ?, ?)";
 
-        // Insert articles
         jdbcTemplate.batchUpdate(articleInsertQuery, articleParams);
-
-        // After articles are inserted, we can get the generated IDs (assuming auto-incremented IDs)
-        List<Long> articleIds = jdbcTemplate.queryForList("SELECT id_article FROM article ORDER BY id_article DESC LIMIT " + articleParams.size(), Long.class);
-
-        // Now, update produitParams and blocParams with the correct article IDs
-        for (int j = 0; j < articleParams.size(); j++) {
-            produitParams.get(j)[4] = articleIds.get(j); // Set article ID in produitParams
-        }
-
-        // Insert produits and blocs with updated IDs
         jdbcTemplate.batchUpdate(produitInsertQuery, produitParams);
+        jdbcTemplate.batchUpdate(blocInsertQuery, blocParams);
+    }
 
-        List<Long> produitIds = jdbcTemplate.queryForList("SELECT id_produit FROM produit ORDER BY id_produit DESC LIMIT " + produitParams.size(), Long.class);
+    protected void restartSequence(long idArticle, long idProduit, long idBloc) {
+        jdbcTemplate.execute("ALTER SEQUENCE article_id_article_seq START WITH " + idArticle);
+        jdbcTemplate.execute("ALTER SEQUENCE produit_id_produit_seq START WITH " + idProduit);
+        jdbcTemplate.execute("ALTER SEQUENCE bloc_id_bloc_seq START WITH " + idBloc);
+    }
 
-        for (int j = 0; j < produitParams.size(); j++) {
-            blocParams.get(j)[2] = produitIds.get(j); // Set produit ID in blocParams
+    public void saveCsv(List<String[]> csvData) {
+        Long maxIdArticle = repositoryService.getMaxIdOrDefault(articleRepository::findMaxId, 0L);
+        Long maxIdProduit = repositoryService.getMaxIdOrDefault(produitRepository::findMaxId, 0L);
+        Long maxIdBloc = repositoryService.getMaxIdOrDefault(blocRepository::findMaxId, 0L);
+
+        List<Object[]> articleParams = new ArrayList<>();
+        List<Object[]> produitParams = new ArrayList<>();
+        List<Object[]> blocParams = new ArrayList<>();
+
+        // Starts with the index 1 to ignore the headers
+        for (int i = 1; i < csvData.size(); i++) {
+            String[] row = csvData.get(i);
+
+            articleParams.add(new Object[]{
+                    maxIdArticle + i,
+                    "Bloc " + (maxIdArticle + i)
+            });
+
+            produitParams.add(new Object[]{
+                    maxIdProduit + i,
+                    Double.parseDouble(row[1]),
+                    Double.parseDouble(row[2]),
+                    Double.parseDouble(row[3]),
+                    1,
+                    maxIdArticle + i
+            });
+
+            blocParams.add(new Object[]{
+                    maxIdBloc + i,
+                    Double.parseDouble(row[4]),
+                    DateUtils.convertToLocalDateTime(row[0]),
+                    maxIdProduit + i,
+                    Integer.parseInt(row[5].replace("M", "")),
+            });
+
+            if (i % BATCH_SIZE == 0) {
+                saveBatch(articleParams, produitParams, blocParams);
+
+                // Clear lists for the next batch
+                articleParams.clear();
+                produitParams.clear();
+                blocParams.clear();
+            }
         }
 
-        jdbcTemplate.batchUpdate(blocInsertQuery, blocParams);
+        if (!articleParams.isEmpty()) {
+            saveBatch(articleParams, produitParams, blocParams);
+        }
+
+        restartSequence(
+                maxIdArticle + csvData.size(),
+                maxIdProduit + csvData.size(),
+                maxIdBloc + csvData.size()
+        );
     }
 }

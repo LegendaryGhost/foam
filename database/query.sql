@@ -60,3 +60,6 @@ SELECT SUM(p.longueur*p.largeur*p.hauteur) AS volume_total, EXTRACT(YEAR FROM b.
       INNER JOIN produit p ON b.id_produit = p.id_produit
 GROUP BY year
 ORDER by year;
+
+-- Data export
+\COPY (select a.nom_article, b.prix_production, p.longueur, p.largeur, p.hauteur, b.id_machine, b.date_heure_insertion from bloc b inner join produit p on b.id_produit = p.id_produit inner join article a on p.id_article = a.id_article order by b.id_bloc limit 1000000) To 'D:\ITU\S5\architecture-logiciel\3057\3057-blocs.csv' With CSV DELIMITER ',' HEADER
